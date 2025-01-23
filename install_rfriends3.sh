@@ -82,16 +82,21 @@ echo
 echo install tools
 echo
 # =========================================
-sudo $cmd update && sudo $cmd -y upgrade
+sudo $cmd update
 
-sudo $cmd -y install unzip nano vim at cron wget curl \
- php-cli \
- php-xml php-zip php-mbstring php-json php-curl php-intl \
- ffmpeg \
- p7zip-full dnsutils iproute2 tzdata \
- atomicparsley
-sudo $cmd -y install chromium-browser 
-sudo $cmd -y install openssh-server
+sudo $cmd -y install unzip nano vim at wget curl tzdata \
+ php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
+ openssh-server
+ 
+sudo $cmd -y install cron p7zip-full ffmpeg chromium-browser iproute2
+
+if [ $distro = "stream9" ]; then
+  sudo $cmd -y install cronie p7zip ffmpeg-free chromium
+  
+  #sudo $cmd -y install AtomicParsley
+  #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
+  sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
+fi
 # -----------------------------------------
 # .vimrcを設定する
 # -----------------------------------------

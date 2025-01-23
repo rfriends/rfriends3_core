@@ -112,8 +112,7 @@ echo
 echo rfriends3
 
 cd $homedir
-cp $curdir/$SCRIPT .
-rm -f $SCRIPT
+cp -f $curdir/$SCRIPT .
 unzip -q -o $SCRIPT
 
 mkdir -p tmp
@@ -135,7 +134,7 @@ sudo mkdir -p /var/log/samba
 sudo chown root:adm /var/log/samba
 
 sudo cp -p /etc/samba/smb.conf /etc/samba/smb.conf.org
-sed -e s%rfriendshomedir%$homedir%g smb.conf > smb.conf
+sed -e s%rfriendshomedir%$homedir%g smb.conf.skel > smb.conf
 sed -i s%rfriendsuser%$user%g smb.conf
 sudo cp -p smb.conf /etc/samba/smb.conf
 sudo chown root:root /etc/samba/smb.conf
@@ -208,6 +207,8 @@ else
   fi
 fi
 # -----------------------------------------
+echo
+cat _Rfriends3
 echo
 echo "distro : $distro"
 if [ $sys -eq 1 ]; then

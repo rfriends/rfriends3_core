@@ -112,11 +112,12 @@ echo
 echo rfriends3
 
 cd $homedir
+cp $curdir/$SCRIPT .
 rm -f $SCRIPT
 unzip -q -o $SCRIPT
 
-mkdir -p $homedir/tmp/
-cat <<EOF > $homedir/rfriends3/config/usrdir.ini
+mkdir -p tmp
+cat <<EOF > rfriends3/config/usrdir.ini
 usrdir = "$homedir/rfriends3/usr/"
 tmpdir = "$homedir/tmp/"
 EOF

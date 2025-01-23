@@ -207,7 +207,7 @@ else
 fi
 # -----------------------------------------
 echo
-cat _Rfriends3
+cat $curdir/_Rfriends3
 echo
 echo "distro : $distro"
 if [ $sys -eq 1 ]; then

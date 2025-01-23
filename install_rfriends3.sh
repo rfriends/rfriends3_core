@@ -213,6 +213,7 @@ fi
 echo
 cat $curdir/_Rfriends3
 echo
+echo "`cat /etc/os-release | grep PRETTY_NAME`"
 echo "distro : $distro"
 if [ $sys -eq 1 ]; then
   echo "type : systemd" 

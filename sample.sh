@@ -9,29 +9,17 @@ ver=1.1
 echo start $ver
 echo
 # -----------------------------------------
-distro="ubuntu"
-cmd="apt-get"
+export distro="ubuntu"
+export cmd="apt-get"
 
-#user=user
-#group=user
-#port=8000
-#homedir=`sh -c 'cd && pwd'`
+#export user=user
+#export group=user
+#export port=8000
+#export homedir=`sh -c 'cd && pwd'`
 
-optlighttpd="on"
-optsamba="on"
-optvimrc="on"
-
-export distro
-export cmd
-
-#export user
-#export group
-#export port
-#export homedir
-
-export optlighttpd
-export optsamba
-export optvimrc
+export optlighttpd="on"
+export optsamba="on"
+export optvimrc="on"
 #
 sh install_rfriends3.sh 2>&1 | tee install_rfriends3.log
 # -----------------------------------------

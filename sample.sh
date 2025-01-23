@@ -15,7 +15,7 @@ cmd="apt-get"
 #user=user
 #group=user
 #port=8000
-#homedir=
+#homedir=`sh -c 'cd && pwd'`
 
 #export user
 #export group

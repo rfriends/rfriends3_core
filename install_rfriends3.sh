@@ -230,6 +230,7 @@ echo port  : $port
 echo
 echo home    directry : $homedir
 echo current directry : $curdir
+echo PREFIX : $PREFIX
 # -----------------------------------------
 # finish
 # -----------------------------------------

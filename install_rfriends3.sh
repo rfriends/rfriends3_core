@@ -53,6 +53,10 @@ fi
 if [ -z $homedir ]; then
   homedir=`sh -c 'cd && pwd'`
 fi
+#
+if [ -z $PREFIX ]; then
+  PREFIX=""
+fi
 # -----------------------------------------
 if [ -z "$optlighttpd" ]; then
   optlighttpd="on"
@@ -132,11 +136,11 @@ sudo $cmd -y install samba
 sudo mkdir -p /var/log/samba
 sudo chown root:adm /var/log/samba
 
-sudo cp -p /etc/samba/smb.conf /etc/samba/smb.conf.org
+sudo cp -p $PREFIX/etc/samba/smb.conf $PREFIX/etc/samba/smb.conf.org
 sed -e s%rfriendshomedir%$homedir%g smb.conf.skel > smb.conf
 sed -i s%rfriendsuser%$user%g smb.conf
-sudo cp -p smb.conf /etc/samba/smb.conf
-sudo chown root:root /etc/samba/smb.conf
+sudo cp -p smb.conf $PREFIX/etc/samba/smb.conf
+sudo chown root:root $PREFIX/etc/samba/smb.conf
 
 mkdir -p $homedir/smbdir/usr2/
 cat <<EOF > $homedir/rfriends3/config/usrdir.ini
@@ -155,18 +159,18 @@ if [ $optlighttpd = "on" ]; then
 cd $curdir
 sudo $cmd -y install lighttpd lighttpd-mod-webdav php-cgi
 
-sudo cp -p /etc/lighttpd/conf-available/15-fastcgi-php.conf /etc/lighttpd/conf-available/15-fastcgi-php.conf.org
+sudo cp -p $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf.org
 sed -e s%rfriendshomedir%$homedir%g 15-fastcgi-php.conf.skel > 15-fastcgi-php.conf
-sudo cp -p 15-fastcgi-php.conf /etc/lighttpd/conf-available/15-fastcgi-php.conf
-sudo chown root:root /etc/lighttpd/conf-available/15-fastcgi-php.conf
+sudo cp -p 15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
+sudo chown root:root $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
 
-sudo cp -p /etc/lighttpd/lighttpd.conf /etc/lighttpd/lighttpd.conf.org
+sudo cp -p $PREFIX/etc/lighttpd/lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf.org
 sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel > lighttpd.conf
 sed -i s%rfriendsuser%$user%g   lighttpd.conf
 sed -i s%rfriendsgroup%$group%g lighttpd.conf
 sed -i s%rfriendsport%$port%g   lighttpd.conf
-sudo cp -p lighttpd.conf /etc/lighttpd/lighttpd.conf
-sudo chown root:root /etc/lighttpd/lighttpd.conf
+sudo cp -p lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf
+sudo chown root:root $PREFIX/etc/lighttpd/lighttpd.conf
 
 mkdir -p $homedir/lighttpd/uploads/
 cd $homedir/rfriends3/script/html

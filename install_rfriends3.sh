@@ -80,13 +80,12 @@ echo
 # =========================================
 sudo $cmd update && sudo $cmd -y upgrade
 
-sudo $cmd -y install unzip nano vim at cron wget curl
-sudo $cmd -y install php-cli \
-             php-xml php-zip php-mbstring php-json php-curl php-intl
-sudo $cmd -y install ffmpeg
-
-sudo $cmd -y install p7zip-full dnsutils iproute2 tzdata
-sudo $cmd -y install atomicparsley
+sudo $cmd -y install unzip nano vim at cron wget curl \
+ php-cli \
+ php-xml php-zip php-mbstring php-json php-curl php-intl \
+ ffmpeg \
+ p7zip-full dnsutils iproute2 tzdata \
+ atomicparsley
 sudo $cmd -y install chromium-browser 
 sudo $cmd -y install openssh-server
 # -----------------------------------------

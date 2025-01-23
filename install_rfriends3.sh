@@ -67,16 +67,6 @@ fi
 if [ -z "$optvimrc" ]; then
   optvimrc="on"
 fi
-
-if [ "$optlighttpd" != "on" ]; then
-  optlighttpd="off"
-fi
-if [ "$optsamba" != "on" ]; then
-  optsamba="off"
-fi
-if [ "$optvimrc" != "on" ]; then
-  optvimrc="off"
-fi
 # =========================================
 echo
 echo install tools
@@ -184,6 +174,37 @@ ln -nfs temp webdav
 sudo lighttpd-enable-mod fastcgi
 sudo lighttpd-enable-mod fastcgi-php
 echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
+fi
+# -----------------------------------------
+if [ $optlighttpd = "on2" ]; then
+cd $curdir
+sudo $cmd -y install lighttpd lighttpd-mod-webdav php-cgi
+
+sudo cp -p $PREFIX/etc/lighttpd/lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf.org
+sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel2 > lighttpd.conf
+sed -i s%rfriendsuser%$user%g lighttpd.conf
+sed -i s%rfriendsgroup%$group%g lighttpd.conf
+sed -i s%rfriendsport%$port%g lighttpd.conf
+sudo cp -p lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf
+sudo chown root:root $PREFIX/etc/lighttpd/lighttpd.conf
+#
+# modules
+sudo cp -p $PREFIX/etc/lighttpd/modules.conf $PREFIX/etc/lighttpd/modules.conf.org
+sudo cp -p modules.conf.skel2 $PREFIX/etc/lighttpd/modules.conf
+sudo chown root:root $PREFIX/etc/lighttpd/modules.conf
+#
+# fastcgi
+sudo cp -p $PREFIX/etc/lighttpd/conf.d/fastcgi.conf $PREFIX/etc/lighttpd/conf.d/fastcgi.conf.org
+sudo cp -p fastcgi.conf.skel2 $PREFIX/etc/lighttpd/conf.d/fastcgi.conf
+sudo chown root:root $PREFIX/etc/lighttpd/conf.d/fastcgi.conf
+#
+# webdav
+sudo cp -p $PREFIX/etc/lighttpd/conf.d/webdav.conf $PREFIX/etc/lighttpd/conf.d/webdav.conf.org
+sudo cp -p webdav.conf.skel2 $PREFIX/etc/lighttpd/conf.d/webdav.conf
+sudo chown root:root $PREFIX/etc/lighttpd/conf.d/webdav.conf
+cd $homedir/rfriends3/script/html
+ln -nfs temp webdav
+#
 fi
 # -----------------------------------------
 # systemd or service

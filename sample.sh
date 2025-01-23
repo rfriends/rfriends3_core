@@ -11,7 +11,16 @@ echo
 # -----------------------------------------
 distro="ubuntu"
 cmd="apt-get"
-port=8000
+
+#user=user
+#group=user
+#port=8000
+#homedir=
+
+#export user
+#export group
+#export port
+#export homedir
 
 optlighttpd="on"
 optsamba="on"

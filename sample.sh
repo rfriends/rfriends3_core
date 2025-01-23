@@ -17,14 +17,17 @@ cmd="apt-get"
 #port=8000
 #homedir=`sh -c 'cd && pwd'`
 
+optlighttpd="on"
+optsamba="on"
+optvimrc="on"
+
+export distro
+export cmd
+
 #export user
 #export group
 #export port
 #export homedir
-
-optlighttpd="on"
-optsamba="on"
-optvimrc="on"
 
 export optlighttpd
 export optsamba

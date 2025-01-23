@@ -16,6 +16,7 @@ export cmd="apt-get"
 #export group=user
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
+#export PREFIX=""
 
 export optlighttpd="on"
 export optsamba="on"

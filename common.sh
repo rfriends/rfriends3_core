@@ -87,14 +87,20 @@ echo
 # =========================================
 if [ $distro = "arch" ]; then
   sudo pacman -Sy --noconfirm
-  sudo pacman -S --noconfirm unzip nano vim at wget curl tzdata \
-  cronie p7zip atomicparsley ffmpeg chromium iproute2
+  sudo pacman -S --noconfirm unzip nano vim at wget curl tzdata
+  sudo pacman -S --noconfirm cronie p7zip iproute2
+  sudo pacman -S --noconfirm atomicparsley 
+  sudo pacman -S --noconfirm ffmpeg
+  sudo pacman -S --noconfirm chromium
 elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
   sudo $cmd update
-  sudo $cmd unzip nano vim at wget curl tzdata \
-  php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
-  openssh-server \
-  cronie p7zip ffmpeg-free chromium net-tools dnsutils
+  sudo $cmd unzip nano vim at wget curl tzdata
+  sudo $cmd cronie p7zip net-tools dnsutils
+  psudo $cmd hp-cli php-xml php-zip php-mbstring php-json php-curl php-intl
+  sudo $cmd openssh-server
+  sudo $cmd ffmpeg-free
+  sudo $cmd chromium
+  
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
 else

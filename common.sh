@@ -93,12 +93,11 @@ sudo $cmdupdate
 sudo $cmd unzip p7zip nano vim at wget curl tzdata
 sudo $cmd iproute2
 sudo $cmd cron
-sudo $cmd hp-cli php-xml php-zip php-mbstring php-json php-curl php-intl
+sudo $cmd php-cli php-xml php-zip php-mbstring php-json php-curl php-intl
 
 sudo $cmd atomicparsley
 sudo $cmd ffmpeg
 sudo $cmd openssh-server
-sudo $cmd chromium
 # -----------------------------------------
 echo
 echo install tools
@@ -106,16 +105,18 @@ echo
 # -----------------------------------------
 if [ $distro = "arch" ]; then
   sudo $cmd cronie
+  sudo $cmd chromium
 elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
   sudo $cmd cronie 
   sudo $cmd ffmpeg-free
+  sudo $cmd chromium
   #sudo $cmd net-tools dnsutils
   
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
 else
   # ubuntu
-  #sudo $cmd chromium-browser
+  sudo $cmd chromium-browser
 fi
 # -----------------------------------------
 echo

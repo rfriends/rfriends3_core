@@ -37,6 +37,10 @@ if [ -z "$cmd" ]; then
   cmd="apt-get install -y"
 fi
 #
+if [ -z "$cmdupdate" ]; then
+  cmdupdate="apt-get update"
+fi
+#
 if [ -z "$port" ]; then
   port=8000
 fi
@@ -85,19 +89,19 @@ echo
 echo install tools
 echo
 # =========================================
+sudo $cmdupdate
+sudo $cmd unzip nano vim at wget curl tzdata
+sudo $cmd openssh-server
+sudo $cmd chromium
+
 if [ $distro = "arch" ]; then
-  sudo pacman -Sy --noconfirm
-  sudo $cmd unzip nano vim at wget curl tzdata
   sudo $cmd cronie p7zip iproute2
   sudo $cmd atomicparsley 
   sudo $cmd ffmpeg
   sudo $cmd chromium
 elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
-  sudo $cmd update
-  sudo $cmd unzip nano vim at wget curl tzdata
   sudo $cmd cronie p7zip net-tools dnsutils
   sudo $cmd hp-cli php-xml php-zip php-mbstring php-json php-curl php-intl
-  sudo $cmd openssh-server
   sudo $cmd ffmpeg-free
   sudo $cmd chromium
   
@@ -105,15 +109,11 @@ elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
 else
   # ubuntu
-  sudo $cmd update
-  sudo $cmd unzip nano vim at wget curl tzdata
   sudo $cmd cron p7zip-full iproute2
   sudo $cmd php-cli php-zip php-xml php-mbstring php-json php-curl php-intl
-  sudo $cmd openssh-server
   sudo $cmd atomicparsley
   sudo $cmd ffmpeg
   sudo $cmd chromium-browser
-  sudo $cmd chromium
 fi
 # -----------------------------------------
 # .vimrcを設定する

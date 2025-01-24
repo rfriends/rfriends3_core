@@ -16,7 +16,7 @@
 ver=4.4
 # -----------------------------------------
 echo
-echo start install_rfriends3 $ver
+echo start install_common $ver
 echo `date`
 echo
 #
@@ -126,11 +126,11 @@ echo
 echo samba $optsamba
 
 if [ $optsamba = "on" ]; then
-cd $curdir
 sudo $cmd -y install samba
 sudo mkdir -p /var/log/samba
 sudo chown root:adm /var/log/samba
 
+cd $curdir/skel
 sudo cp -p $PREFIX/etc/samba/smb.conf $PREFIX/etc/samba/smb.conf.org
 sed -e s%rfriendshomedir%$homedir%g smb.conf.skel > smb.conf
 sed -i s%rfriendsuser%$user%g smb.conf
@@ -151,9 +151,9 @@ echo
 echo lighttpd $optlighttpd
 
 if [ $optlighttpd = "on" ]; then
-cd $curdir
 sudo $cmd -y install lighttpd lighttpd-mod-webdav php-cgi
 
+cd $curdir/skel
 sudo cp -p $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf.org
 sed -e s%rfriendshomedir%$homedir%g 15-fastcgi-php.conf.skel > 15-fastcgi-php.conf
 sudo cp -p 15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
@@ -177,9 +177,9 @@ echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 fi
 # -----------------------------------------
 if [ $optlighttpd = "on2" ]; then
-cd $curdir
 sudo $cmd -y install lighttpd lighttpd-mod-webdav php-cgi
 
+cd $curdir/skel
 sudo cp -p $PREFIX/etc/lighttpd/lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf.org
 sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel2 > lighttpd.conf
 sed -i s%rfriendsuser%$user%g lighttpd.conf
@@ -265,6 +265,6 @@ ip=`hostname -I | cut -d " " -f 1`
 # finish
 # -----------------------------------------
 echo `date`
-echo end install_rfriends3
+echo end install common
 echo
 # -----------------------------------------

@@ -5,7 +5,7 @@
 #useradd -m user
 #passwd user
 #pacman -Syu
-#pacman -S sudo vi
+#pacman -S sudo vi git
 #visudo
 #user ALL=(ALL) ALL
 # login user

@@ -85,7 +85,11 @@ echo
 echo install tools
 echo
 # =========================================
-sudo $cmd update
+if [ $distro = "arch" ]; then
+  sudo pacman -Sy --noconfirm
+else 
+  sudo $cmd update
+fi
 
 sudo $cmd unzip nano vim at wget curl tzdata \
  php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \

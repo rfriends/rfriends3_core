@@ -10,7 +10,7 @@ echo start $ver
 echo
 # -----------------------------------------
 export distro="ubuntu"
-export cmd="apt-get"
+export cmd="apt-get install -y"
 
 #export user=user
 #export group=user

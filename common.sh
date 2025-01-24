@@ -225,7 +225,7 @@ if [ $optlighttpd = "on2" ]; then
 sudo $cmd lighttpd php-cgi
 sudo $cmd lighttpd-fastcgi
 
-if [ -d $PREFIX/etc/lighttpd/conf.d ]; then
+if [ ! -d $PREFIX/etc/lighttpd/conf.d ]; then
   sudo mkdir -p $PREFIX/etc/lighttpd/conf.d
 fi
 

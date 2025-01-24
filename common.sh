@@ -80,7 +80,7 @@ sudo $cmd -y install unzip nano vim at wget curl tzdata \
 # 
 if [ $distro = "ubuntu" ]; then
   sudo $cmd -y install cron p7zip-full atomicparsley ffmpeg chromium-browser iproute2
-elif [ $distro = "centos" || $distro = "stream9" ]; then
+elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
   sudo $cmd -y install cronie p7zip ffmpeg-free chromium
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm

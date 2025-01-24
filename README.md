@@ -1,4 +1,14 @@
 Linux用のrfriends3インストールスクリプトです。  
+sudo userでログインしてシェルを実行してください。
+   
+```
+cd
+rm -rf rfriends3_core  
+git clone https://github.com/rfriends/rfriends3_core.git
+cd rfriends3_core
+sh install_XXXXX.sh
+```
+   
 下記のディストリビューションで確認しています。  
   
 インストール確認  

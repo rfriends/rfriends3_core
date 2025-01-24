@@ -132,6 +132,16 @@ usrdir = "$homedir/rfriends3/usr/"
 tmpdir = "$homedir/tmp/"
 EOF
 # -----------------------------------------
+# systemd or service
+# -----------------------------------------
+if [ $sys -eq 1 ]; then
+  sudo systemctl enable $atd
+  sudo systemctl enable $cron
+else 
+  sudo service $atd restart
+  sudo service $cron restart
+fi
+# -----------------------------------------
 echo
 echo install samba
 echo
@@ -155,6 +165,16 @@ cat <<EOF > $homedir/rfriends3/config/usrdir.ini
 usrdir = "$homedir/smbdir/usr2/"
 tmpdir = "$homedir/tmp/"
 EOF
+
+# -----------------------------------------
+if [ $sys -eq 1 ]; then
+  sudo systemctl enable $smbd
+  sudo systemctl restart $smbd
+  systemctl status $smbd
+else 
+  sudo service $smbd restart
+  service $smbd status
+fi
 fi
 # -----------------------------------------
 echo
@@ -187,6 +207,15 @@ ln -nfs temp webdav
 sudo lighttpd-enable-mod fastcgi
 sudo lighttpd-enable-mod fastcgi-php
 echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
+# -----------------------------------------
+if [ $sys -eq 1 ]; then
+  sudo systemctl enable $lighttpd
+  sudo systemctl restart $lighttpd
+  systemctl status $lighttpd
+else 
+  sudo service $lighttpd restart
+  service $lighttpd status
+fi
 fi
 # -----------------------------------------
 if [ $optlighttpd = "on2" ]; then
@@ -218,35 +247,20 @@ sudo chown root:root $PREFIX/etc/lighttpd/conf.d/webdav.conf
 cd $homedir/rfriends3/script/html
 ln -nfs temp webdav
 #
-fi
-# -----------------------------------------
-# systemd or service
+mkdir -p $homedir/lighttpd/uploads/
+cd $homedir/rfriends3/script/html
+ln -nfs temp webdav
+
+echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 # -----------------------------------------
 if [ $sys -eq 1 ]; then
-  sudo systemctl enable $atd
-  sudo systemctl enable $cron
-
-  if [ $optsamba = "on" ]; then
-    sudo systemctl enable $smbd
-    sudo systemctl restart $smbd
-  fi
-
-  if [ $optlighttpd = "on" ] || [ $optlighttpd = "on2" ]; then
-    sudo systemctl enable $lighttpd
-    sudo systemctl restart $lighttpd
-  fi
-
+  sudo systemctl enable $lighttpd
+  sudo systemctl restart $lighttpd
+  systemctl status $lighttpd
 else 
-  sudo service $atd restart
-  sudo service $cron restart
-
-  if [ $optsamba = "on" ]; then
-    sudo service $smbd restart
-  fi
-
-  if [ $optlighttpd = "on" ] || [ $optlighttpd = "on2" ]; then
-    sudo service $lighttpd restart
-  fi
+  sudo service $lighttpd restart
+  service $lighttpd status
+fi
 fi
 # -----------------------------------------
 echo

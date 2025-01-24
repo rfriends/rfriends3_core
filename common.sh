@@ -67,6 +67,19 @@ fi
 if [ -z "$optvimrc" ]; then
   optvimrc="on"
 fi
+# -----------------------------------------
+if [ -z "$atd" ]; then
+  atd="atd"
+fi
+if [ -z "$cron" ]; then
+  cron="cron"
+fi
+if [ -z "$lighttpd" ]; then
+  lighttpd="lighttpd"
+fi
+if [ -z "$smbd" ]; then
+  smbd="smbd"
+fi
 # =========================================
 echo
 echo install tools
@@ -210,29 +223,29 @@ fi
 # systemd or service
 # -----------------------------------------
 if [ $sys -eq 1 ]; then
-  sudo systemctl enable atd
-  sudo systemctl enable cron
+  sudo systemctl enable $atd
+  sudo systemctl enable $cron
 
   if [ $optsamba = "on" ]; then
-    sudo systemctl enable smbd
-    sudo systemctl restart smbd
+    sudo systemctl enable $smbd
+    sudo systemctl restart $smbd
   fi
 
   if [ $optlighttpd = "on" ] || [ $optlighttpd = "on2" ]; then
-    sudo systemctl enable lighttpd
-    sudo systemctl restart lighttpd
+    sudo systemctl enable $lighttpd
+    sudo systemctl restart $lighttpd
   fi
 
 else 
-  sudo service atd restart
-  sudo service cron restart
+  sudo service $atd restart
+  sudo service $cron restart
 
   if [ $optsamba = "on" ]; then
-    sudo service smbd restart
+    sudo service $smbd restart
   fi
 
   if [ $optlighttpd = "on" ] || [ $optlighttpd = "on2" ]; then
-    sudo service lighttpd restart
+    sudo service $lighttpd restart
   fi
 fi
 # -----------------------------------------

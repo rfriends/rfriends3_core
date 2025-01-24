@@ -43,6 +43,11 @@ export cmd="dnf"
 export optlighttpd="on2"
 export optsamba="on"
 export optvimrc="on"
+
+export lighttpd="lighttpd"
+export smbd="smb"
+export atd="atd"
+export cron="crond"
 #
 sh common.sh 2>&1 | tee common.log
 # -----------------------------------------

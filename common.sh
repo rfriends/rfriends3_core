@@ -189,7 +189,8 @@ echo
 echo lighttpd $optlighttpd
 
 if [ $optlighttpd = "on" ]; then
-sudo $cmd lighttpd lighttpd-mod-webdav php-cgi
+sudo $cmd lighttpd php-cgi
+sudo $cmd lighttpd-mod-webdav
 
 cd $curdir/skel
 sudo cp -p $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf.org
@@ -224,7 +225,8 @@ fi
 fi
 # -----------------------------------------
 if [ $optlighttpd = "on2" ]; then
-sudo $cmd lighttpd lighttpd-fastcgi php-cgi
+sudo $cmd lighttpd php-cgi
+sudo $cmd lighttpd-fastcgi
 
 cd $curdir/skel
 sudo cp -p $PREFIX/etc/lighttpd/lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf.org

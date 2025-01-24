@@ -94,7 +94,7 @@ sudo $cmd -y install unzip nano vim at wget curl tzdata \
 if [ $distro = "ubuntu" ]; then
   sudo $cmd -y install cron p7zip-full atomicparsley ffmpeg chromium-browser iproute2
 elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
-  sudo $cmd -y install cronie p7zip ffmpeg-free chromium
+  sudo $cmd -y install cronie p7zip ffmpeg-free chromium net-tools dnsutils
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
 else
@@ -190,7 +190,7 @@ echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 fi
 # -----------------------------------------
 if [ $optlighttpd = "on2" ]; then
-sudo $cmd -y install lighttpd lighttpd-mod-webdav php-cgi
+sudo $cmd -y install lighttpd lighttpd-fastcgi php-cgi
 
 cd $curdir/skel
 sudo cp -p $PREFIX/etc/lighttpd/lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf.org

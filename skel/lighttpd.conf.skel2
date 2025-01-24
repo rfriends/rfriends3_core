@@ -73,7 +73,7 @@ var.cache_dir   = "/var/cache/lighttpd"
 ## conf.d/fastcgi.conf
 ## conf.d/scgi.conf
 ##
-var.socket_dir  = home_dir + "/sockets"
+var.socket_dir  = home_dir + "lighttpd/sockets"
 
 ##
 #######################################################################

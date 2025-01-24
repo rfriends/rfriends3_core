@@ -28,9 +28,6 @@ sudo dnf -y config-manager --set-enabled crb
 #sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm -y
 #sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm -y
 # -----------------------------------------
-#wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
-sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
-# -----------------------------------------
 export distro="stream9"
 export cmd="dnf"
 

@@ -21,6 +21,11 @@ export cmd="apt-get"
 export optlighttpd="on"
 export optsamba="on"
 export optvimrc="on"
+
+export lighttpd="lighttpd"
+export smbd="smbd"
+export atd="atd"
+export cron="cron"
 #
 sh common.sh 2>&1 | tee common.log
 # -----------------------------------------

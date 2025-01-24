@@ -100,10 +100,12 @@ elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
 else
   # ubuntu
   sudo $cmd update
-  sudo $cmd unzip nano vim at wget curl tzdata \
-  php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
-  openssh-server \
-  cron p7zip-full atomicparsley ffmpeg iproute2
+  sudo $cmd unzip nano vim at wget curl tzdata
+  sudo $cmd cron p7zip-full iproute2
+  sudo $cmd php-cli php-zip php-xml php-mbstring php-json php-curl php-intl
+  sudo $cmd openssh-server
+  sudo $cmd atomicparsley
+  sudo $cmd ffmpeg
   sudo $cmd chromium-browser
   sudo $cmd chromium
 fi

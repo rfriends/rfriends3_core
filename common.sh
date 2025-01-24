@@ -86,37 +86,41 @@ if [ -z "$smbd" ]; then
 fi
 # =========================================
 echo
-echo install tools
+echo install tools common
 echo
 # =========================================
 sudo $cmdupdate
-sudo $cmd unzip nano vim at wget curl tzdata
+sudo $cmd unzip p7zip nano vim at wget curl tzdata
+sudo $cmd iproute2
+sudo $cmd cron
+sudo $cmd hp-cli php-xml php-zip php-mbstring php-json php-curl php-intl
+
+sudo $cmd atomicparsley
+sudo $cmd ffmpeg
 sudo $cmd openssh-server
 sudo $cmd chromium
-
+# -----------------------------------------
+echo
+echo install tools
+echo
+# -----------------------------------------
 if [ $distro = "arch" ]; then
-  sudo $cmd cronie p7zip iproute2
-  sudo $cmd atomicparsley 
-  sudo $cmd ffmpeg
-  sudo $cmd chromium
+  sudo $cmd cronie
 elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
-  sudo $cmd cronie p7zip net-tools dnsutils
-  sudo $cmd hp-cli php-xml php-zip php-mbstring php-json php-curl php-intl
+  sudo $cmd cronie 
   sudo $cmd ffmpeg-free
-  sudo $cmd chromium
+  #sudo $cmd net-tools dnsutils
   
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
 else
   # ubuntu
-  sudo $cmd cron p7zip-full iproute2
-  sudo $cmd php-cli php-zip php-xml php-mbstring php-json php-curl php-intl
-  sudo $cmd atomicparsley
-  sudo $cmd ffmpeg
-  sudo $cmd chromium-browser
+  #sudo $cmd chromium-browser
 fi
 # -----------------------------------------
-# .vimrcを設定する
+echo
+echo vimrc
+echo
 # -----------------------------------------
 echo vimrc $optvimrc
 

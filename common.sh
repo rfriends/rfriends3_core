@@ -96,7 +96,7 @@ sudo $cmd unzip nano vim at wget curl tzdata \
  openssh-server
 # 
 if [ $distro = "arch" ]; then
-  sudo $cmd cronie p7zip-full atomicparsley ffmpeg chromium iproute2
+  sudo $cmd cronie p7zip atomicparsley ffmpeg chromium iproute2
 elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
   sudo $cmd cronie p7zip ffmpeg-free chromium net-tools dnsutils
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  

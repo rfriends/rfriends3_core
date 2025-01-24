@@ -248,6 +248,7 @@ cd $homedir/rfriends3/script/html
 ln -nfs temp webdav
 #
 mkdir -p $homedir/lighttpd/uploads/
+mkdir -p $homedir/lighttpd/sockets/
 cd $homedir/rfriends3/script/html
 ln -nfs temp webdav
 

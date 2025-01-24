@@ -42,6 +42,6 @@ export optlighttpd="on2"
 export optsamba="on"
 export optvimrc="on"
 #
-sh install_rfriends3.sh 2>&1 | tee install_rfriends3.log
+sh common.sh 2>&1 | tee common.log
 # -----------------------------------------
 # finish

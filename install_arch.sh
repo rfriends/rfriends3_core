@@ -1,6 +1,14 @@
 #!/bin/bash
 # =========================================
 # install rfriends3 for arch
+#
+#useradd -m user
+#passwd user
+#pacman -Syu
+#pacman -S sudo vi
+#visudo
+#user ALL=(ALL) ALL
+# login user
 # =========================================
 # Rfriends (radiko radiru録音ツール)
 # 1.0 2025/01/24 new

@@ -77,10 +77,14 @@ sudo $cmd update
 sudo $cmd -y install unzip nano vim at wget curl tzdata \
  php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
  openssh-server
- 
-sudo $cmd -y install cron p7zip-full ffmpeg chromium-browser iproute2
-# for centos
-sudo $cmd -y install cronie p7zip ffmpeg-free chromium
+# 
+if [ $distro = "centos" -o $distro = "stream9" ]; then
+  sudo $cmd -y install cronie p7zip ffmpeg-free chromium
+  #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
+  sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
+else
+  sudo $cmd -y install cron p7zip-full atomicparsley ffmpeg chromium-browser iproute2
+fi
 # -----------------------------------------
 # .vimrcを設定する
 # -----------------------------------------

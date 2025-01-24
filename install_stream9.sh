@@ -30,6 +30,7 @@ sudo dnf -y config-manager --set-enabled crb
 # -----------------------------------------
 export distro="stream9"
 export cmd="dnf install -y"
+export cmdupdate="dnf update"
 
 #export user=user
 #export group=user

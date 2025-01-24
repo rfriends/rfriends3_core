@@ -106,6 +106,7 @@ echo
 if [ $distro = "arch" ]; then
   sudo $cmd cronie
   sudo $cmd chromium
+  sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
 elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
   sudo $cmd cronie 
   sudo $cmd ffmpeg-free

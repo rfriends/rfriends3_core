@@ -11,6 +11,7 @@ echo
 # -----------------------------------------
 export distro="ubuntu"
 export cmd="apt-get install -y"
+export cmdupdate="apt-get update"
 
 #export user=user
 #export group=user

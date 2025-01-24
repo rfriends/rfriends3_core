@@ -87,11 +87,11 @@ echo
 # =========================================
 if [ $distro = "arch" ]; then
   sudo pacman -Sy --noconfirm
-  sudo pacman -S --noconfirm unzip nano vim at wget curl tzdata
-  sudo pacman -S --noconfirm cronie p7zip iproute2
-  sudo pacman -S --noconfirm atomicparsley 
-  sudo pacman -S --noconfirm ffmpeg
-  sudo pacman -S --noconfirm chromium
+  sudo $cmd unzip nano vim at wget curl tzdata
+  sudo $cmd cronie p7zip iproute2
+  sudo $cmd atomicparsley 
+  sudo $cmd ffmpeg
+  sudo $cmd chromium
 elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
   sudo $cmd update
   sudo $cmd unzip nano vim at wget curl tzdata

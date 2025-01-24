@@ -218,7 +218,7 @@ if [ $sys -eq 1 ]; then
     sudo systemctl restart smbd
   fi
 
-  if [ $optlighttpd = "on" ]; then
+  if [ $optlighttpd = "on" ] || [ $optlighttpd = "on2" ]; then
     sudo systemctl enable lighttpd
     sudo systemctl restart lighttpd
   fi
@@ -231,7 +231,7 @@ else
     sudo service smbd restart
   fi
 
-  if [ $optlighttpd = "on" ]; then
+  if [ $optlighttpd = "on" ] || [ $optlighttpd = "on2" ]; then
     sudo service lighttpd restart
   fi
 fi

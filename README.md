@@ -17,5 +17,5 @@ sh install_XXXXX.sh
 |2025/01/24|ubuntu|install_ubuntu.sh|      
 |2025/01/24|debian|install_ubuntu.sh|   
 |2025/01/24|stream9|install_stream9.sh|  
-|2025/01/24|rockey linux|install_stream9.sh|
-|2025/01/24|arch|install_arch.sh|   
+|2025/01/24|rocky linux|install_stream9.sh|
+|2025/01/24|arch linux|install_arch.sh|   

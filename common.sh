@@ -226,27 +226,23 @@ sudo $cmd lighttpd php-cgi
 sudo $cmd lighttpd-fastcgi
 
 cd $curdir/skel
-sudo cp -p $PREFIX/etc/lighttpd/lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf.org
 sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel2 > lighttpd.conf
 sed -i s%rfriendsuser%$user%g lighttpd.conf
 sed -i s%rfriendsgroup%$group%g lighttpd.conf
 sed -i s%rfriendsport%$port%g lighttpd.conf
-sudo cp -p lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf
+sudo cp -f lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf
 sudo chown root:root $PREFIX/etc/lighttpd/lighttpd.conf
 #
 # modules
-sudo cp -p $PREFIX/etc/lighttpd/modules.conf $PREFIX/etc/lighttpd/modules.conf.org
-sudo cp -p modules.conf.skel2 $PREFIX/etc/lighttpd/modules.conf
+sudo cp -f modules.conf.skel2 $PREFIX/etc/lighttpd/modules.conf
 sudo chown root:root $PREFIX/etc/lighttpd/modules.conf
 #
 # fastcgi
-sudo cp -p $PREFIX/etc/lighttpd/conf.d/fastcgi.conf $PREFIX/etc/lighttpd/conf.d/fastcgi.conf.org
-sudo cp -p fastcgi.conf.skel2 $PREFIX/etc/lighttpd/conf.d/fastcgi.conf
+sudo cp -f fastcgi.conf.skel2 $PREFIX/etc/lighttpd/conf.d/fastcgi.conf
 sudo chown root:root $PREFIX/etc/lighttpd/conf.d/fastcgi.conf
 #
 # webdav
-sudo cp -p $PREFIX/etc/lighttpd/conf.d/webdav.conf $PREFIX/etc/lighttpd/conf.d/webdav.conf.org
-sudo cp -p webdav.conf.skel2 $PREFIX/etc/lighttpd/conf.d/webdav.conf
+sudo cp -f webdav.conf.skel2 $PREFIX/etc/lighttpd/conf.d/webdav.conf
 sudo chown root:root $PREFIX/etc/lighttpd/conf.d/webdav.conf
 cd $homedir/rfriends3/script/html
 ln -nfs temp webdav

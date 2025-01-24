@@ -103,7 +103,9 @@ else
   sudo $cmd unzip nano vim at wget curl tzdata \
   php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
   openssh-server \
-  cron p7zip-full atomicparsley ffmpeg chromium-browser iproute2
+  cron p7zip-full atomicparsley ffmpeg iproute2
+  sudo $cmd chromium-browser
+  sudo $cmd chromium
 fi
 # -----------------------------------------
 # .vimrcを設定する

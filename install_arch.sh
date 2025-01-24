@@ -20,14 +20,15 @@ echo
 #sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # update
-sudo pacman -Sy --noconfirm
-sudo pacman -Syu --noconfirm
+#sudo pacman -Sy --noconfirm
+#sudo pacman -Syu --noconfirm
 
 # タイムゾーンを東京に
 timedatectl set-timezone Asia/Tokyo
 # -----------------------------------------
 export distro="arch"
 export cmd="pacman -S --noconfirm"
+export cmdupdate="pacman -Sy --noconfirm"
 
 #export user=user
 #export group=user

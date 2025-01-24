@@ -297,10 +297,11 @@ echo home    directry : $homedir
 echo current directry : $curdir
 echo PREFIX : $PREFIX
 echo
-ip=`hostname -I | cut -d " " -f 1`
+#ip=`hostname -I | cut -d " " -f 1`
+ip=`ip a | grep "inet " | grep -v "127.0.0.1" | sed -e 's/^ *//' | cut -d " " -f 2`
 echo
 echo IP address : $ip
-#ip=`ip a | grep "inet " | grep -v "127.0.0.1" | sed -e 's/^ *//' | cut -d " " -f 2`
+
 # -----------------------------------------
 # finish
 # -----------------------------------------

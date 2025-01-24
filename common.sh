@@ -30,7 +30,9 @@ curdir=$(cd $(dirname $0);pwd)
 SCRIPT=rfriends3_latest_script.zip
 # -----------------------------------------
 if [ -z "$distro" ]; then
-  distro="ubuntu"
+  #distro="ubuntu"
+  echo ディストリビューションが指定されていません。
+  exit 1
 fi
 #
 if [ -z "$cmd" ]; then

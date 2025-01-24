@@ -87,18 +87,18 @@ echo
 # =========================================
 sudo $cmd update
 
-sudo $cmd -y install unzip nano vim at wget curl tzdata \
+sudo $cmd install unzip nano vim at wget curl tzdata \
  php-cli php-xml php-zip php-mbstring php-json php-curl php-intl \
  openssh-server
 # 
 if [ $distro = "ubuntu" ]; then
-  sudo $cmd -y install cron p7zip-full atomicparsley ffmpeg chromium-browser iproute2
+  sudo $cmd install cron p7zip-full atomicparsley ffmpeg chromium-browser iproute2
 elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
-  sudo $cmd -y install cronie p7zip ffmpeg-free chromium net-tools dnsutils
+  sudo $cmd install cronie p7zip ffmpeg-free chromium net-tools dnsutils
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
 else
-  sudo $cmd -y install cron p7zip-full atomicparsley ffmpeg chromium-browser iproute2
+  sudo $cmd  install cron p7zip-full atomicparsley ffmpeg chromium-browser iproute2
 fi
 # -----------------------------------------
 # .vimrcを設定する
@@ -149,7 +149,7 @@ echo
 echo samba $optsamba
 
 if [ $optsamba = "on" ]; then
-sudo $cmd -y install samba
+sudo $cmd install samba
 sudo mkdir -p /var/log/samba
 sudo chown root:adm /var/log/samba
 
@@ -184,7 +184,7 @@ echo
 echo lighttpd $optlighttpd
 
 if [ $optlighttpd = "on" ]; then
-sudo $cmd -y install lighttpd lighttpd-mod-webdav php-cgi
+sudo $cmd install lighttpd lighttpd-mod-webdav php-cgi
 
 cd $curdir/skel
 sudo cp -p $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf.org
@@ -219,7 +219,7 @@ fi
 fi
 # -----------------------------------------
 if [ $optlighttpd = "on2" ]; then
-sudo $cmd -y install lighttpd lighttpd-fastcgi php-cgi
+sudo $cmd  install lighttpd lighttpd-fastcgi php-cgi
 
 cd $curdir/skel
 sudo cp -p $PREFIX/etc/lighttpd/lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf.org

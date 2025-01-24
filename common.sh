@@ -225,6 +225,10 @@ if [ $optlighttpd = "on2" ]; then
 sudo $cmd lighttpd php-cgi
 sudo $cmd lighttpd-fastcgi
 
+if [ -d $PREFIX/etc/lighttpd/conf.d ]; then
+  sudo mkdir -p $PREFIX/etc/lighttpd/conf.d
+fi
+
 cd $curdir/skel
 sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel2 > lighttpd.conf
 sed -i s%rfriendsuser%$user%g lighttpd.conf

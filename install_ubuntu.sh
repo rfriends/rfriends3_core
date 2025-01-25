@@ -28,6 +28,7 @@ export smbd="smbd"
 export atd="atd"
 export cron="cron"
 #
+sudo apt-get update
 sh common.sh 2>&1 | tee common.log
 # -----------------------------------------
 # finish

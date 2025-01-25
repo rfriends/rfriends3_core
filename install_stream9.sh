@@ -30,7 +30,6 @@ sudo dnf -y config-manager --set-enabled crb
 # -----------------------------------------
 export distro="stream9"
 export cmd="dnf install -y"
-export cmdupdate="dnf update"
 
 #export user=user
 #export group=user
@@ -47,6 +46,7 @@ export smbd="smb"
 export atd="atd"
 export cron="crond"
 #
+dnf update
 sh common.sh 2>&1 | tee common.log
 # -----------------------------------------
 # finish

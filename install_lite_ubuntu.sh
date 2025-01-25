@@ -11,16 +11,7 @@ echo start $ver
 echo
 # -----------------------------------------
 export distro="ubuntu"
-
 export optlighttpd="on"
-export optsamba="off"
-export optvimrc="off"
-
-export lighttpd="lighttpd"
-export smbd="smbd"
-export atd="atd"
-export cron="cron"
-#
 sudo apt-get update
 sh common.sh 2>&1 | tee common.log
 # -----------------------------------------

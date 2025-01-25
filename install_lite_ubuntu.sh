@@ -12,7 +12,6 @@ echo
 # -----------------------------------------
 export distro="ubuntu"
 export cmd="apt-get install -y"
-export cmdupdate="apt-get update"
 
 #export user=user
 #export group=user
@@ -29,6 +28,7 @@ export smbd="smbd"
 export atd="atd"
 export cron="cron"
 #
+sudo apt-get update
 sh common.sh 2>&1 | tee common.log
 # -----------------------------------------
 # finish

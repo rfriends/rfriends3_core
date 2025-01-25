@@ -11,13 +11,6 @@ echo start $ver
 echo
 # -----------------------------------------
 export distro="ubuntu"
-export cmd="apt-get install -y"
-
-#export user=user
-#export group=user
-#export port=8000
-#export homedir=`sh -c 'cd && pwd'`
-#export PREFIX=""
 
 export optlighttpd="on"
 export optsamba="off"

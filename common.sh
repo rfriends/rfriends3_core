@@ -61,13 +61,13 @@ if [ -z $PREFIX ]; then
 fi
 # -----------------------------------------
 if [ -z "$optlighttpd" ]; then
-  optlighttpd="on"
+  optlighttpd="off"
 fi
 if [ -z "$optsamba" ]; then
-  optsamba="on"
+  optsamba="off"
 fi
 if [ -z "$optvimrc" ]; then
-  optvimrc="on"
+  optvimrc="off"
 fi
 # -----------------------------------------
 if [ -z "$atd" ]; then

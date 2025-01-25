@@ -39,10 +39,6 @@ if [ -z "$cmd" ]; then
   cmd="apt-get install -y"
 fi
 #
-if [ -z "$cmdupdate" ]; then
-  cmdupdate="apt-get update"
-fi
-#
 if [ -z "$port" ]; then
   port=8000
 fi
@@ -91,15 +87,10 @@ echo
 echo install tools common
 echo
 # =========================================
-sudo $cmdupdate
 sudo $cmd unzip p7zip nano vim at wget curl tzdata
 sudo $cmd iproute2
-sudo $cmd cron
+sudo $cmd ssh-server
 sudo $cmd php-cli php-xml php-zip php-mbstring php-json php-curl php-intl
-
-sudo $cmd atomicparsley
-sudo $cmd ffmpeg
-sudo $cmd openssh-server
 # -----------------------------------------
 echo
 echo install tools
@@ -107,19 +98,24 @@ echo
 # -----------------------------------------
 if [ $distro = "arch" ]; then
   sudo $cmd cronie
+  sudo $cmd ffmpeg
   sudo $cmd chromium
+  sudo $cmd atomicparsley
   sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
 elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
-  sudo $cmd cronie 
+  sudo $cmd cronie
   sudo $cmd ffmpeg-free
   sudo $cmd chromium
-  #sudo $cmd net-tools dnsutils
-  
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
+
+  #sudo $cmd net-tools dnsutils
 else
   # ubuntu
+  sudo $cmd cron
+  sudo $cmd ffmpeg
   sudo $cmd chromium-browser
+  sudo $cmd atomicparsley
 fi
 # -----------------------------------------
 echo

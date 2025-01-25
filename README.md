@@ -19,4 +19,4 @@ sh install_XXXXX.sh
 |2025/01/24|stream9|install_stream9.sh|  
 |2025/01/24|rocky linux|install_stream9.sh|
 |2025/01/24|arch linux|install_arch.sh|   
-|2025/01/24|chromeos linux環境|install_chromeos.sh|  
+|2025/01/24|chromeos linux環境|install_ubuntu.sh|  

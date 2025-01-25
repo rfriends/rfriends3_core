@@ -17,18 +17,8 @@ ver=1.0
 echo start $ver
 echo
 # -----------------------------------------
-#sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-
-# update
-#sudo pacman -Sy --noconfirm
-#sudo pacman -Syu --noconfirm
-
-# タイムゾーンを東京に
-timedatectl set-timezone Asia/Tokyo
-# -----------------------------------------
 export distro="arch"
 export cmd="pacman -S --noconfirm"
-export cmdupdate="pacman -Sy --noconfirm"
 
 #export user=user
 #export group=user
@@ -45,6 +35,12 @@ export smbd="smb"
 export atd="atd"
 export cron="cronie"
 #
+sudo pacman -Sy --noconfirm
+sudo pacman -Syu --noconfirm
+
+#sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+timedatectl set-timezone Asia/Tokyo
+
 sh common.sh 2>&1 | tee common.log
 # -----------------------------------------
 # finish

@@ -89,7 +89,7 @@ echo
 # =========================================
 sudo $cmd unzip p7zip nano vim at wget curl tzdata
 sudo $cmd iproute2
-sudo $cmd ssh-server
+sudo $cmd openssh-server
 sudo $cmd php-cli php-xml php-zip php-mbstring php-json php-curl php-intl
 # -----------------------------------------
 echo

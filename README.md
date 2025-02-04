@@ -22,5 +22,5 @@ rfriends3は下記のディストリビューションで動作確認してい�
 |2025/01/24|chromeos linux環境|install_ubuntu.sh|  
   
 インストール方法は以下を参照してください。  
-https://rfriends.github.io/rfriends/distro/rfriends3_core.md
+https://rfriends.github.io/rfriends/distro/rfriends3_core.html
 

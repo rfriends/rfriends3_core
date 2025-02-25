@@ -3,9 +3,9 @@
 # install rfriends for ubuntu
 # =========================================
 # 1.0 2025/01/03 new
-# 1.1 2025/01/24 mod
+# 1.2 2025/02/26 user,group
 
-ver=1.1
+ver=1.2
 echo start $ver
 echo
 # -----------------------------------------
@@ -13,8 +13,8 @@ export distro="ubuntu"
 export cmd="apt-get install -y"
 export cmdupdate="apt-get update"
 
-#export user=user
-#export group=user
+export user=`whoami`
+export group=`groups | cut -d ' ' -f 1`
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""

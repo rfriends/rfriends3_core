@@ -45,11 +45,9 @@ fi
 #
 if [ -z "$user" ]; then
   user=`whoami`
-  group=`groups $user | cut -d " " -f 1`
-else
-  if [ -z "$group" ]; then
-    group=$user
-  fi
+fi
+if [ -z "$group" ]; then
+  group=`groups | cut -d " " -f 1`
 fi
 #
 if [ -z $homedir ]; then

@@ -13,8 +13,8 @@ export distro="ubuntu"
 export cmd="apt-get install -y"
 export cmdupdate="apt-get update"
 
-export user=`whoami`
-export group=`groups | cut -d ' ' -f 1`
+#export user=`whoami`
+#export group=`groups | cut -d ' ' -f 1`
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""

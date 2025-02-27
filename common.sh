@@ -13,6 +13,7 @@
 # 4.0 2024/12/13 github
 # 4.3 2025/01/02 sub
 # 4.4 2025/01/23 renew
+# 4.5 2025/02/27 arch
 ver=4.4
 # -----------------------------------------
 echo
@@ -99,6 +100,8 @@ if [ $distro = "arch" ]; then
   sudo $cmd ffmpeg
   sudo $cmd chromium
   sudo $cmd atomicparsley
+  sudo $cmd openssh
+  sudo $cmd php
   sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
 elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
   sudo $cmd cronie

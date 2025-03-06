@@ -20,6 +20,7 @@ rfriends3は下記のディストリビューションで動作確認してい�
 |2025/01/24|rocky linux|install_stream9.sh|
 |2025/01/24|arch linux|install_arch.sh|   
 |2025/01/24|chromeos linux環境|install_ubuntu.sh|  
+|2025/03/06|freeBSD|install_freebsd.sh| 
   
 インストール方法は以下を参照してください。  
 https://rfriends.github.io/rfriends/distro/rfriends3_core.html

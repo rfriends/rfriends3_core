@@ -152,10 +152,27 @@ usrdir = "$homedir/rfriends3/usr/"
 tmpdir = "$homedir/tmp/"
 EOF
 # -----------------------------------------
-# systemd or service
+# at
 # -----------------------------------------
 # atrun 5min -> 2min
 cat /etc/cron.d/at | sed s%\^\*/5%\*/2% | sudo tee /etc/cron.d/at
+# at.allow
+allow=/var/at/at.allow
+if [ ! -e $allow ]; then
+  # not exist file
+  echo $user | sudo tee $allow
+else
+  grep -w $user $allow
+  if [ $? == 1 ]; then
+    # not exist user
+    echo $user | sudo tee -a $allow
+  else
+    # exist user
+  fi
+fi
+# -----------------------------------------
+# systemd or service
+# -----------------------------------------
 if [ $sys -eq 1 ]; then
   #sudo systemctl enable $atd
   sudo systemctl enable $cron
@@ -172,7 +189,7 @@ echo samba $optsamba
 
 if [ $optsamba = "on" ]; then
 sudo $cmd $samba
-#sudo pdbedit -a -u $user
+
 #sudo mkdir -p /var/log/samba
 #sudo chown root:adm /var/log/samba
 

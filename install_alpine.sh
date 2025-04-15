@@ -2,7 +2,10 @@
 # =========================================
 # install rfriends for alpine
 #
-# /etc/at.allow にユーザを追加してください
+#　注意事項
+# １．/etc/at.allow にユーザを追加してください。
+# ２．/etc/apk/repositoriesにtestingを追加してください。
+# @testing https://dl-cdn.alpinelinux.org/alpine/edge/testing
 # =========================================
 # 1.0 2025/04/15 new
 #

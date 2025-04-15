@@ -15,7 +15,8 @@
 # 4.4 2025/01/23 renew
 # 4.5 2025/02/27 arch
 # 4.6 2025/04/15 suse
-ver=4.6
+# 4.7 2025/04/15 alpine
+ver=4.7
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -122,6 +123,16 @@ elif [ $distro = "suse" ]; then
   sudo $cmd cron
   sudo $cmd ffmpeg
   sudo $cmd chromium-browser
+elif [ $distro = "alpine" ]; then
+  # alpine
+  sudo $cmd rpm
+  sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
+  #sudo $cmd php-ctype php-openssl
+  #sudo $cmd sysvinit-tools
+  #
+  sudo $cmd cronie
+  sudo $cmd ffmpeg
+  sudo $cmd chromium
 else
   # ubuntu
   sudo $cmd cron

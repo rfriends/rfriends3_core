@@ -1,6 +1,6 @@
 #!/bin/bash
 # =========================================
-# install rfriends3 for stream9
+# install rfriends3 for stream
 # =========================================
 # Rfriends (radiko radiru録音ツール)
 # 1.0 2022/03/18
@@ -28,7 +28,7 @@ sudo dnf -y config-manager --set-enabled crb
 #sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm -y
 #sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm -y
 # -----------------------------------------
-export distro="stream9"
+export distro="stream"
 export cmd="dnf install -y"
 
 #export user=user

@@ -127,7 +127,7 @@ elif [ $distro = "alpine" ]; then
   # alpine
   sudo $cmd rpm
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
-  #sudo $cmd php-ctype php-openssl
+  sudo $cmd php-simplexml php-ctype php-openssl
   #sudo $cmd sysvinit-tools
   #
   sudo $cmd cronie

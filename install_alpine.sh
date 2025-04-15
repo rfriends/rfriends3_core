@@ -30,6 +30,9 @@ export atd="atd"
 export cron="cron"
 #
 sudo apk update
+apk --update-cache add tzdata
+cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
 sh common.sh 2>&1 | tee common.log
 # -----------------------------------------
 # finish

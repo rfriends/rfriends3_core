@@ -214,7 +214,12 @@ echo lighttpd $optlighttpd
 
 if [ $optlighttpd = "on" ]; then
 sudo $cmd lighttpd php-cgi
-sudo $cmd lighttpd-mod-webdav
+
+if [ $distro = "suse" ]; then
+  sudo $cmd lighttpd-mod_webdav
+else
+  sudo $cmd lighttpd-mod-webdav
+fi
 
 cd $curdir/skel
 sed -e s%rfriendshomedir%$homedir%g 15-fastcgi-php.conf.skel > 15-fastcgi-php.conf

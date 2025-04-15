@@ -130,8 +130,8 @@ elif [ $distro = "alpine" ]; then
   sudo $cmd cronie
   sudo $cmd ffmpeg
   sudo $cmd chromium
-  # /etc/apk/repositories にtesingを追加する必要があります
-  # @testing https://dl-cdn.alpinelinux.org/alpine/edge/testing
+  #
+  # testingリポジトリ
   sudo $cmd atomicparsley
 else
   # ubuntu

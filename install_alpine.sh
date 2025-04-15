@@ -25,9 +25,9 @@ export optsamba="on"
 export optvimrc="on"
 
 export lighttpd="lighttpd"
-export smbd="smb"
+export smbd="samba"
 export atd="atd"
-export cron="cron"
+export cron="crond"
 #
 sudo apk update
 apk --update-cache add tzdata

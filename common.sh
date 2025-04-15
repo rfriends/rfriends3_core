@@ -93,6 +93,9 @@ sudo $cmd tzdata
 sudo $cmd iproute2
 sudo $cmd openssh-server
 sudo $cmd php-cli php-xml php-zip php-mbstring php-json php-curl php-intl
+sudo $cmd cron
+sudo $cmd ffmpeg
+sudo $cmd atomicparsley
 # -----------------------------------------
 echo
 echo install tools
@@ -100,13 +103,11 @@ echo
 # -----------------------------------------
 if [ $distro = "arch" ]; then
   sudo $cmd cronie
-  sudo $cmd ffmpeg
   sudo $cmd chromium
-  sudo $cmd atomicparsley
   sudo $cmd openssh
   sudo $cmd php
   sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
-elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
+elif [ $distro = "centos" ] || [ $distro = "stream" ] || [ $distro = "rocky" ]; then
   sudo $cmd cronie
   sudo $cmd ffmpeg-free
   sudo $cmd chromium
@@ -120,25 +121,16 @@ elif [ $distro = "suse" ]; then
   sudo $cmd php-ctype php-openssl
   sudo $cmd sysvinit-tools
   #
-  sudo $cmd cron
-  sudo $cmd ffmpeg
   sudo $cmd chromium-browser
 elif [ $distro = "alpine" ]; then
   # alpine
   sudo $cmd php-simplexml php-ctype php-openssl
   #
   sudo $cmd cronie
-  sudo $cmd ffmpeg
   sudo $cmd chromium
-  #
-  # testingリポジトリ
-  sudo $cmd atomicparsley
 else
   # ubuntu
-  sudo $cmd cron
-  sudo $cmd ffmpeg
   sudo $cmd chromium-browser
-  sudo $cmd atomicparsley
 fi
 # -----------------------------------------
 echo

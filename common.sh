@@ -87,7 +87,8 @@ echo
 echo install tools common
 echo
 # =========================================
-sudo $cmd unzip p7zip nano vim at wget curl tzdata
+sudo $cmd unzip p7zip nano vim at wget curl
+sudo $cmd tzdata
 sudo $cmd iproute2
 sudo $cmd openssh-server
 sudo $cmd php-cli php-xml php-zip php-mbstring php-json php-curl php-intl
@@ -112,6 +113,15 @@ elif [ $distro = "centos" ] || [ $distro = "stream9" ]; then
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
 
   #sudo $cmd net-tools dnsutils
+elif [ $distro = "suse" ]; then
+  # suse
+  sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
+  sudo $cmd php-ctype php-openssl
+  sudo $cmd sysvinit-tools
+  #
+  sudo $cmd cron
+  sudo $cmd ffmpeg
+  sudo $cmd chromium-browser
 else
   # ubuntu
   sudo $cmd cron

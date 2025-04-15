@@ -23,7 +23,7 @@ export optsamba="on"
 export optvimrc="on"
 
 export lighttpd="lighttpd"
-export smbd="smbd"
+export smbd="smb"
 export atd="atd"
 export cron="cron"
 #

@@ -18,7 +18,9 @@ export cmdupdate="zypper update"
 #export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""
 
-export optlighttpd="on"
+# now lighttpd not supported
+# use built in server (sh rfriends3/rf3server.sh) 
+export optlighttpd="off"
 export optsamba="on"
 export optvimrc="on"
 

@@ -125,14 +125,14 @@ elif [ $distro = "suse" ]; then
   sudo $cmd chromium-browser
 elif [ $distro = "alpine" ]; then
   # alpine
-  sudo $cmd rpm
-  sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
   sudo $cmd php-simplexml php-ctype php-openssl
-  #sudo $cmd sysvinit-tools
   #
   sudo $cmd cronie
   sudo $cmd ffmpeg
   sudo $cmd chromium
+  # /etc/apk/repositories にtesingを追加する必要があります
+  # @testing https://dl-cdn.alpinelinux.org/alpine/edge/testing
+  sudo $cmd atomicparsley
 else
   # ubuntu
   sudo $cmd cron

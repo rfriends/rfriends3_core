@@ -226,7 +226,7 @@ echo lighttpd $optlighttpd
 if [ $optlighttpd = "on" ]; then
 sudo $cmd lighttpd php-cgi
 
-if [ $distro = "suse" ]; then
+if [ $distro = "suse" ] || [ $distro = "alpine" ]; then
   sudo $cmd lighttpd-mod_webdav
 else
   sudo $cmd lighttpd-mod-webdav

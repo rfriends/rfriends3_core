@@ -27,7 +27,7 @@ export user=`whoami`
 
 # now lighttpd not supported
 # use built in server (sh rfriends3/rf3server.sh) 
-export optlighttpd="off"
+export optlighttpd="on2"
 export optsamba="on"
 export optvimrc="on"
 

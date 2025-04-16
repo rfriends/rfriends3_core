@@ -170,6 +170,8 @@ EOF
 if [ $sys -eq 1 ]; then
   sudo systemctl enable $atd
   sudo systemctl enable $cron
+  sudo systemctl start $atd
+  sudo systemctl start $cron
 else 
   sudo service $atd restart
   sudo service $cron restart

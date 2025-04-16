@@ -266,7 +266,7 @@ fi
 
 cd $curdir
 
-if [ $distro = "arch" ]; then
+if [ $distro = "arch" ] || [ $distro = "alpine" ]; then
   sudo cp -f conf.d/* $PREFIX/etc/lighttpd/conf.d/
 fi
 

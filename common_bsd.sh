@@ -172,17 +172,18 @@ else
 fi
 # -----------------------------------------
 # systemd or service
+# not exist atd but atrun
 # -----------------------------------------
 if [ $sys -eq 1 ]; then
-  sudo systemctl enable $atd
-  sudo systemctl start  $atd
-  sudo systemctl status $atd
+  #sudo systemctl enable $atd
+  #sudo systemctl start  $atd
+  #sudo systemctl status $atd
   sudo systemctl enable $cron
   sudo systemctl start  $cron
   sudo systemctl status $cron
 else 
-  sudo service $atd enable
-  sudo service $atd restart
+  #sudo service $atd enable
+  #sudo service $atd restart
   sudo service $cron enable
   sudo service $cron restart
 fi

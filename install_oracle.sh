@@ -1,13 +1,10 @@
 #!/bin/bash
 # =========================================
-# install rfriends3 for stream
+# install rfriends3 for oracle
 # =========================================
 # Rfriends (radiko radiru録音ツール)
-# 1.0 2022/03/18
-# 1.1 2022/12/22 stream9
-# 2.1 2024/12/16 github
-# 2.3 2025/01/24 fix
-ver=2.3
+# 1.0 2025/04/17
+ver=1.0
 # -----------------------------------------
 echo start $ver
 echo

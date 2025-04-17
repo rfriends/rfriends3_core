@@ -46,7 +46,7 @@ export smbd="smb"
 export atd="atd"
 export cron="crond"
 #
-dnf update
+sudo dnf update
 sh common.sh 2>&1 | tee common.log
 # -----------------------------------------
 # finish

@@ -21,14 +21,17 @@ sudo systemctl disable firewalld
 echo
 echo RPM Fusion リポジトリを追加
 echo
-sudo dnf -y install epel-release
-sudo dnf -y config-manager --set-enabled crb
+#sudo dnf -y install epel-release
+#sudo dnf -y config-manager --set-enabled crb
 
-sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm -y
-sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm -y
+sudo dnf -y install https://download.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
+sudo /usr/bin/crb enable
+
+sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm
+sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
 
 sudo dnf makecache
-sudo dnf install -y ffmpeg ffmpeg-devel
+sudo dnf -y install ffmpeg ffmpeg-devel
 # -----------------------------------------
 export distro="stream"
 export cmd="dnf install -y"

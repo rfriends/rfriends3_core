@@ -1,7 +1,7 @@
 #!/bin/sh
 # samba
 #
-sudo $cmd $samba
+sudo $cmd samba
 sudo mkdir -p /var/log/samba
 sudo chown root:adm /var/log/samba
 

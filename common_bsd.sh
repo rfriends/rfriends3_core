@@ -16,10 +16,11 @@ sys=`pgrep -o systemd`
 if [ $? -ne 0 ]; then
   sys=0
 fi
+export sys
 #
-curdir=$(cd $(dirname $0);pwd)
+export curdir=$(cd $(dirname $0);pwd)
 #
-SCRIPT=rfriends3_latest_script.zip
+export SCRIPT=rfriends3_latest_script.zip
 # -----------------------------------------
 if [ -z "$distro" ]; then
   #distro="freebsd"
@@ -28,59 +29,59 @@ if [ -z "$distro" ]; then
 fi
 #
 if [ -z "$cmd" ]; then
-  cmd="pkg install -y"
+  export cmd="pkg install -y"
 fi
 #
 if [ -z "$port" ]; then
-  port=8000
+  export port=8000
 fi
 #
 if [ -z "$user" ]; then
-  user=`whoami`
+  export user=`whoami`
 fi
 if [ -z "$group" ]; then
-  group=`groups | cut -d " " -f 1`
+  export group=`groups | cut -d " " -f 1`
 fi
 #
 if [ -z $homedir ]; then
-  homedir=`sh -c 'cd && pwd'`
+  export homedir=`sh -c 'cd && pwd'`
 fi
 #
 if [ -z $PREFIX ]; then
-  PREFIX="/usr/local"
+  export PREFIX="/usr/local"
 fi
 # -----------------------------------------
 if [ -z "$php" ]; then
-  php="php"
+  export php="php"
 fi
 if [ -z "$samba" ]; then
-  samba="samba"
+  export samba="samba"
 fi
 # -----------------------------------------
 if [ -z "$optlighttpd" ]; then
-  optlighttpd="off"
+  export optlighttpd="off"
 fi
 if [ -z "$optsamba" ]; then
   optsamba="off"
 fi
 if [ -z "$optvimrc" ]; then
-  optvimrc="off"
+  export optvimrc="off"
 fi
 # -----------------------------------------
 if [ -z "$atd" ]; then
-  atd="atd"
+  export atd="atd"
 fi
 if [ -z "$cron" ]; then
-  cron="cron"
+  export cron="cron"
 fi
 if [ -z "$lighttpd" ]; then
-  lighttpd="lighttpd"
+  export lighttpd="lighttpd"
 fi
 if [ -z "$smbd" ]; then
-  smbd="smbd"
+  export smbd="smbd"
 fi
 if [ -z "$ipcmd" ]; then
-  ipcmd="ifconfig"
+  export ipcmd="ifconfig"
 fi
 # =========================================
 echo
@@ -162,7 +163,7 @@ if [ $optlighttpd = "on3" ]; then
 fi
 # =========================================
 echo
-echo resukt of install rfriends3
+echo result of install rfriends3
 echo
 sh result.sh
 # -----------------------------------------

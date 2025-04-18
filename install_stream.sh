@@ -1,23 +1,24 @@
 #!/bin/bash
 # =========================================
-# install rfriends3 for oracle
+# install rfriends3 for CentOS stream
 # =========================================
 # Rfriends (radiko radiru録音ツール)
 # 1.0 2025/04/17
-ver=1.0
+# 1.1 2025/04/19
+ver=1.1
 # -----------------------------------------
 echo start $ver
 echo
+# タイムゾーンを東京に
+timedatectl set-timezone Asia/Tokyo
 # -----------------------------------------
 # enforceをPermissiveに設定
 #grep "^SELINUX=enforcing" /etc/selinux/config> /dev/null
 #sudo sed -i "/^SELINUX=enforcing/c SELINUX=Permissive" /etc/selinux/config
 sudo setenforce 0
-# タイムゾーンを東京に
-timedatectl set-timezone Asia/Tokyo
-# -----------------------------------------
 sudo systemctl stop firewalld
 sudo systemctl disable firewalld
+# -----------------------------------------
 echo
 echo RPM Fusion リポジトリを追加
 echo
@@ -31,7 +32,6 @@ sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion
 sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
 
 sudo dnf makecache
-#sudo dnf -y install ffmpeg ffmpeg-devel
 # -----------------------------------------
 export distro="stream"
 export cmd="dnf install -y"

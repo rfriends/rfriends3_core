@@ -25,8 +25,6 @@ export user=`whoami`
 #export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""
 
-# now lighttpd not supported
-# use built in server (sh rfriends3/rf3server.sh) 
 export optlighttpd="on2"
 export optsamba="on"
 export optvimrc="on"
@@ -38,11 +36,12 @@ export cron="crond"
 export ipcm="ip a"
 #
 sudo apk update
-apk --update-cache add tzdata
-cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+sudo apk --update-cache add tzdata
+sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 sh common.sh 2>&1 | tee common.log
 # -----------------------------------------
+echo /etc/at.allow
 sudo grep -x "$user" /etc/at.allow
 if [ $? -eq 1 ]; then
   echo $user | sudo tee -a /etc/at.allow

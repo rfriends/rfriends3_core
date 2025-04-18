@@ -15,7 +15,7 @@ fi
 cd $curdir/skel
 sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel2 > lighttpd.conf
 if [ $distro = "arch" ]; then
-  sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel3 > lighttpd.conf
+  sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel2a > lighttpd.conf
   sudo mkdir -p $PREFIX/var/log/lighttpd
   sudo chown $user:$group $PREFIX/var/log/lighttpd
 fi

@@ -35,6 +35,7 @@ export lighttpd="lighttpd"
 export smbd="samba"
 export atd="atd"
 export cron="crond"
+export ipcm="ip a"
 #
 sudo apk update
 apk --update-cache add tzdata

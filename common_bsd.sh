@@ -122,16 +122,6 @@ sudo $cmd ${php}-json
 #sudo $cmd cronie
 # -----------------------------------------
 sudo ln -s /usr/local/bin/atomicparsley /usr/local/bin/AtomicParsley
-# -----------------------------------------
-echo
-echo vimrc
-echo
-# -----------------------------------------
-echo vimrc $optvimrc
-
-if [ $optvimrc = "on" ]; then
-  sh vimrc.sh
-fi
 # =========================================
 echo
 echo install rfriends3
@@ -139,41 +129,18 @@ echo
 # =========================================
 echo rfriends3
 sh rfriends3.sh
+#
+sh at_bsd.sh
+#
+sh cron.sh
 # -----------------------------------------
-# at
+echo
+echo vimrc
+echo
 # -----------------------------------------
-# atrun 5min -> 2min
-cat /etc/cron.d/at | sed s%\^\*/5%\*/2% | sudo tee /etc/cron.d/at
-# at.allow
-allow=/var/at/at.allow
-if [ ! -e $allow ]; then
-  # not exist file
-  echo $user | sudo tee $allow
-else
-  grep -w $user $allow
-  if [ $? == 1 ]; then
-    # not exist user
-    echo $user | sudo tee -a $allow
-  else
-    # exist user
-  fi
-fi
-# -----------------------------------------
-# systemd or service
-# not exist atd but atrun
-# -----------------------------------------
-if [ $sys -eq 1 ]; then
-  #sudo systemctl enable $atd
-  #sudo systemctl start  $atd
-  #sudo systemctl status $atd
-  sudo systemctl enable $cron
-  sudo systemctl start  $cron
-  sudo systemctl status $cron
-else 
-  #sudo service $atd enable
-  #sudo service $atd restart
-  sudo service $cron enable
-  sudo service $cron restart
+echo vimrc $optvimrc
+if [ $optvimrc = "on" ]; then
+  sh vimrc.sh
 fi
 # -----------------------------------------
 echo
@@ -190,12 +157,14 @@ echo install lighttpd
 echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
-
 if [ $optlighttpd = "on3" ]; then
   sh lighttpd3.sh
 fi
-# -----------------------------------------
+# =========================================
 echo
+echo resukt of install rfriends3
+echo
+# =========================================
 cat $homedir/rfriends3/_Rfriends3
 echo
 echo "`cat /etc/os-release | grep PRETTY_NAME`"
@@ -206,9 +175,9 @@ else
   echo "type : initd"
 fi
 echo
+echo vimrc    : $optvimrc
 echo samba    : $optsamba
 echo lighttpd : $optlighttpd
-echo vimrc    : $optvimrc
 echo
 echo user  : $user
 echo group : $group

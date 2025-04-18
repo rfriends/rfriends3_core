@@ -150,7 +150,7 @@ echo
 # -----------------------------------------
 echo samba $optsamba
 if [ $optsamba = "on" ]; then
-  sh samba.sh
+  sh samba_bsd.sh
 fi
 # -----------------------------------------
 echo
@@ -159,7 +159,7 @@ echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on3" ]; then
-  sh lighttpd3.sh
+  sh lighttpd_bsd.sh
 fi
 # =========================================
 echo

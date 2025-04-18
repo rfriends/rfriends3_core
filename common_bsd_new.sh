@@ -1,17 +1,17 @@
 #!/bin/sh
 # =========================================
-# install rfriends for freeBSD
+# install rfriends for freebsd
 # =========================================
-# 1.0 2025/03/04 new
+# 1.0 2025/03/05 new
 # 1.1 2025/04/18 mod 
 #
 ver=1.1
 # -----------------------------------------
 echo
-echo start install_common $ver
+echo start install_common_bsd $ver
 echo `date`
 echo
-#
+# -----------------------------------------
 sys=`pgrep -o systemd`
 if [ $? -ne 0 ]; then
   sys=0
@@ -130,13 +130,7 @@ echo
 echo vimrc $optvimrc
 
 if [ $optvimrc = "on" ]; then
-cd $homedir
-cat <<EOF > .vimrc
-set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
-set fileformats=unix,dos,mac
-EOF
-chmod 644 .vimrc
+  sh vimrc.sh
 fi
 # =========================================
 echo

@@ -25,7 +25,7 @@ export optvimrc="on"
 export php="php84"
 export lighttpd="lighttpd"
 # samba4のみ
-export samba="samba419"
+export samba="samba420"
 export smbd="samba_server"
 export atd="atd"
 export cron="cron"

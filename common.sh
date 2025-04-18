@@ -85,6 +85,9 @@ fi
 if [ -z "$smbd" ]; then
   export smbd="smbd"
 fi
+if [ -z "$ipcmd" ]; then
+  export ipcmd="ip a"
+fi
 # =========================================
 echo
 echo install tools common

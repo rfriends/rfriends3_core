@@ -31,7 +31,7 @@ sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion
 sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
 
 sudo dnf makecache
-sudo dnf -y install ffmpeg ffmpeg-devel
+#sudo dnf -y install ffmpeg ffmpeg-devel
 # -----------------------------------------
 export distro="stream"
 export cmd="dnf install -y"

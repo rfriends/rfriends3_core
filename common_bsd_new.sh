@@ -138,6 +138,7 @@ echo install rfriends3
 echo
 # =========================================
 echo rfriends3
+sh rfriends3.sh
 
 cd $homedir
 cp -f $curdir/$SCRIPT .

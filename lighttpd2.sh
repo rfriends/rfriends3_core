@@ -9,8 +9,8 @@ cd $curdir
 
 if [ ! -d $PREFIX/etc/lighttpd/conf.d ]; then
   sudo mkdir -p $PREFIX/etc/lighttpd/conf.d
-  sudo cp -f conf.d/* $PREFIX/etc/lighttpd/conf.d/
 fi
+sudo cp -f conf.d/* $PREFIX/etc/lighttpd/conf.d/
 
 cd $curdir/skel
 sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel2 > lighttpd.conf

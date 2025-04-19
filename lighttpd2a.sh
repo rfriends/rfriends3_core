@@ -1,25 +1,27 @@
 #!/bin/sh
-# lighttpd on2
+# lighttpd on2a
 #
 sudo $cmd lighttpd
 sudo $cmd php-cgi
-sudo $cmd fcgi
+#sudo $cmd fcgi
 sudo $cmd lighttpd-fastcgi
 # -----------------------------------------
-cd $curdir
-
 # log_root
 sudo mkdir -p $PREFIX/var/log/lighttpd
 sudo chown $user:$group $PREFIX/var/log/lighttpd
 
 # state_dir
 sudo mkdir -p $PREFIX/run/lighttpd
+sudo chown $user:$group $PREFIX/run/lighttpd
 
 # home_dir
 sudo mkdir -p $PREFIX/var/lib/lighttpd
-sudo chown $user:$group $PREFIX/var/lib/lighttpd
 sudo mkdir -p $PREFIX/var/lib/lighttpd/uploads/
 sudo mkdir -p $PREFIX/var/lib/lighttpd/sockets/
+
+sudo chown $user:$group $PREFIX/var/lib/lighttpd
+sudo chown $user:$group $PREFIX/var/lib/lighttpd/uploads/
+sudo chown $user:$group $PREFIX/var/lib/lighttpd/sockets/
 
 # cache_dir
 sudo mkdir -p $PREFIX/var/cache/lighttpd

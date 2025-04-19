@@ -20,7 +20,7 @@ export cmdupdate="zypper update"
 
 # now lighttpd not supported
 # use built in server (sh rfriends3/rf3server.sh) 
-export optlighttpd="on2"
+export optlighttpd="on2a"
 export optsamba="on"
 export optvimrc="on"
 

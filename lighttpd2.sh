@@ -1,7 +1,8 @@
 #!/bin/sh
 # lighttpd on2
 #
-sudo $cmd lighttpd php-cgi
+sudo $cmd lighttpd
+sudo $cmd php-cgi
 sudo $cmd fcgi
 sudo $cmd lighttpd-fastcgi
 
@@ -19,6 +20,8 @@ if [ $distro = "arch" ]; then
   sudo mkdir -p $PREFIX/var/log/lighttpd
   sudo chown $user:$group $PREFIX/var/log/lighttpd
 fi
+sudo chown $user:$group $PREFIX/var/lib/lighttpd
+
 sed -i s%rfriendsuser%$user%g lighttpd.conf
 sed -i s%rfriendsgroup%$group%g lighttpd.conf
 sed -i s%rfriendsport%$port%g lighttpd.conf

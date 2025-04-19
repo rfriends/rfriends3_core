@@ -13,12 +13,11 @@ echo
 timedatectl set-timezone Asia/Tokyo
 # -----------------------------------------
 # enforceをPermissiveに設定
-#grep "^SELINUX=enforcing" /etc/selinux/config> /dev/null
-#sudo sed -i "/^SELINUX=enforcing/c SELINUX=Permissive" /etc/selinux/config
 sudo setenforce 0
+# 常に設定したい場合
+#sudo sed -i "/^SELINUX=enforcing/c SELINUX=Permissive" /etc/selinux/config
 
-echo
-sudo systemctl status firewalld
+sudo systemctl status firewalld　> /dev/null
 if [ $? = 0 ]; then
   sudo systemctl stop firewalld
   sudo systemctl disable firewalld

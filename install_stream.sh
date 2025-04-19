@@ -16,22 +16,32 @@ timedatectl set-timezone Asia/Tokyo
 #grep "^SELINUX=enforcing" /etc/selinux/config> /dev/null
 #sudo sed -i "/^SELINUX=enforcing/c SELINUX=Permissive" /etc/selinux/config
 sudo setenforce 0
-sudo systemctl stop firewalld
-sudo systemctl disable firewalld
+
+echo
+sudo systemctl is-enabled firewalld
+if [ $? = 0 ]; then
+  sudo systemctl stop firewalld
+  sudo systemctl disable firewalld
+fi
 # -----------------------------------------
+rpm=$(rpm -E %rhel)
 echo
-echo RPM Fusion リポジトリを追加
-echo
-#sudo dnf -y install epel-release
-#sudo dnf -y config-manager --set-enabled crb
+echo $rpm
+if [ $rpm != "%rhel" ]; then
+  echo
+  echo RPM Fusion リポジトリを追加
+  echo
+  #sudo dnf -y install epel-release
+  #sudo dnf -y config-manager --set-enabled crb
 
-sudo dnf -y install https://download.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
-sudo /usr/bin/crb enable
+  sudo dnf -y install https://download.fedoraproject.org/pub/epel/epel-release-latest-$rpm.noarch.rpm
+  sudo /usr/bin/crb enable
 
-sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm
-sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
+  sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$rpm.noarch.rpm
+  sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$rpm.noarch.rpm
 
-sudo dnf makecache
+  sudo dnf makecache
+fi
 # -----------------------------------------
 export distro="stream"
 export cmd="dnf install -y"

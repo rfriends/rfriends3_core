@@ -29,8 +29,8 @@ export smbd="smb"
 export atd="atd"
 export cron="cron"
 #
-systemctl stop firewalld
-systemctl disabel firewalld
+sudo systemctl stop firewalld
+sudo systemctl disabel firewalld
 sudo zypper refresh
 sudo zypper update
 sh common.sh 2>&1 | tee common.log

@@ -24,21 +24,21 @@ if [ $? = 0 ]; then
   sudo systemctl disable firewalld
 fi
 # -----------------------------------------
-rpm=$(rpm -E %rhel)
+rhel=$(rpm -E %rhel)
 echo
-echo $rpm
-if [ $rpm != "%rhel" ]; then
+echo $rhel
+if [ $rhel != "%rhel" ]; then
   echo
   echo RPM Fusion リポジトリを追加
   echo
   #sudo dnf -y install epel-release
   #sudo dnf -y config-manager --set-enabled crb
 
-  sudo dnf -y install https://download.fedoraproject.org/pub/epel/epel-release-latest-$rpm.noarch.rpm
+  sudo dnf -y install https://download.fedoraproject.org/pub/epel/epel-release-latest-$rhel.noarch.rpm
   sudo /usr/bin/crb enable
 
-  sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$rpm.noarch.rpm
-  sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$rpm.noarch.rpm
+  sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$rhel.noarch.rpm
+  sudo dnf -y install --nogpgcheck https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$rhel.noarch.rpm
 
   sudo dnf makecache
 fi

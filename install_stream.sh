@@ -18,7 +18,7 @@ timedatectl set-timezone Asia/Tokyo
 sudo setenforce 0
 
 echo
-sudo systemctl is-enabled firewalld
+sudo systemctl status firewalld
 if [ $? = 0 ]; then
   sudo systemctl stop firewalld
   sudo systemctl disable firewalld

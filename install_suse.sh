@@ -30,7 +30,7 @@ export atd="atd"
 export cron="cron"
 #
 sudo systemctl stop firewalld
-sudo systemctl disabel firewalld
+sudo systemctl disable firewalld
 sudo zypper refresh
 sudo zypper update
 sh common.sh 2>&1 | tee common.log

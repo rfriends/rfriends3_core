@@ -93,7 +93,8 @@ echo
 echo install tools common
 echo
 # =========================================
-sudo $cmd unzip p7zip nano vim at wget curl
+sudo $cmd unzip nano vim at wget curl
+sudo $cmd p7zip
 sudo $cmd tzdata
 sudo $cmd iproute2
 sudo $cmd openssh-server

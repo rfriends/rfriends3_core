@@ -177,6 +177,8 @@ if [ $optlighttpd = "on" ]; then
   sh lighttpd.sh
 elif [ $optlighttpd = "on2" ]; then
   sh lighttpd2.sh
+elif [ $optlighttpd = "on2a" ]; then
+  sh lighttpd2a.sh
 fi
 # =========================================
 echo

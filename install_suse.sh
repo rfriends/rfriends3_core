@@ -12,15 +12,15 @@ export distro="suse"
 export cmd="zypper install -y"
 export cmdupdate="zypper update"
 
-#export user=`whoami`
-#export group=`groups | cut -d ' ' -f 1`
+export user=`whoami`
+export group=`groups | cut -d ' ' -f 1`
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""
 
 # now lighttpd not supported
 # use built in server (sh rfriends3/rf3server.sh) 
-export optlighttpd="off"
+export optlighttpd="on2"
 export optsamba="on"
 export optvimrc="on"
 

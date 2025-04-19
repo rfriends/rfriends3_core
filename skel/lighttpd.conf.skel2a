@@ -108,7 +108,7 @@ server.port = 8000
 ## This requires root permissions during startup. 
 ##
 server.username  = "rfriendsuser"
-server.groupname = "rfriendsuser"
+server.groupname = "rfriendsgroup"
 #server.username  = "lighttpd"
 #server.groupname = "lighttpd"
 

@@ -17,7 +17,7 @@ export cmdupdate="pkg update"
 #export group=`groups | cut -d ' ' -f 1`
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
-#export PREFIX=""
+export PREFIX=""
 export bindir="usr/local/bin"
 
 export optlighttpd="on2b"

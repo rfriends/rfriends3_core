@@ -17,7 +17,8 @@
 # 4.6 2025/04/15 suse
 # 4.7 2025/04/15 alpine
 # 4.8 2025/04/18 mod
-ver=4.8
+# 4.9 2025/04/20 bindir
+ver=4.9
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -61,6 +62,10 @@ fi
 #
 if [ -z $PREFIX ]; then
   export PREFIX=""
+fi
+#
+if [ -z $bindir ]; then
+  export bindir="/usr/bin"
 fi
 # -----------------------------------------
 if [ -z "$optlighttpd" ]; then

@@ -6,7 +6,7 @@ if [ $sys -eq 1 ]; then
   sudo systemctl start  $cron
   sudo systemctl status $cron
 else 
-  sudo service $cron enable
   sudo service $cron restart
+  sudo service $cron status
 fi
 exit 0

@@ -95,20 +95,20 @@ if [ -z "$ipcmd" ]; then
   export ipcmd="ip a"
 fi
 # ----------------------------------------- app
-if [ -z "$app-openssh" ]; then
-  export app-openssh="openssh-server"
+if [ -z "$app_openssh" ]; then
+  export app_openssh="openssh-server"
 fi
-if [ -z "$app-cron" ]; then
-  export app-cron="cron"
+if [ -z "$app_cron" ]; then
+  export app_cron="cron"
 fi
-if [ -z "$app-ffmpeg" ]; then
-  export app-ffmpeg="ffmpeg"
+if [ -z "$app_ffmpeg" ]; then
+  export app_ffmpeg="ffmpeg"
 fi
-if [ -z "$app-chromium" ]; then
-  export app-chromium="chromium-browser"
+if [ -z "$app_chromium" ]; then
+  export app_chromium="chromium-browser"
 fi
-if [ -z "$app-atomicparsley" ]; then
-  export app-atomicparsley="atomicparsley"
+if [ -z "$app_atomicparsley" ]; then
+  export app_atomicparsley="atomicparsley"
 fi
 # =========================================
 echo
@@ -127,15 +127,15 @@ sudo $cmd php-simplexml
 sudo $cmd php-ctype
 sudo $cmd php-openssl
 
-sudo $cmd $app-openssh
-sudo $cmd $app-cron
-sudo $cmd $app-ffmpeg
-sudo $cmd $app-chromium
+sudo $cmd $app_openssh
+sudo $cmd $app_cron
+sudo $cmd $app_ffmpeg
+sudo $cmd $app_chromium
 
 # ----------------------------------------- atomicparsley
-if [ $app-atomicparsley = "atomicparsley" ]; then
+if [ $app_atomicparsley = "atomicparsley" ]; then
   sudo $cmd atomicparsley
-elif [ $app-atomicparsley = "rpm" ]; then
+elif [ $app_atomicparsley = "rpm" ]; then
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
 fi

@@ -180,10 +180,6 @@ echo
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on" ]; then
   sh lighttpd.sh
-elif [ $optlighttpd = "on2" ]; then
-  sh lighttpd2.sh
-elif [ $optlighttpd = "on2a" ]; then
-  sh lighttpd2a.sh
 elif [ $optlighttpd = "on2b" ]; then
   sh lighttpd2b.sh
 fi

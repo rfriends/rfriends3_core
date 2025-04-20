@@ -1,0 +1,7 @@
+$HTTP["url"] =~ "^/webdav(?:/|$)" {
+ dir-listing.activate = "enable"
+ dir-listing.encoding = "utf-8"
+ dir-listing.external-css = "/dirindex.css"
+ webdav.activate = "enable"
+ webdav.is-readonly = "enable"
+}

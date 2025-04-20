@@ -3,8 +3,9 @@
 # install rfriends for freeBSD
 # =========================================
 # 1.0 2025/03/04 new
+# 1.1 2025/04/20 bindir
 
-ver=1.0
+ver=1.1
 echo start $ver
 echo
 # -----------------------------------------
@@ -16,9 +17,10 @@ export cmdupdate="pkg update"
 #export group=`groups | cut -d ' ' -f 1`
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
-export PREFIX="/usr/local"
+export PREFIX=""
+export bindir="usr/local"
 
-export optlighttpd="on3"
+export optlighttpd="on2b"
 export optsamba="on"
 export optvimrc="on"
 

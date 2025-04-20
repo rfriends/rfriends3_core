@@ -35,6 +35,12 @@ export smbd="samba"
 export atd="atd"
 export cron="crond"
 export ipcm="ip a"
+
+export app-openssh="openssh-server"
+export app-cron="cronie"
+export app-ffmpeg="ffmpeg"
+export app-chromium="chromium"
+export app-atomicparsley="atomicparsley"
 #
 sudo apk update
 sudo apk --update-cache add tzdata

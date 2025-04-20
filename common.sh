@@ -128,9 +128,6 @@ sudo $cmd php-intl
 sudo $cmd php-xml
 sudo $cmd php-simplexml
 
-# php-openssl for alpine
-sudo $cmd php-openssl
-
 sudo $cmd $app_openssh
 sudo $cmd $app_cron
 sudo $cmd $app_ffmpeg

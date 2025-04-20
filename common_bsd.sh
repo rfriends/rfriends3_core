@@ -48,7 +48,7 @@ if [ -z $homedir ]; then
 fi
 #
 if [ -z $PREFIX ]; then
-  export PREFIX="/usr/local"
+  export PREFIX=""
 fi
 #
 if [ -z $bindir ]; then

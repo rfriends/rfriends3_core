@@ -41,7 +41,10 @@ sudo systemctl disable firewalld
 sudo zypper refresh
 sudo zypper update
 sudo $cmd sysvinit-tools
-sh common.sh 1> >(tee common.log >&1 ) 2> >(tee common.err >&2)
+
+sh common.sh 2>common.err | tee common.log
+echo --- commmon.err
+cat common.err
 # -----------------------------------------
 # finish
 echo

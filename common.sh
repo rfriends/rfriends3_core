@@ -102,8 +102,9 @@ sudo $cmd unzip nano vim at wget curl
 sudo $cmd p7zip
 sudo $cmd tzdata
 sudo $cmd iproute2
-sudo $cmd openssh-server
 sudo $cmd php-cli php-xml php-zip php-mbstring php-json php-curl php-intl
+
+sudo $cmd openssh-server
 sudo $cmd cron
 sudo $cmd ffmpeg
 sudo $cmd atomicparsley

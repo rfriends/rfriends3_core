@@ -68,6 +68,9 @@ export app_chromium="chromium"
 export app_atomicparsley="rpm"
 #
 sudo dnf update
-sh common.sh 1> >(tee common.log >&1 ) 2> >(tee common.err >&2)
+
+sh common.sh 2>common.err | tee common.log
+echo --- commmon.err
+cat common.err
 # -----------------------------------------
 # finish

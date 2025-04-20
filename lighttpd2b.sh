@@ -30,13 +30,14 @@ sudo chown $user:$group $PREFIX/etc/lighttpd
 sudo mkdir -p $PREFIX/etc/lighttpd/conf.d
 sudo chown $user:$group $PREFIX/etc/lighttpd/conf.d
 
-sudo cp -f conf.d/* $PREFIX/etc/lighttpd/conf.d/
-
 # cache_dir
 sudo mkdir -p $PREFIX/var/cache/lighttpd
 sudo chown $user:$group $PREFIX/var/cache/lighttpd
 
 # -----------------------------------------
+cd $curdir
+sudo cp -f conf.d/* $PREFIX/etc/lighttpd/conf.d/
+
 cd $curdir/skel
 
 sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel2b > lighttpd.conf0

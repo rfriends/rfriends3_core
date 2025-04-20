@@ -17,6 +17,7 @@ export cmdupdate="zypper update"
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""
+#export bindir="/usr/bin"
 
 # now lighttpd not supported
 # use built in server (sh rfriends3/rf3server.sh) 

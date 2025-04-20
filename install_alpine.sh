@@ -4,12 +4,13 @@
 #
 # =========================================
 # 1.0 2025/04/15 new
+# 1.1 2025/04/21 mod
 #
 ver=1.0
 echo start $ver
 echo
 # -----------------------------------------
-testing="@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing"
+testing="https://dl-cdn.alpinelinux.org/alpine/edge/testing"
 sudo grep $testing /etc/apk/repositories
 if [ $? -eq 1 ]; then
   echo $testing | sudo tee -a /etc/apk/repositories
@@ -36,11 +37,11 @@ export atd="atd"
 export cron="crond"
 export ipcm="ip a"
 
-export app-openssh="openssh-server"
-export app-cron="cronie"
-export app-ffmpeg="ffmpeg"
-export app-chromium="chromium"
-export app-atomicparsley="atomicparsley"
+export app_openssh="openssh-server"
+export app_cron="cronie"
+export app_ffmpeg="ffmpeg"
+export app_chromium="chromium"
+export app_atomicparsley="atomicparsley"
 #
 sudo apk update
 sudo apk --update-cache add tzdata

@@ -121,6 +121,7 @@ sudo $cmd tzdata
 sudo $cmd iproute2
 
 sudo $cmd php
+sudo $cmd php-common
 sudo $cmd php-cli php-xml php-zip php-mbstring php-json php-curl 
 sudo $cmd php-intl
 sudo $cmd php-simplexml

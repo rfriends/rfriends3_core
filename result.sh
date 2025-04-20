@@ -13,6 +13,7 @@ if [ $sys -eq 1 ]; then
 else 
   echo "type : initd"
 fi
+echo "pkg : $cmd"
 echo
 echo vimrc    : $optvimrc
 echo samba    : $optsamba

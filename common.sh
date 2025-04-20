@@ -118,7 +118,7 @@ if [ $distro = "arch" ]; then
   sudo $cmd openssh
   sudo $cmd php
   sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
-elif [ $distro = "centos" ] || [ $distro = "stream" ] || [ $distro = "rocky" ]; then
+elif [ $distro = "stream" ]; then
   sudo $cmd cronie
   sudo $cmd ffmpeg-free
   sudo $cmd chromium

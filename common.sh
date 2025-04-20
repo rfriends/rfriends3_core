@@ -24,17 +24,17 @@ echo
 echo start install_common $ver
 echo `date`
 echo
+# -----------------------------------------
+export curdir=$(cd $(dirname $0);pwd)
 #
+export SCRIPT=rfriends3_latest_script.zip
+# ----------------------------------------- systemd or init
 sys=`pgrep -o systemd`
 if [ $? -ne 0 ]; then
   sys=0
 fi
 export sys
-#
-export curdir=$(cd $(dirname $0);pwd)
-#
-export SCRIPT=rfriends3_latest_script.zip
-# -----------------------------------------
+# ----------------------------------------- package manager
 if [ -z "$distro" ]; then
   #distro="ubuntu"
   echo ディストリビューションが指定されていません。
@@ -44,7 +44,7 @@ fi
 if [ -z "$cmd" ]; then
   export cmd="apt-get install -y"
 fi
-#
+# ----------------------------------------- 
 if [ -z "$port" ]; then
   export port=8000
 fi
@@ -67,7 +67,7 @@ fi
 if [ -z $bindir ]; then
   export bindir="/usr/bin"
 fi
-# -----------------------------------------
+# ----------------------------------------- option
 if [ -z "$optlighttpd" ]; then
   export optlighttpd="off"
 fi
@@ -77,7 +77,7 @@ fi
 if [ -z "$optvimrc" ]; then
   export optvimrc="off"
 fi
-# -----------------------------------------
+# ----------------------------------------- service
 if [ -z "$atd" ]; then
   export atd="atd"
 fi
@@ -93,56 +93,53 @@ fi
 if [ -z "$ipcmd" ]; then
   export ipcmd="ip a"
 fi
+# ----------------------------------------- app
+if [ -z "$app-openssh" ]; then
+  export app-openssh="openssh-server"
+fi
+if [ -z "$app-cron" ]; then
+  export app-cron="cron"
+fi
+if [ -z "$app-ffmpeg" ]; then
+  export app-ffmpeg="ffmpeg"
+fi
+if [ -z "$app-chromium" ]; then
+  export app-chromium="chromium-browser"
+fi
+if [ -z "$app-atomicparsley" ]; then
+  export app-atomicparsley="atomicparsley"
+fi
 # =========================================
 echo
-echo install tools common
+echo install tools
 echo
 # =========================================
 sudo $cmd unzip nano vim at wget curl
 sudo $cmd p7zip
 sudo $cmd tzdata
 sudo $cmd iproute2
-sudo $cmd php-cli php-xml php-zip php-mbstring php-json php-curl php-intl
+sudo $cmd php
+sudo $cmd php-cli php-xml php-zip php-mbstring php-json php-curl 
+sudo $cmd php-intl
+sudo $cmd php-simplexml
+sudo $cmd php-ctype
+sudo $cmd php-openssl
 
-sudo $cmd openssh-server
-sudo $cmd cron
-sudo $cmd ffmpeg
-sudo $cmd atomicparsley
-# -----------------------------------------
-echo
-echo install tools
-echo
-# -----------------------------------------
-if [ $distro = "arch" ]; then
-  sudo $cmd cronie
-  sudo $cmd chromium
-  sudo $cmd openssh
-  sudo $cmd php
-  sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
-elif [ $distro = "stream" ]; then
-  sudo $cmd cronie
-  sudo $cmd ffmpeg-free
-  sudo $cmd chromium
+sudo $cmd $app-openssh
+sudo $cmd $app-cron
+sudo $cmd $app-ffmpeg
+sudo $cmd $app-chromium
+
+# ----------------------------------------- atomicparsley
+if [ $app-atomicparsley = "atomicparsley" ]; then
+  sudo $cmd atomicparsley
+else
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
-
-  #sudo $cmd net-tools dnsutils
-elif [ $distro = "suse" ]; then
-  # suse
-  sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
-  sudo $cmd php-ctype php-openssl
-  sudo $cmd sysvinit-tools
-  #
-  sudo $cmd chromium-browser
-elif [ $distro = "alpine" ]; then
-  # alpine
-  sudo $cmd php-simplexml php-ctype php-openssl
-  #
-  sudo $cmd cronie
-  sudo $cmd chromium
-else
-  # ubuntu
-  sudo $cmd chromium-browser
+fi
+if [ -e /usr/bin/atomicparsley ]; then
+  # arch
+  sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
 fi
 # =========================================
 echo

@@ -162,8 +162,8 @@ echo install lighttpd
 echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
-if [ $optlighttpd = "on3" ]; then
-  sh lighttpd_bsd.sh
+if [ $optlighttpd = "on2b" ]; then
+  sh lighttpd2b.sh
 fi
 # =========================================
 echo

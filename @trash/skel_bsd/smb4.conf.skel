@@ -1,0 +1,24 @@
+[global]
+        workgroup = WORKGROUP
+        server string = samba server of rfriendsuser
+        netbios name = samba server
+        dns proxy = no
+        local master = no
+        os level = no
+        unix charset = UTF-8
+        dos charset = CP932
+        security = user
+        map to guest = Bad User
+        load printers = no
+        log file = /var/log/samba4/log.%m
+        guest ok = yes
+[smbdir]
+        comment = share folder for rfriends
+        path = rfriendshomedir/smbdir
+        read only = no
+        browsable = yes
+        guest ok = yes
+        force user = rfriendsuser
+        create mask = 0700
+        directory mask = 0700
+

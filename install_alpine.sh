@@ -47,8 +47,12 @@ sudo apk update
 sudo apk --update-cache add tzdata
 sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-sh common.sh 2>&1 | tee common.log
+sh common.sh 2>common.err | tee common.log
+echo --- commmon.err
+cat common.err
 # -----------------------------------------
+sudo apk add php-openssl
+
 echo /etc/at.allow
 sudo grep -x "$user" /etc/at.allow
 if [ $? -eq 1 ]; then

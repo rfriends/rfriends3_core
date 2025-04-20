@@ -21,3 +21,4 @@
         force user = rfriendsuser
         create mask = 0700
         directory mask = 0700
+

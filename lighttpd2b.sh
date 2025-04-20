@@ -2,6 +2,8 @@
 # lighttpd on2b
 # 2025/04/20
 #
+onver="lighttpd-on2b"
+
 sudo $cmd lighttpd
 sudo $cmd php-cgi
 #sudo $cmd fcgi
@@ -66,6 +68,8 @@ cd $homedir/rfriends3/script/html
 ln -nfs temp webdav
 
 echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
+
+sudo touch $PREFIX/etc/lighttpd/$onver
 # -----------------------------------------
 if [ $sys -eq 1 ]; then
   sudo systemctl enable $lighttpd

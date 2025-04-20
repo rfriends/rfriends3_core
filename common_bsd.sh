@@ -137,6 +137,10 @@ sh rfriends3.sh
 #
 sh at_bsd.sh
 #
+cat /etc/rc.conf | grep cron_enable > /dev/null
+if [ $? = 1 ]; then
+  echo 'cron_enable = "YES"' | sudo tee -a  /etc/rc.conf
+fi
 sh cron.sh
 # -----------------------------------------
 echo
@@ -154,6 +158,10 @@ echo
 # -----------------------------------------
 echo samba $optsamba
 if [ $optsamba = "on" ]; then
+  cat /etc/rc.conf | grep samba_server_enable > /dev/null
+  if [ $? = 1 ]; then
+    echo 'samba_server_enable = "YES"' | sudo tee -a  /etc/rc.conf
+  fi
   sh samba_bsd.sh
 fi
 # -----------------------------------------
@@ -163,6 +171,10 @@ echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on2b" ]; then
+  cat /etc/rc.conf | grep lighttpd_enable > /dev/null
+  if [ $? = 1 ]; then
+    echo 'lighttpd_enable = "YES"' | sudo tee -a  /etc/rc.conf
+  fi
   sh lighttpd2b.sh
 fi
 # =========================================

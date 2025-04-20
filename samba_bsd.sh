@@ -6,11 +6,12 @@ sudo $cmd $samba
 #sudo mkdir -p /var/log/samba
 #sudo chown root:adm /var/log/samba
 
-cd $curdir/skel_bsd
-sed -e s%rfriendshomedir%$homedir%g smb4.conf.skel > smb4.conf
-sed -i .bak s%rfriendsuser%$user%g smb4.conf
+cd $curdir/skel
+sed -e s%rfriendshomedir%$homedir%g smb4.conf.skel > smb4.conf0
+sed -e s%rfriendsuser%$user%g smb4.conf0 > smb4.conf
 sudo cp -f smb4.conf $PREFIX/etc/smb4.conf
 #sudo chown root:root $PREFIX/etc/smb4.conf
+rm smb4.conf0
 
 mkdir -p /var/db/samba4/private
 mkdir -p /var/log/samba4

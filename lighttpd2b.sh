@@ -2,7 +2,7 @@
 # lighttpd on2b
 # 2025/04/20
 #
-onver="lighttpd-on2b"
+onver="on2b"
 
 sudo $cmd lighttpd
 sudo $cmd php-cgi

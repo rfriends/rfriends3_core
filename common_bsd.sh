@@ -50,6 +50,10 @@ fi
 if [ -z $PREFIX ]; then
   export PREFIX="/usr/local"
 fi
+#
+if [ -z $bindir ]; then
+  export bindir="/usr/local/bin"
+fi
 # -----------------------------------------
 if [ -z "$php" ]; then
   export php="php"

@@ -21,7 +21,7 @@ export cmdupdate="zypper update"
 
 # now lighttpd not supported
 # use built in server (sh rfriends3/rf3server.sh) 
-export optlighttpd="on2a"
+export optlighttpd="on2b"
 export optsamba="on"
 export optvimrc="on"
 
@@ -29,12 +29,19 @@ export lighttpd="lighttpd"
 export smbd="smb"
 export atd="atd"
 export cron="cron"
+
+export app_openssh="openssh-server"
+export app_cron="cron"
+export app_ffmpeg="ffmpeg"
+export app_chromium="chromium-browser"
+export app_atomicparsley="rpm"
 #
 sudo systemctl stop firewalld
 sudo systemctl disable firewalld
 sudo zypper refresh
 sudo zypper update
-sh common.sh 2>&1 | tee common.log
+sudo $cmd sysvinit-tools
+sh common.sh 1> >(tee common.log >&1 ) 2> >(tee common.err >&2)
 # -----------------------------------------
 # finish
 echo

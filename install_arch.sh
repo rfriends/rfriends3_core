@@ -36,11 +36,11 @@ export smbd="smb"
 export atd="atd"
 export cron="cronie"
 
-export app-openssh="openssh"
-export app-cron="cronie"
-export app-ffmpeg="ffmpeg"
-export app-chromium="chromium"
-export app-atomicparsley="atomicparsley"
+export app_openssh="openssh"
+export app_cron="cronie"
+export app_ffmpeg="ffmpeg"
+export app_chromium="chromium"
+export app_atomicparsley="atomicparsley"
 #
 sudo pacman -Sy --noconfirm
 sudo pacman -Syu --noconfirm

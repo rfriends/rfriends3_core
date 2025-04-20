@@ -18,7 +18,8 @@
 # 4.7 2025/04/15 alpine
 # 4.8 2025/04/18 mod
 # 4.9 2025/04/20 bindir
-ver=4.9
+# 5.0 2025/04/21 app
+ver=5.0
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -118,6 +119,7 @@ sudo $cmd unzip nano vim at wget curl
 sudo $cmd p7zip
 sudo $cmd tzdata
 sudo $cmd iproute2
+
 sudo $cmd php
 sudo $cmd php-cli php-xml php-zip php-mbstring php-json php-curl 
 sudo $cmd php-intl
@@ -133,11 +135,11 @@ sudo $cmd $app-chromium
 # ----------------------------------------- atomicparsley
 if [ $app-atomicparsley = "atomicparsley" ]; then
   sudo $cmd atomicparsley
-else
+elif [ $app-atomicparsley = "rpm" ]; then
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
 fi
-if [ -e /usr/bin/atomicparsley ]; then
+if [ ! -e /usr/bin/AtomicParsley ]; then
   # arch
   sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
 fi

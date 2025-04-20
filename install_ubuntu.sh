@@ -28,9 +28,15 @@ export lighttpd="lighttpd"
 export smbd="smbd"
 export atd="atd"
 export cron="cron"
+
+export app_openssh="openssh-server"
+export app_cron="cron"
+export app_ffmpeg="ffmpeg"
+export app_chromium="chromium-browser"
+export app_atomicparsley="atomicparsley"
 #
 sudo apt-get update
-sh common.sh 2>&1 | tee common.log
+sh common.sh 1> >(tee common.log >&1 ) 2> >(tee common.err >&2)
 # -----------------------------------------
 # finish
 echo

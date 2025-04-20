@@ -36,7 +36,9 @@ export app_chromium="chromium-browser"
 export app_atomicparsley="atomicparsley"
 #
 sudo apt-get update
-sh common.sh 1> >(tee common.log >&1 ) 2> >(tee common.err >&2)
+sh common.sh 2>common.err | tee common.log
+echo --- commmon.err
+cat common.err
 # -----------------------------------------
 # finish
 echo

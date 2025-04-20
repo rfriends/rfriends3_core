@@ -35,6 +35,12 @@ export lighttpd="lighttpd"
 export smbd="smb"
 export atd="atd"
 export cron="cronie"
+
+export app-openssh="openssh"
+export app-cron="cronie"
+export app-ffmpeg="ffmpeg"
+export app-chromium="chromium"
+export app-atomicparsley="atomicparsley"
 #
 sudo pacman -Sy --noconfirm
 sudo pacman -Syu --noconfirm
@@ -42,6 +48,6 @@ sudo pacman -Syu --noconfirm
 #sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 timedatectl set-timezone Asia/Tokyo
 
-sh common.sh 2>&1 | tee common.log
+sh common.sh 1> >(tee common.log >&1 ) 2> >(tee common.err >&2)
 # -----------------------------------------
 # finish

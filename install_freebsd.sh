@@ -35,9 +35,9 @@ export ipcmd="ifconfig"
 #
 sudo pkg update
 
-sh common.sh 2>common.err | tee common.log
-echo --- commmon.err
-cat common.err
+sh common_bsd.sh 2>common_bsd.err | tee common_bsd.log
+echo --- commmon_bsd.err
+cat common_bsd.err
 # -----------------------------------------
 # finish
 echo

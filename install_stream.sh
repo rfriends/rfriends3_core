@@ -52,7 +52,7 @@ export cmd="dnf install -y"
 #export PREFIX=""
 #export bindir="/usr/bin"
 
-export optlighttpd="on2"
+export optlighttpd="on2b"
 export optsamba="on"
 export optvimrc="on"
 

@@ -122,10 +122,13 @@ sudo $cmd iproute2
 
 sudo $cmd php
 sudo $cmd php-common
-sudo $cmd php-cli php-xml php-zip php-mbstring php-json php-curl 
-sudo $cmd php-intl
-sudo $cmd php-simplexml
 sudo $cmd php-ctype
+sudo $cmd php-cli php-zip php-mbstring php-json php-curl 
+sudo $cmd php-intl
+sudo $cmd php-xml
+sudo $cmd php-simplexml
+
+# php-openssl for alpine
 sudo $cmd php-openssl
 
 sudo $cmd $app_openssh

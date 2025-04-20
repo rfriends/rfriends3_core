@@ -34,7 +34,10 @@ export cron="cron"
 export ipcmd="ifconfig"
 #
 sudo pkg update
-sh common_bsd.sh 1> >(tee common_bsd.log >&1 ) 2> >(tee common_bsd.err >&2)
+
+sh common.sh 2>common.err | tee common.log
+echo --- commmon.err
+cat common.err
 # -----------------------------------------
 # finish
 echo

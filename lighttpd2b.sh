@@ -7,12 +7,12 @@ onver="on2b"
 # log_root
 sudo mkdir -p $log_root
 sudo chown $user:$group $log_root
-echo $user $group $log_root
+echo log_root : $user $group $log_root
 
 # state_dir
 sudo mkdir -p $state_dir
 sudo chown $user:$group $state_dir
-echo $user $group $state_root
+echo state_dir : $user $group $state_dir
 
 # home_dir
 sudo mkdir -p $home_dir
@@ -22,19 +22,19 @@ sudo mkdir -p $home_dir/sockets/
 sudo chown $user:$group $home_dir
 sudo chown $user:$group $home_dir/uploads/
 sudo chown $user:$group $home_dir/sockets/
-echo $user $group $home_dir
+echo home_dir : $user $group $home_dir
 
 # conf_dir
 sudo mkdir -p $conf_dir
 sudo chown $user:$group $conf_dir
 sudo mkdir -p $conf_dir/conf.d
 sudo chown $user:$group $conf_dir/conf.d
-echo $user $group $conf_dir
+echo conf_dir : $user $group $conf_dir
 
 # cache_dir
 sudo mkdir -p $cache_dir
 sudo chown $user:$group $cache_dir
-echo $user $group $cache_dir
+echo cache_dir : $user $group $cache_dir
 # -----------------------------------------
 cd $curdir
 sudo cp -f conf.d/* $conf_dir/conf.d/

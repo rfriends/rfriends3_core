@@ -17,7 +17,6 @@ export cmdupdate="zypper update"
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""
-#export bindir="/usr/bin"
 #export phpdir="/usr/bin"
 
 # now lighttpd not supported

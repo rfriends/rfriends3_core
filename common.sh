@@ -68,6 +68,10 @@ fi
 if [ -z $bindir ]; then
   export bindir="/usr/bin"
 fi
+#
+if [ -z $phpdir ]; then
+  export phpdir="/usr/bin"
+fi
 # ----------------------------------------- option
 if [ -z "$optlighttpd" ]; then
   export optlighttpd="off"

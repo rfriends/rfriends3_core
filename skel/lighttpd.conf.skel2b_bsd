@@ -15,10 +15,10 @@
 ## chroot example as well.
 ##
 var.log_root    = "/var/log/lighttpd"
-#var.server_root = "/var/www"
-var.state_dir   = "/run/lighttpd"
-var.home_dir    = "/var/lib/lighttpd"
-var.conf_dir    = "/etc/lighttpd"
+#var.server_root = "/usr/local/www/lighttpd"
+var.state_dir   = "/run"
+var.home_dir    = "/var/run/lighttpd"
+var.conf_dir    = "/usr/local/etc/lighttpd"
 
 var.hdir        = "rfriendshomedir"
 #var.log_root    = hdir + "/lighttpd"

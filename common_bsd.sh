@@ -54,6 +54,10 @@ fi
 if [ -z $bindir ]; then
   export bindir="/usr/local/bin"
 fi
+#
+if [ -z $phpdir ]; then
+  export phpdir="/usr/local/bin"
+fi
 # -----------------------------------------
 if [ -z "$php" ]; then
   export php="php"

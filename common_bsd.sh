@@ -176,7 +176,7 @@ if [ $optlighttpd = "on2b" ]; then
     echo 'lighttpd_enable = "YES"' | sudo tee -a  /etc/rc.conf
   fi
   sudo $cmd lighttpd
-  sudo $cmd php-cgi
+  #sudo $cmd php-cgi
   #sudo $cmd fcgi
   #sudo $cmd lighttpd-fastcgi
 

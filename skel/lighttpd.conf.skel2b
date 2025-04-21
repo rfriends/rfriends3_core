@@ -14,18 +14,11 @@
 ## if you add a variable here. Add the corresponding variable in the
 ## chroot example as well.
 ##
-var.log_root    = "/var/log/lighttpd"
-#var.server_root = "/var/www"
-var.state_dir   = "/run/lighttpd"
-var.home_dir    = "/var/lib/lighttpd"
-var.conf_dir    = "/etc/lighttpd"
-
-var.hdir        = "rfriendshomedir"
-#var.log_root    = hdir + "/lighttpd"
-var.server_root = hdir + "/rfriends3"
-#var.state_dir   = hdir + "/lighttpd"
-#var.home_dir    = hdir + "/lighttpd"
-
+var.log_root    = "rfriendslog_root"
+var.server_root = "rfriendsserver_root"
+var.state_dir   = "rfriendsstate_dir"
+var.home_dir    = "rfriendshome_dir"
+var.conf_dir    = "rfriendsconf_dir"
 ## 
 ## run the server chrooted.
 ## 
@@ -65,7 +58,7 @@ var.vhosts_dir  = server_root + "/vhosts"
 ## used in:
 ## conf.d/deflate.conf
 ##
-var.cache_dir   = "/var/cache/lighttpd"
+var.cache_dir   = "rfriendscache_dir"
 
 ##
 ## Base directory for sockets.

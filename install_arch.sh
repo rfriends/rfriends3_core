@@ -25,7 +25,6 @@ export cmd="pacman -S --noconfirm"
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""
-#export bindir="/usr/bin"
 #export phpdir="/usr/bin"
 
 export optlighttpd="on2"

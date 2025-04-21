@@ -182,6 +182,17 @@ echo lighttpd $optlighttpd
 if [ $optlighttpd = "on" ]; then
   sh lighttpd.sh
 elif [ $optlighttpd = "on2b" ]; then
+  sudo $cmd lighttpd
+  sudo $cmd php-cgi
+  #sudo $cmd fcgi
+  sudo $cmd lighttpd-fastcgi
+
+  export usrlocal="$PREFIX"
+  export log_root="$PREFIX/var/log/lighttpd"
+  export state_dir="$PREFIX/run/lighttpd"
+  export home_dir="$PREFIX/var/lib/lighttpd"
+  export conf_dir="$PREFIX/etc/lighttpd"
+  export cache_dir="$PREFIX/var/cache/lighttpd"
   sh lighttpd2b.sh
 fi
 # =========================================

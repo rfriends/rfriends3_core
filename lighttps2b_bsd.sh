@@ -44,15 +44,19 @@ sudo cp -f conf.d/* $usrlocal/etc/lighttpd/conf.d/
 
 cd $curdir/skel
 
-sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel2b_bsd > lighttpd.conf0
-sed -e s%rfriendsuser%$user%g   lighttpd.conf0 > lighttpd.conf1
-sed -e s%rfriendsgroup%$group%g lighttpd.conf1 > lighttpd.conf2
-sed -e s%rfriendsport%$port%g   lighttpd.conf2 > lighttpd.conf
-sudo cp -f lighttpd.conf $usrlocal/etc/lighttpd/lighttpd.conf
-#sudo chown root:root $usrlocal/etc/lighttpd/lighttpd.conf
-rm lighttpd.conf0
-rm lighttpd.conf1
-rm lighttpd.conf2
+sed -e s%rfriendsserver_root%rfriendshomedir/rfriends3%g lighttpd.conf.skel2b > lighttpd.confa
+sed -e s%rfriendshomedir%$homedir%g lighttpd.confa > lighttpd.confb
+sed -e s%rfriendsuser%$user%g   lighttpd.confb > lighttpd.confc
+sed -e s%rfriendsgroup%$group%g lighttpd.confc > lighttpd.confd
+sed -e s%rfriendsport%$port%g   lighttpd.confd > lighttpd.confe
+
+sed -e s%rfriendslog_root%/var/log/lighttpd%g lighttpd.confe > lighttpd.conf1
+sed -e s%rfriendsstate_dir%/var/run%g         lighttpd.conf1 > lighttpd.conf2
+sed -e s%rfriendshome_dir%/var/run/lighttpd%g lighttpd.conf2 > lighttpd.conf3
+sed -e s%rfriendsconf_dir%/usr/local/etc/lighttpd%g lighttpd.conf3 > lighttpd.conf4
+sed -e s%rfriendscache_dir%/var/cache/lighttpd%g    lighttpd.conf4 > lighttpd.conf5
+
+sudo cp -f lighttpd.conf5 $PREFIX/usr/local/etc/lighttpd/lighttpd.conf
 #
 # modules
 sudo cp -f modules.conf.skel2b $usrlocal/etc/lighttpd/modules.conf

@@ -5,9 +5,9 @@
 onver="on2b"
 
 sudo $cmd lighttpd
-sudo $cmd php-cgi
+#sudo $cmd php-cgi
 #sudo $cmd fcgi
-sudo $cmd lighttpd-fastcgi
+#sudo $cmd lighttpd-fastcgi
 # -----------------------------------------
 usrlocal="/usr/local"
 

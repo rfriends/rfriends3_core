@@ -57,7 +57,7 @@ sudo cp -f modules.conf.skel2b $PREFIX/etc/lighttpd/modules.conf
 #sudo chown root:root $PREFIX/etc/lighttpd/modules.conf
 #
 # fastcgi
-sed -e s%rfriendsbindir%$bindir%g fastcgi.conf.skel2b > fastcgi.conf
+sed -e s%rfriendsbindir%$PREFIX/$bindir%g fastcgi.conf.skel2b > fastcgi.conf
 sudo cp -f fastcgi.conf $PREFIX/etc/lighttpd/conf.d/fastcgi.conf
 #sudo chown root:root $PREFIX/etc/lighttpd/conf.d/fastcgi.conf
 #

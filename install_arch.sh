@@ -27,7 +27,7 @@ export cmd="pacman -S --noconfirm"
 #export PREFIX=""
 #export phpdir="/usr/bin"
 
-export optlighttpd="on2"
+export optlighttpd="on2b"
 export optsamba="on"
 export optvimrc="on"
 

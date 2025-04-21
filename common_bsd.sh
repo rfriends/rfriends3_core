@@ -118,7 +118,7 @@ sudo $cmd ${php}-curl
 sudo $cmd ${php}-zip 
 sudo $cmd ${php}-intl
 
-sudo $cmd ${php}-json 
+#sudo $cmd ${php}-json 
 #sed -e s%^\;extension=mbstring%extension=mbstring% $PREFIX/etc/php.ini-production | sudo tee $PREFIX/etc/php.ini
 # -----------------------------------------
 #sudo $cmd tzdata

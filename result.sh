@@ -26,7 +26,7 @@ echo
 echo home    directry : $homedir
 echo current directry : $curdir
 echo PREFIX : $PREFIX
-echo bindir : $bindir
+echo phpdir : $phpdir
 echo
 #ip=`hostname -I | cut -d " " -f 1`
 ip=`$ipcmd | grep "inet " | grep -v "127.0.0.1" | sed -e 's/^ *//' | cut -d " " -f 2`

@@ -44,7 +44,7 @@ sudo cp -f conf.d/* $usrlocal/etc/lighttpd/conf.d/
 
 cd $curdir/skel
 
-sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel2b > lighttpd.conf0
+sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel2b_bsd > lighttpd.conf0
 sed -e s%rfriendsuser%$user%g   lighttpd.conf0 > lighttpd.conf1
 sed -e s%rfriendsgroup%$group%g lighttpd.conf1 > lighttpd.conf2
 sed -e s%rfriendsport%$port%g   lighttpd.conf2 > lighttpd.conf

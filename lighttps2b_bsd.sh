@@ -24,9 +24,9 @@ sudo mkdir -p $PREFIX/var/run/lighttpd
 sudo mkdir -p $PREFIX/var/run/lighttpd/uploads/
 sudo mkdir -p $PREFIX/var/run/lighttpd/sockets/
 
-sudo chown $user:$group $PREFIX/var/lib/lighttpd
-sudo chown $user:$group $PREFIX/var/lib/lighttpd/uploads/
-sudo chown $user:$group $PREFIX/var/lib/lighttpd/sockets/
+sudo chown $user:$group $PREFIX/var/run/lighttpd
+sudo chown $user:$group $PREFIX/var/run/lighttpd/uploads/
+sudo chown $user:$group $PREFIX/var/run/lighttpd/sockets/
 
 # conf_dir
 sudo mkdir -p $usrlocal/etc/lighttpd

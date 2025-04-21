@@ -18,7 +18,6 @@ export cmdupdate="apt-get update"
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""
-#export bindir="/usr/bin"
 #export phpdir="/usr/bin"
 
 export optlighttpd="on"

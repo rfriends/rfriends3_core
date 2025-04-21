@@ -51,10 +51,6 @@ if [ -z $PREFIX ]; then
   export PREFIX=""
 fi
 #
-if [ -z $bindir ]; then
-  export bindir="/usr/local/bin"
-fi
-#
 if [ -z $phpdir ]; then
   export phpdir="/usr/local/bin"
 fi

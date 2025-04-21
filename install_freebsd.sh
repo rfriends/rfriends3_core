@@ -18,7 +18,6 @@ export cmdupdate="pkg update"
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 export PREFIX=""
-export bindir="/usr/local/bin"
 export phpdir="/usr/local/bin"
 
 export optlighttpd="on2b"

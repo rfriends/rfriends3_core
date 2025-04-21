@@ -7,7 +7,7 @@ fastcgi.map-extensions = ( ".html" => ".php" )
 fastcgi.server += ( ".php" => 
 	("localhost"=>
             (
-		"bin-path" => "rfriendsbindir/php-cgi",
+		"bin-path" => "$PREFIX/rfriendsbindir/php-cgi",
 		"socket" => "/tmp/php-fastcgi.socket",
 		"max-procs" => 1,
 		"bin-environment" => ( 

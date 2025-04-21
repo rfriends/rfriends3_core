@@ -60,7 +60,7 @@ sudo cp -f modules.conf.skel2b $conf_dir/modules.conf
 #sudo chown root:root $conf_dir/modules.conf
 #
 # fastcgi
-sed -e s%rfriendsbindir%$PREFIX$phpdir%g fastcgi.conf.skel2b > fastcgi.conf
+sed -e s%rfriendsphpdir%$PREFIX$phpdir%g fastcgi.conf.skel2b > fastcgi.conf
 sudo cp -f fastcgi.conf $conf_dir/conf.d/fastcgi.conf
 #sudo chown root:root $conf_dir/conf.d/fastcgi.conf
 #

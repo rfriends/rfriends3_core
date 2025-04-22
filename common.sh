@@ -181,6 +181,8 @@ echo
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on" ]; then
   sh lighttpd.sh
+elif [ $optlighttpd = "on1a" ]; then
+  sh lighttpd1a.sh
 elif [ $optlighttpd = "on2b" ]; then
   sudo $cmd lighttpd
   sudo $cmd php-cgi

@@ -6,9 +6,9 @@ server.modules = (
 )
 
 #server.document-root        = "/var/www/html"
-server.upload-dirs          = ( "rfriendscachrdir/uploads" )
+server.upload-dirs          = ( "rfriendscachedir/uploads" )
 server.errorlog             = "rfriendslogdir/error.log"
-server.pid-file             = "rfriendspidir/lighttpd.pid"
+server.pid-file             = "rfriendspiddir/lighttpd.pid"
 #server.username             = "www-data"
 #server.groupname            = "www-data"
 #server.port                 = 80

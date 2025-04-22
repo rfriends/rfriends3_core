@@ -189,6 +189,9 @@ elif [ $optlighttpd = "on1a" ]; then
   export cache_dir="$PREFIX/var/cache/lighttpd"
   export log_dir="$PREFIX/var/log/lighttpd"
   export pid_dir="$PREFIX/run/lighttpd"
+
+  export php_dir="$PREFIX/usr/bin"
+  export socket_dir="$PREFIX/run/lighttpd"
   sh lighttpd1a.sh
 elif [ $optlighttpd = "on2b" ]; then
   sudo $cmd lighttpd

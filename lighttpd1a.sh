@@ -25,13 +25,20 @@ sed -e s%rfriendspiddir%$pid_dir%g     lighttpd.conf5 > lighttpd.conf6
 sudo cp -f lighttpd.conf6 $conf_dir/lighttpd.conf
 #sudo chown root:root $conf_dir/lighttpd.conf
 
+# cache_dir
 sudo mkdir -p $cache_dir/uploads
-sudo mkdir -p $log_dir
-sudo mkdir -p $pid_dir
-
 sudo chown -R $user:$group $cache_dir
+echo cache_dir : $user $group $cache_dir
+
+# log_dir
+sudo mkdir -p $log_dir
 sudo chown -R $user:$group $log_dir
+echo log_dir : $user $group $log_dir
+
+# pid_dir
+sudo mkdir -p $pid_dir
 sudo chown -R $user:$group $pid_dir
+echo pid_dir : $user $group $pid_dir
 
 cd $docroot_dir
 ln -nfs temp webdav

@@ -44,6 +44,8 @@ ln -nfs temp webdav
 
 sudo lighttpd-enable-mod fastcgi
 sudo lighttpd-enable-mod fastcgi-php
+mkdir $homedir/lighttpd
+
 echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 # -----------------------------------------
 if [ $sys -eq 1 ]; then

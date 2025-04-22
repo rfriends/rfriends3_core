@@ -7,7 +7,8 @@ docroot_dir=$homedir/rfriends3/script/html
 
 cd $curdir/skel
 
-sed -e s%rfriendshomedir%$homedir%g 15-fastcgi-php.conf.skel > 15-fastcgi-php.conf
+sed -e s%rfriendsphpdir%$phpdir%g 15-fastcgi-php.conf.skel1a > 15-fastcgi-php.conf0
+sed -e s%rfriendssocketdir%$socketdir%g 15-fastcgi-php.conf.skel0 > 15-fastcgi-php.conf
 sudo cp -f 15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
 sudo chown root:root $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
 

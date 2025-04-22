@@ -28,7 +28,12 @@ sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel1a > lighttpd.conf0
 sed -e s%rfriendsuser%$user%g   lighttpd.conf0 > lighttpd.conf1
 sed -e s%rfriendsgroup%$group%g lighttpd.conf1 > lighttpd.conf2
 sed -e s%rfriendsport%$port%g   lighttpd.conf2 > lighttpd.conf3
-sudo cp -f lighttpd.conf3 $conf_dir/lighttpd.conf
+
+sed -e s%rfriendscachedir%$cache_dir%g lighttpd.conf3 > lighttpd.conf4
+sed -e s%rfriendslogdir%$log_dir%g     lighttpd.conf4 > lighttpd.conf5
+sed -e s%rfriendspiddir%$pid_dir%g     lighttpd.conf5 > lighttpd.conf6
+
+sudo cp -f lighttpd.conf6 $conf_dir/lighttpd.conf
 #sudo chown root:root $conf_dir/lighttpd.conf
 
 sudo mkdir -p $cache_dir/uploads

@@ -20,7 +20,7 @@ export cmdupdate="apt-get update"
 #export PREFIX=""
 #export phpdir="/usr/bin"
 
-export optlighttpd="on1a"
+export optlighttpd="on"
 export optsamba="on"
 export optvimrc="on"
 

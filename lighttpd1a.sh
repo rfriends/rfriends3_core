@@ -1,5 +1,5 @@
 #!/bin/sh
-# lighttpd on1
+# lighttpd on1a
 #
 sudo $cmd lighttpd php-cgi
 
@@ -10,6 +10,9 @@ else
 fi
 
 cd $curdir/skel
+
+conf_dir="$PREFIX/etc/lighttpd"
+
 sed -e s%rfriendshomedir%$homedir%g 15-fastcgi-php.conf.skel > 15-fastcgi-php.conf
 sudo cp -f 15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
 sudo chown root:root $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
@@ -18,8 +21,8 @@ sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel > lighttpd.conf
 sed -i s%rfriendsuser%$user%g   lighttpd.conf
 sed -i s%rfriendsgroup%$group%g lighttpd.conf
 sed -i s%rfriendsport%$port%g   lighttpd.conf
-sudo cp -f lighttpd.conf $PREFIX/etc/lighttpd/lighttpd.conf
-sudo chown root:root $PREFIX/etc/lighttpd/lighttpd.conf
+sudo cp -f lighttpd.conf $conf_dir/lighttpd.conf
+#sudo chown root:root $Pconf_dir/lighttpd.conf
 
 mkdir -p $homedir/lighttpd/uploads/
 cd $homedir/rfriends3/script/html

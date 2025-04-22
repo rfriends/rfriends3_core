@@ -185,6 +185,7 @@ elif [ $optlighttpd = "on1a" ]; then
   sudo $cmd lighttpd php-cgi
   sudo $cmd lighttpd-mod-webdav
   
+  export conf_dir="$PREFIX/etc/lighttpd"
   export cache_dir=$PREFIX/var/cache/lighttpd
   export log_dir=$PREFIX/var/log/lighttpd
   export pid_dir=$PREFIX/run/lighttpd

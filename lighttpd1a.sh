@@ -28,7 +28,7 @@ sed -e s%rfriendsport%$port%g   lighttpd.conf2 > lighttpd.conf3
 sudo cp -f lighttpd.conf3 $conf_dir/lighttpd.conf
 #sudo chown root:root $conf_dir/lighttpd.conf
 
-mkdir -p $cache_dir/uploads/
+sudo mkdir -p $cache_dir/uploads/
 cd $docroot_dir
 ln -nfs temp webdav
 

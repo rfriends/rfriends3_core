@@ -7,12 +7,12 @@ docroot_dir=$homedir/rfriends3/script/html
 
 cd $curdir/skel
 
-sed -e s%rfriendsphpdir%$phpdir%g 15-fastcgi-php.conf.skel1a > 15-fastcgi-php.conf0
-sed -e s%rfriendssocketdir%$socketdir%g 15-fastcgi-php.conf.skel0 > 15-fastcgi-php.conf
+# sed -i は使用しないこと
+
+sed -e s%rfriendsphpdir%$php_dir%g 15-fastcgi-php.conf.skel1a > 15-fastcgi-php.conf0
+sed -e s%rfriendssocketdir%$socket_dir%g 15-fastcgi-php.conf0 > 15-fastcgi-php.conf
 sudo cp -f 15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
 sudo chown root:root $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
-
-# sed -i は使用しないこと
 
 sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel1a > lighttpd.conf0
 sed -e s%rfriendsuser%$user%g   lighttpd.conf0 > lighttpd.conf1
@@ -25,6 +25,11 @@ sed -e s%rfriendspiddir%$pid_dir%g     lighttpd.conf5 > lighttpd.conf6
 
 sudo cp -f lighttpd.conf6 $conf_dir/lighttpd.conf
 #sudo chown root:root $conf_dir/lighttpd.conf
+
+# socket_dir
+sudo mkdir -p $socket_dir
+sudo chown -R $user:$group $socket_dir
+echo socket_dir : $user $group $socket_dir
 
 # cache_dir
 sudo mkdir -p $cache_dir/uploads

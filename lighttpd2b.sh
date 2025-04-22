@@ -41,6 +41,8 @@ sudo cp -f conf.d/* $conf_dir/conf.d/
 
 cd $curdir/skel
 
+# sed -i は使用しないこと
+
 sed -e s%rfriendsserver_root%rfriendshomedir/rfriends3%g lighttpd.conf.skel2b > lighttpd.confa
 sed -e s%rfriendshomedir%$homedir%g lighttpd.confa > lighttpd.confb
 sed -e s%rfriendsuser%$user%g   lighttpd.confb > lighttpd.confc

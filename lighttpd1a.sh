@@ -3,29 +3,31 @@
 #
 sudo $cmd lighttpd php-cgi
 
-if [ $distro = "suse" ] || [ $distro = "alpine" ]; then
-  sudo $cmd lighttpd-mod_webdav
-else
+#if [ $distro = "suse" ] || [ $distro = "alpine" ]; then
+#  sudo $cmd lighttpd-mod_webdav
+#else
   sudo $cmd lighttpd-mod-webdav
-fi
+#fi
 
 cd $curdir/skel
 
-conf_dir="$PREFIX/etc/lighttpd"
+conf_dir=$PREFIX/etc/lighttpd
+cache_dir=$PREFIX/var/cache/lighttpd
+docroot_dir=$homedir/rfriends3/script/html
 
 sed -e s%rfriendshomedir%$homedir%g 15-fastcgi-php.conf.skel > 15-fastcgi-php.conf
 sudo cp -f 15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
 sudo chown root:root $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
 
-sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel > lighttpd.conf
-sed -i s%rfriendsuser%$user%g   lighttpd.conf
-sed -i s%rfriendsgroup%$group%g lighttpd.conf
-sed -i s%rfriendsport%$port%g   lighttpd.conf
-sudo cp -f lighttpd.conf $conf_dir/lighttpd.conf
-#sudo chown root:root $Pconf_dir/lighttpd.conf
+sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel1a > lighttpd.conf0
+sed -e s%rfriendsuser%$user%g   lighttpd.conf0 > lighttpd.conf1
+sed -e s%rfriendsgroup%$group%g lighttpd.conf1 > lighttpd.conf2
+sed -e s%rfriendsport%$port%g   lighttpd.conf2 > lighttpd.conf3
+sudo cp -f lighttpd.conf3 $conf_dir/lighttpd.conf
+#sudo chown root:root $conf_dir/lighttpd.conf
 
-mkdir -p $homedir/lighttpd/uploads/
-cd $homedir/rfriends3/script/html
+mkdir -p $cache_dir/uploads/
+cd $docroot_dir
 ln -nfs temp webdav
 
 sudo lighttpd-enable-mod fastcgi

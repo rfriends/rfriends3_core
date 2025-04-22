@@ -111,6 +111,11 @@ if [ -z "$app_atomicparsley" ]; then
   export app_atomicparsley="atomicparsley"
 fi
 # =========================================
+if [ $user = "root" ]; then
+  echo ユーザがrootではインストールできません。
+  exit 1
+fi
+# =========================================
 echo
 echo install tools
 echo

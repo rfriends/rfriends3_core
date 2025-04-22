@@ -88,6 +88,11 @@ if [ -z "$ipcmd" ]; then
   export ipcmd="ifconfig"
 fi
 # =========================================
+if [ $user = "root" ]; then
+  echo ユーザがrootではインストールできません。
+  exit 1
+fi
+# =========================================
 echo
 echo install tools
 echo

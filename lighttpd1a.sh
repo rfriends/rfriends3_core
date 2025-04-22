@@ -8,7 +8,7 @@ conf_dir=$PREFIX/etc/lighttpd
 
 cache_dir=$PREFIX/var/cache/lighttpd
 log_dir=$PREFIX/var/log/lighttpd
-pid_dir=$PREFIX/run
+pid_dir=$PREFIX/run/lighttpd
 
 sudo $cmd lighttpd php-cgi
 

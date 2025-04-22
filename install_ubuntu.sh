@@ -36,7 +36,7 @@ export app_chromium="chromium-browser"
 export app_atomicparsley="atomicparsley"
 #
 sudo apt-get update
-sudo apt-get install chromium
+sudo apt-get install chromium -y
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err
 cat common.err

@@ -11,6 +11,8 @@ sed -e s%rfriendshomedir%$homedir%g 15-fastcgi-php.conf.skel > 15-fastcgi-php.co
 sudo cp -f 15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
 sudo chown root:root $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
 
+# sed -i は使用しないこと
+
 sed -e s%rfriendshomedir%$homedir%g lighttpd.conf.skel1a > lighttpd.conf0
 sed -e s%rfriendsuser%$user%g   lighttpd.conf0 > lighttpd.conf1
 sed -e s%rfriendsgroup%$group%g lighttpd.conf1 > lighttpd.conf2

@@ -4,19 +4,6 @@
 onver=on1a
 
 docroot_dir=$homedir/rfriends3/script/html
-conf_dir=$PREFIX/etc/lighttpd
-
-cache_dir=$PREFIX/var/cache/lighttpd
-log_dir=$PREFIX/var/log/lighttpd
-pid_dir=$PREFIX/run/lighttpd
-
-sudo $cmd lighttpd php-cgi
-
-#if [ $distro = "suse" ] || [ $distro = "alpine" ]; then
-#  sudo $cmd lighttpd-mod_webdav
-#else
-  sudo $cmd lighttpd-mod-webdav
-#fi
 
 cd $curdir/skel
 

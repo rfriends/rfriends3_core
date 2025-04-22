@@ -3,6 +3,13 @@
 #
 onver=on1a
 
+docroot_dir=$homedir/rfriends3/script/html
+conf_dir=$PREFIX/etc/lighttpd
+
+cache_dir=$PREFIX/var/cache/lighttpd
+log_dir=$PREFIX/var/log/lighttpd
+pid_dir=$PREFIX/run
+
 sudo $cmd lighttpd php-cgi
 
 #if [ $distro = "suse" ] || [ $distro = "alpine" ]; then
@@ -12,10 +19,6 @@ sudo $cmd lighttpd php-cgi
 #fi
 
 cd $curdir/skel
-
-conf_dir=$PREFIX/etc/lighttpd
-cache_dir=$PREFIX/var/cache/lighttpd
-docroot_dir=$homedir/rfriends3/script/html
 
 sed -e s%rfriendshomedir%$homedir%g 15-fastcgi-php.conf.skel > 15-fastcgi-php.conf
 sudo cp -f 15-fastcgi-php.conf $PREFIX/etc/lighttpd/conf-available/15-fastcgi-php.conf
@@ -28,7 +31,14 @@ sed -e s%rfriendsport%$port%g   lighttpd.conf2 > lighttpd.conf3
 sudo cp -f lighttpd.conf3 $conf_dir/lighttpd.conf
 #sudo chown root:root $conf_dir/lighttpd.conf
 
-sudo mkdir -p $cache_dir/uploads/
+sudo mkdir -p $cache_dir/uploads
+sudo mkdir -p $log_dir
+sudo mkdir -p $pid_dir
+
+sudo chown -R $user:$group $cache_dir
+sudo chown -R $user:$group $log_dir
+sudo chown -R $user:$group $pid_dir
+
 cd $docroot_dir
 ln -nfs temp webdav
 

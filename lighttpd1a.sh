@@ -1,6 +1,8 @@
 #!/bin/sh
 # lighttpd on1a
 #
+onver=on1a
+
 sudo $cmd lighttpd php-cgi
 
 #if [ $distro = "suse" ] || [ $distro = "alpine" ]; then
@@ -42,5 +44,5 @@ else
   sudo service $lighttpd restart
   service $lighttpd status
 fi
-
+sudo touch $conf_dir/$onver
 exit 0

@@ -4,6 +4,7 @@
 # http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ConfigurationOptions#mod_fastcgi-fastcgi
 
 ## Start an FastCGI server for php (needs the php-cgi package)
+fastcgi.map-extensions = ( ".html" => ".php" )
 fastcgi.server += ( ".php" => 
         ((
                 "bin-path" => "rfriendsphpdir/php-cgi",

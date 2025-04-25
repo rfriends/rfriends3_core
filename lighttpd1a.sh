@@ -61,17 +61,18 @@ if [ $sys -eq 1 ]; then
   if [ $? = 0 ]; then
     sed -e s%^ProtectHome=read-only%ProtectHome=false% $svc > svc.service
     sudo cp -f svc.service $svc
-    sudo systemctl daemon-reload
+    sudo systemctl reload lighttpd
     echo
     echo ProtectHome=read-only -> false
     echo
   fi
 
-  sudo systemctl stop apache2
-  sudo systemctl disable apache2
-    
+  #sudo systemctl stop apache2
+  #sudo systemctl disable apache2
+
+  sudo systemctl stop $lighttpd
+  sudo systemctl start $lighttpd
   sudo systemctl enable $lighttpd
-  sudo systemctl restart $lighttpd
   systemctl status $lighttpd
 else 
   sudo service $lighttpd restart

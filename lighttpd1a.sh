@@ -27,26 +27,28 @@ sudo cp -f lighttpd.conf6 $conf_dir/lighttpd.conf
 #sudo chown root:root $conf_dir/lighttpd.conf
 
 # socket_dir
-sudo mkdir -p $socket_dir
-sudo mkdir $socket_dir/compress
-sudo mkdir $socket_dir/uploads
-#sudo chown -R $user:$group $socket_dir
+sudo mkdir $socket_dir
+sudo chown $user:$group $socket_dir
 echo socket_dir : $socket_dir
 
 # cache_dir
-sudo mkdir -p $cache_dir/uploads
-sudo chown -R $user:$group $cache_dir
-echo cache_dir : $user $group $cache_dir
+sudo mkdir $cache_dir
+sudo mkdir $cache_dir/uploads
+sudo mkdir $cache_dir/compress
+sudo chown $user:$group $cache_dir
+sudo chown $user:$group $cache_dir/uploads
+sudo chown $user:$group $cache_dir/compress
+echo cache_dir : $cache_dir
 
 # log_dir
-sudo mkdir -p $log_dir
-sudo chown -R $user:$group $log_dir
+sudo mkdir $log_dir
+sudo chown $user:$group $log_dir
 echo log_dir : $user $group $log_dir
 
 # pid_dir
-sudo mkdir -p $pid_dir
-#sudo chown -R $user:$group $pid_dir
-echo pid_dir : $pid_dir
+#sudo mkdir $pid_dir
+#sudo chown $user:$group $pid_dir
+#echo pid_dir : $pid_dir
 
 cd $docroot_dir
 ln -nfs temp webdav
@@ -59,23 +61,23 @@ echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 cd $curdir
 if [ $sys -eq 1 ]; then
   #tmpfiles
-  #tf=/usr/lib/tmpfiles.d/lighttpd.conf
-  #tf2=/usr/lib/tmpfiles.d/lighttpd.tmpfile.conf
-  #if [ -e $tf2 ]; then
-  #  tf=$tf2
-  #fi
+  tf=/usr/lib/tmpfiles.d/lighttpd.conf
+  tf2=/usr/lib/tmpfiles.d/lighttpd.tmpfile.conf
+  if [ -e $tf2 ]; then
+    tf=$tf2
+  fi
   
-  #if [ -e $tf ]; then
-   #echo "d $socket_dir 0750 $user $group -" > tmpfiles
-   #echo "d $log_dir 0750 $user $group -" >> tmpfiles
-   #echo "d $cache_dir 0750 $user $group -" >> tmpfiles
-   #echo "d $cache_dir/compress 0750 $user $group -" >> tmpfiles
-   #echo "d $cache_dir/uploads 0750 $user $group -" >> tmpfiles
-   #sudo cp -f tmpfiles $tf
-    #echo
-    #echo make $tf
-    #echo
-  #fi
+  if [ -e $tf ]; then
+   echo "d $socket_dir 0750 $user $group -" > tmpfiles
+   echo "d $log_dir 0750 $user $group -" >> tmpfiles
+   echo "d $cache_dir 0750 $user $group -" >> tmpfiles
+   echo "d $cache_dir/compress 0750 $user $group -" >> tmpfiles
+   echo "d $cache_dir/uploads 0750 $user $group -" >> tmpfiles
+   sudo cp -f tmpfiles $tf
+    echo
+    echo make $tf
+    echo
+  fi
   
   svc=/usr/lib/systemd/system/lighttpd.service
   cat $svc | grep '^ProtectHome=read-only' > /dev/null

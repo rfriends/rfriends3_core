@@ -58,6 +58,11 @@ cd $curdir
 if [ $sys -eq 1 ]; then
   #tmpfiles
   tf=/usr/lib/tmpfiles.d/lighttpd.conf
+  tf2=/usr/lib/tmpfiles.d/lighttpd.tmpfile.conf
+  if [ -e $tf2 ]; then
+    tf=$tf2
+  fi
+  
   if [ -e $tf ]; then
    echo "d $socket_dir 0750 $user $group -" > tmpfiles
    echo "d $log_dir 0750 $user $group -" >> tmpfiles

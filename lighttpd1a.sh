@@ -1,5 +1,6 @@
 #!/bin/sh
 # lighttpd on1a
+# 2025/04/26
 #
 onver=on1a
 

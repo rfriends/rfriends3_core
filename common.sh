@@ -19,7 +19,8 @@
 # 4.8 2025/04/18 mod
 # 4.9 2025/04/20 bindir
 # 5.0 2025/04/21 app
-ver=5.0
+# 5.1 2025/04/26 /usr/lib/tmpfiles.d/
+ver=5.1
 # -----------------------------------------
 echo
 echo start install_common $ver

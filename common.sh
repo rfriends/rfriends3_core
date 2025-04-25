@@ -195,6 +195,7 @@ elif [ $optlighttpd = "on1a" ]; then
   export log_dir="$PREFIX/var/log/lighttpd"
 
   export php_dir="$PREFIX/usr/bin"
+  export pid_dir="$PREFIX/run"
   export socket_dir="$PREFIX/run/lighttpd"
   sh lighttpd1a.sh
 elif [ $optlighttpd = "on2b" ]; then

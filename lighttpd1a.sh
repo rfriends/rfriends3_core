@@ -57,23 +57,23 @@ echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 cd $curdir
 if [ $sys -eq 1 ]; then
   #tmpfiles
-  tf=/usr/lib/tmpfiles.d/lighttpd.conf
-  tf2=/usr/lib/tmpfiles.d/lighttpd.tmpfile.conf
-  if [ -e $tf2 ]; then
-    tf=$tf2
-  fi
+  #tf=/usr/lib/tmpfiles.d/lighttpd.conf
+  #tf2=/usr/lib/tmpfiles.d/lighttpd.tmpfile.conf
+  #if [ -e $tf2 ]; then
+  #  tf=$tf2
+  #fi
   
-  if [ -e $tf ]; then
-   echo "d $socket_dir 0750 $user $group -" > tmpfiles
-   echo "d $log_dir 0750 $user $group -" >> tmpfiles
-   echo "d $cache_dir 0750 $user $group -" >> tmpfiles
-   echo "d $cache_dir/compress 0750 $user $group -" >> tmpfiles
-   echo "d $cache_dir/uploads 0750 $user $group -" >> tmpfiles
-   sudo cp -f tmpfiles $tf
-    echo
-    echo make $tf
-    echo
-  fi
+  #if [ -e $tf ]; then
+   #echo "d $socket_dir 0750 $user $group -" > tmpfiles
+   #echo "d $log_dir 0750 $user $group -" >> tmpfiles
+   #echo "d $cache_dir 0750 $user $group -" >> tmpfiles
+   #echo "d $cache_dir/compress 0750 $user $group -" >> tmpfiles
+   #echo "d $cache_dir/uploads 0750 $user $group -" >> tmpfiles
+   #sudo cp -f tmpfiles $tf
+    #echo
+    #echo make $tf
+    #echo
+  #fi
   
   svc=/usr/lib/systemd/system/lighttpd.service
   cat $svc | grep '^ProtectHome=read-only' > /dev/null

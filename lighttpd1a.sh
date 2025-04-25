@@ -90,9 +90,10 @@ if [ $sys -eq 1 ]; then
     echo ProtectHome=read-only -> false
     echo
   fi
-  
-  sudo systemctl enable $lighttpd
+
   sudo systemctl restart $lighttpd
+  sudo systemctl enable $lighttpd
+
   systemctl status $lighttpd
 else 
   sudo service $lighttpd restart

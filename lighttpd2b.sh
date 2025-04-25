@@ -82,6 +82,9 @@ if [ $sys -eq 1 ]; then
     sed -e s%^ProtectHome=read-only%ProtectHome=false% $svc > svc.service
     sudo cp -f svc.service $svc
     sudo systemctl daemon-reload
+    echo
+    echo ProtectHome=read-only -> false
+    echo
   fi
   sudo systemctl enable $lighttpd
   sudo systemctl restart $lighttpd

@@ -66,6 +66,10 @@ if [ $sys -eq 1 ]; then
     echo ProtectHome=read-only -> false
     echo
   fi
+
+  sudo systemctl stop apache2
+  sudo systemctl disable apache2
+    
   sudo systemctl enable $lighttpd
   sudo systemctl restart $lighttpd
   systemctl status $lighttpd

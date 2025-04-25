@@ -28,8 +28,10 @@ sudo cp -f lighttpd.conf6 $conf_dir/lighttpd.conf
 
 # socket_dir
 sudo mkdir -p $socket_dir
-sudo chown -R $user:$group $socket_dir
-echo socket_dir : $user $group $socket_dir
+sudo mkdir $socket_dir/compress
+sudo mkdir $socket_dir/uploads
+#sudo chown -R $user:$group $socket_dir
+echo socket_dir : $socket_dir
 
 # cache_dir
 sudo mkdir -p $cache_dir/uploads
@@ -43,8 +45,8 @@ echo log_dir : $user $group $log_dir
 
 # pid_dir
 sudo mkdir -p $pid_dir
-sudo chown -R $user:$group $pid_dir
-echo pid_dir : $user $group $pid_dir
+#sudo chown -R $user:$group $pid_dir
+echo pid_dir : $pid_dir
 
 cd $docroot_dir
 ln -nfs temp webdav

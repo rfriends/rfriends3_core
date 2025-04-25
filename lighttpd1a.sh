@@ -56,6 +56,20 @@ echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 # -----------------------------------------
 cd $curdir
 if [ $sys -eq 1 ]; then
+  #tmpfiles
+  tf=/usr/lib/tmpfiles.d/lighttpd.conf
+  if [ -e $tf ]; then
+   echo "d $socket_dir 0750 $user $group -" > tmpfiles
+   echo "d $log_dir 0750 $user $group -" >> tmpfiles
+   echo "d $cache_dir 0750 $user $group -" >> tmpfiles
+   echo "d $cache_dir/compress 0750 $user $group -" >> tmpfiles
+   echo "d $cache_dir/uploads 0750 $user $group -" >> tmpfiles
+   sudo cp -f tmpfiles $tf
+    echo
+    echo make $tf
+    echo
+  fi
+  
   svc=/usr/lib/systemd/system/lighttpd.service
   cat $svc | grep '^ProtectHome=read-only' > /dev/null
   if [ $? = 0 ]; then
@@ -66,12 +80,9 @@ if [ $sys -eq 1 ]; then
     echo ProtectHome=read-only -> false
     echo
   fi
-
-  #sudo systemctl stop apache2
-  #sudo systemctl disable apache2
-
-  sudo systemctl restart $lighttpd
+  
   sudo systemctl enable $lighttpd
+  sudo systemctl restart $lighttpd
   systemctl status $lighttpd
 else 
   sudo service $lighttpd restart

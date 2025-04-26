@@ -88,14 +88,7 @@ if [ $sys -eq 1 ]; then
     echo
     echo ProtectHome=read-only -> false
     echo
-    sudo systemctl enable $lighttpd
     sudo systemctl daemon-reload
-    sudo systemctl start $lighttpd
-    sudo touch $conf_dir/${onver}_x
-    echo --------------
-    echo please reboot
-    echo --------------
-    exit 0
   fi
 
   sudo systemctl restart $lighttpd

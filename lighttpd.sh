@@ -32,10 +32,10 @@ echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 if [ $sys -eq 1 ]; then
   sudo systemctl enable $lighttpd
   sudo systemctl restart $lighttpd
-  systemctl status $lighttpd
+  sudo systemctl status $lighttpd
 else 
   sudo service $lighttpd restart
-  service $lighttpd status
+  sudo service $lighttpd status
 fi
 
 exit 0

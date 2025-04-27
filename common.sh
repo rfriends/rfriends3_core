@@ -133,6 +133,7 @@ sudo $cmd php-cli php-zip php-mbstring php-json php-curl
 sudo $cmd php-intl
 sudo $cmd php-xml
 sudo $cmd php-simplexml
+sudo $cmd php-openssl
 
 sudo $cmd $app_openssh
 sudo $cmd $app_cron

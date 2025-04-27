@@ -10,10 +10,13 @@ ver=1.1
 echo start $ver
 echo
 # -----------------------------------------
-# enforceをPermissiveに設定
-sudo setenforce 0
-# 常に設定したい場合
-#sudo sed -i "/^SELINUX=enforcing/c SELINUX=Permissive" /etc/selinux/config
+echo まず、以下の設定（セキュリティOFF）で実行し、 
+echo うまくいったらセキュリティ設定を行ってください。
+echo SELINUX=Disabled
+echo firewalld disable
+#
+# SELINUXをDisabledに設定
+sudo sed -i "/^SELINUX=enforcing/c SELINUX=Disabled" /etc/selinux/config
 
 sudo systemctl status firewalld　> /dev/null
 if [ $? = 0 ]; then

@@ -44,6 +44,7 @@ echo cache_dir : $cache_dir
 # log_dir
 sudo mkdir $log_dir
 sudo chown $user:$group $log_dir
+sudo rm $log_dir/error.log
 echo log_dir : $user $group $log_dir
 
 # pid_dir

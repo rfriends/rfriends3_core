@@ -94,6 +94,17 @@ if [ $user = "root" ]; then
 fi
 # =========================================
 echo
+echo set timezone to tokyo
+echo
+# =========================================
+if [ $sys -eq 1 ]; then
+  sudo timedatectl set-timezone Asia/Tokyo
+else 
+  #sudo cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime  
+  sudo tzsetup Asia/Tokyo   
+fi
+# =========================================
+echo
 echo install tools
 echo
 # =========================================

@@ -45,7 +45,7 @@ export app_atomicparsley="atomicparsley"
 #
 sudo apk update
 sudo apk --update-cache add tzdata
-sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+#sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err

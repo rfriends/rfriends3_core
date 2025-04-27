@@ -120,6 +120,8 @@ fi
 echo
 echo install tools
 echo
+echo 共通のため、ディストリビューションによりエラーが出ます
+echo
 # =========================================
 sudo $cmd unzip nano vim at wget curl
 sudo $cmd p7zip
@@ -128,8 +130,8 @@ sudo $cmd iproute2
 
 sudo $cmd php
 sudo $cmd php-common
-sudo $cmd php-ctype
 sudo $cmd php-cli php-zip php-mbstring php-json php-curl 
+sudo $cmd php-ctype
 sudo $cmd php-intl
 sudo $cmd php-xml
 sudo $cmd php-simplexml
@@ -139,7 +141,6 @@ sudo $cmd $app_openssh
 sudo $cmd $app_cron
 sudo $cmd $app_ffmpeg
 sudo $cmd $app_chromium
-
 # ----------------------------------------- atomicparsley
 if [ $app_atomicparsley = "atomicparsley" ]; then
   sudo $cmd atomicparsley

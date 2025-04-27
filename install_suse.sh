@@ -8,6 +8,20 @@ ver=1.0
 echo start $ver
 echo
 # -----------------------------------------
+echo まず、以下の設定（セキュリティOFF）で実行し、 
+echo うまくいったらセキュリティ設定を行ってください。
+echo SELINUX=Disabled
+echo firewalld disable
+#
+# SELINUXをDisabledに設定
+sudo sed -i "/^SELINUX=enforcing/c SELINUX=Disabled" /etc/selinux/config
+
+sudo systemctl status firewalld　> /dev/null
+if [ $? = 0 ]; then
+  sudo systemctl stop firewalld
+  sudo systemctl disable firewalld
+fi
+# -----------------------------------------
 export distro="suse"
 export cmd="zypper install -y"
 export cmdupdate="zypper update"
@@ -36,8 +50,6 @@ export app_ffmpeg="ffmpeg"
 export app_chromium="chromium-browser"
 export app_atomicparsley="rpm"
 #
-sudo systemctl stop firewalld
-sudo systemctl disable firewalld
 sudo zypper refresh
 sudo zypper update
 sudo $cmd sysvinit-tools

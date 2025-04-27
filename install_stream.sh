@@ -9,8 +9,6 @@ ver=1.1
 # -----------------------------------------
 echo start $ver
 echo
-# タイムゾーンを東京に
-timedatectl set-timezone Asia/Tokyo
 # -----------------------------------------
 # enforceをPermissiveに設定
 sudo setenforce 0

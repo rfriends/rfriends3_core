@@ -88,11 +88,11 @@ if [ $sys -eq 1 ]; then
   fi
   sudo systemctl enable $lighttpd
   sudo systemctl restart $lighttpd
-  systemctl status $lighttpd
+  sudo systemctl status $lighttpd
 else 
   sudo service $lighttpd enable
   sudo service $lighttpd restart
-  service $lighttpd status
+  sudo service $lighttpd status
 fi
 
 sudo touch $conf_dir/$onver

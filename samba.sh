@@ -21,10 +21,10 @@ EOF
 if [ $sys -eq 1 ]; then
   sudo systemctl enable $smbd
   sudo systemctl restart $smbd
-  systemctl status $smbd
+  sudo systemctl status $smbd
 else 
   sudo service $smbd restart
-  service $smbd status
+  sudo service $smbd status
 fi
 
 exit 0

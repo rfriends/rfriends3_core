@@ -123,7 +123,8 @@ echo
 echo 共通のため、ディストリビューションによりエラーが出ます
 echo
 # =========================================
-sudo $cmd unzip nano vim at wget curl
+sudo $cmd unzip nano vim wget curl
+sudo $cmd at
 sudo $cmd p7zip
 sudo $cmd tzdata
 sudo $cmd iproute2

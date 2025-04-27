@@ -90,6 +90,7 @@ if [ $sys -eq 1 ]; then
   sudo systemctl restart $lighttpd
   systemctl status $lighttpd
 else 
+  sudo service $lighttpd enable
   sudo service $lighttpd restart
   service $lighttpd status
 fi

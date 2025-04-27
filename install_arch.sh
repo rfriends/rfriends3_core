@@ -45,9 +45,6 @@ export app_atomicparsley="atomicparsley"
 sudo pacman -Sy --noconfirm
 sudo pacman -Syu --noconfirm
 
-#sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-timedatectl set-timezone Asia/Tokyo
-
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err
 cat common.err

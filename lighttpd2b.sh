@@ -87,12 +87,12 @@ if [ $sys -eq 1 ]; then
     echo
   fi
   sudo systemctl enable $lighttpd
-  for i in {1..10}
+  for i in {1..5}
   do
-    echo wait 1 secs
-    sleep 1
+    #echo wait 2 secs
+    sleep 2
     sudo systemctl restart $lighttpd
-    sudo systemctl is-active $lighttpd
+    sudo systemctl is-active $lighttpd > /dev/null
     if [ $? = 0 ]; then
       break;
     fi

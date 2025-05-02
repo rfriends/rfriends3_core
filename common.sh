@@ -112,6 +112,9 @@ fi
 if [ -z "$app_atomicparsley" ]; then
   export app_atomicparsley="atomicparsley"
 fi
+if [ -z "$app_iproute" ]; then
+  export app_iproute="iproute2"
+fi
 # =========================================
 if [ $user = "root" ]; then
   echo ユーザがrootではインストールできません。
@@ -131,14 +134,13 @@ fi
 echo
 echo install tools
 echo
-echo 共通のため、ディストリビューションによりエラーが出ます
+echo 共通処理のため、ディストリビューションによりnot found等のエラーが出ます
 echo
 # =========================================
 sudo $cmd unzip nano vim wget curl
 sudo $cmd at
 sudo $cmd p7zip
 sudo $cmd tzdata
-sudo $cmd iproute2
 
 sudo $cmd php
 sudo $cmd php-common
@@ -149,6 +151,7 @@ sudo $cmd php-xml
 sudo $cmd php-simplexml
 sudo $cmd php-openssl
 
+sudo $cmd $app_iproute
 sudo $cmd $app_openssh
 sudo $cmd $app_cron
 sudo $cmd $app_ffmpeg

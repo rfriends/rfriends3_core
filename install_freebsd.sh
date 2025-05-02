@@ -8,6 +8,15 @@
 ver=1.1
 echo start $ver
 echo
+sudo pkg update
+if [ $? != 0 ]; then
+  echo
+  echo install_freebsd.sh
+  echo 実行するshを間違っていないか確認してください。
+  echo
+  cat /etc/os-release
+  exit 1
+fi
 # -----------------------------------------
 export distro="freebsd"
 export cmd="pkg install -y"
@@ -33,7 +42,7 @@ export atd="atd"
 export cron="cron"
 export ipcmd="ifconfig"
 #
-sudo pkg update
+
 
 sh common_bsd.sh 2>common_bsd.err | tee common_bsd.log
 echo --- commmon_bsd.err

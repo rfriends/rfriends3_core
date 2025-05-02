@@ -151,6 +151,9 @@ sudo $cmd php-openssl
 sudo $cmd $app_openssh
 sudo $cmd $app_cron
 sudo $cmd $app_ffmpeg
+if [ $? != 0 ]; then
+  sudo $cmd ffmpeg
+fi
 sudo $cmd $app_chromium
 # ----------------------------------------- atomicparsley
 if [ $app_atomicparsley = "atomicparsley" ]; then
@@ -158,6 +161,9 @@ if [ $app_atomicparsley = "atomicparsley" ]; then
 elif [ $app_atomicparsley = "rpm" ]; then
   #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
   sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
+  if [ $? != 0 ]; then
+    sudo rpm -ivh AtomicParsley-0.9.5-16.fc33.x86_64.rpm
+  fi
 fi
 if [ ! -e /usr/bin/AtomicParsley ]; then
   # arch

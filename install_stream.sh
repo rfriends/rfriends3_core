@@ -9,6 +9,15 @@ ver=1.1
 # -----------------------------------------
 echo start $ver
 echo
+sudo dnf update
+if [ $? != 0 ]; then
+  echo
+  echo install_stream.sh
+  echo 実行するshを間違っていないか確認してください。
+  echo
+  cat /etc/os-release
+  exit 1
+fi
 # -----------------------------------------
 echo まず、以下の設定（セキュリティOFF）で実行し、 
 echo うまくいったらセキュリティ設定を行ってください。

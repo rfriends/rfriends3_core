@@ -43,6 +43,7 @@ export app_cron="cron"
 export app_ffmpeg="ffmpeg"
 export app_chromium="chromium-browser"
 export app_atomicparsley="atomicparsley"
+export app_iproute="iproute2"
 #
 sudo apt-get install chromium -y
 sh common.sh 2>common.err | tee common.log

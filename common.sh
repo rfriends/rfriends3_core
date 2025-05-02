@@ -156,15 +156,44 @@ if [ $? != 0 ]; then
 fi
 sudo $cmd $app_chromium
 # ----------------------------------------- atomicparsley
+ap7=AtomicParsley-0.9.5-13.fc30.x86_64.rpm
+ap8=AtomicParsley-0.9.5-16.fc33.x86_64.rpm
+ap9=AtomicParsley-0.9.5-19.fc36.x86_64.rpm
+
+ap=0
 if [ $app_atomicparsley = "atomicparsley" ]; then
-  sudo $cmd atomicparsley
+  ap=1
 elif [ $app_atomicparsley = "rpm" ]; then
-  #wget https://mirror.perchsecurity.com/pub/archive/fedora/linux/releases/36/Everything/x86_64/os/Packages/a/AtomicParsley-0.9.5-19.fc36.x86_64.rpm  
-  sudo rpm -ivh AtomicParsley-0.9.5-19.fc36.x86_64.rpm
-  if [ $? != 0 ]; then
-    sudo rpm -ivh AtomicParsley-0.9.5-16.fc33.x86_64.rpm
+  sudo rpm -i --test $ap7
+  if [ $? = 0 ]; then
+    ap=7
+  fi
+  sudo rpm -i --test $ap8
+  if [ $? = 0 ]; then
+    ap=8 
+  fi
+  sudo rpm -i --test $ap9
+  if [ $? = 0 ]; then
+    ap=9
   fi
 fi
+
+if [ ap = 1 ]; then
+  echo atomicparsley
+  sudo $cmd atomicparsley
+elif [ ap = 7 ]; then
+  echo $ap7
+  sudo rpm -ivh $ap7
+elif [ ap = 8 ]; then
+  echo $ap8
+  sudo rpm -ivh $ap8
+elif [ ap = 9 ]; then
+  echo $ap9
+  sudo rpm -ivh $ap9
+else
+  echo AtomicParsley not found
+fi
+# ----------------------------------------- 
 if [ ! -e /usr/bin/AtomicParsley ]; then
   # arch
   sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley

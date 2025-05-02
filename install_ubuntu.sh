@@ -11,7 +11,7 @@ echo
 sudo apt-get update
 if [ $? != 0 ]; then
   echo
-  echo install_debian.sh
+  echo install_ubuntu.sh
   echo 実行するshを間違っていないか確認してください。
   echo
   cat /etc/os-release

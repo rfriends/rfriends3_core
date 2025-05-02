@@ -20,7 +20,8 @@
 # 4.9 2025/04/20 bindir
 # 5.0 2025/04/21 app
 # 5.1 2025/04/26 /usr/lib/tmpfiles.d/
-ver=5.1
+# 5.2 2025/05/03 atomicparsley
+ver=5.2
 # -----------------------------------------
 echo
 echo start install_common $ver

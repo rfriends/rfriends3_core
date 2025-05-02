@@ -76,6 +76,7 @@ export app_cron="cronie"
 export app_ffmpeg="ffmpeg-free"
 export app_chromium="chromium"
 export app_atomicparsley="rpm"
+export app_iproute="iproute"
 #
 sudo dnf update
 

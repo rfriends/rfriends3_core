@@ -9,6 +9,15 @@
 ver=1.0
 echo start $ver
 echo
+sudo apk update
+if [ $? != 0 ]; then
+  echo
+  echo install_alpine.sh
+  echo 実行するshを間違っていないか確認してください。
+  echo
+  cat /etc/os-release
+  exit 1
+fi
 # -----------------------------------------
 testing="https://dl-cdn.alpinelinux.org/alpine/edge/testing"
 sudo grep $testing /etc/apk/repositories
@@ -43,7 +52,6 @@ export app_ffmpeg="ffmpeg"
 export app_chromium="chromium"
 export app_atomicparsley="atomicparsley"
 #
-sudo apk update
 sudo apk --update-cache add tzdata
 #sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 

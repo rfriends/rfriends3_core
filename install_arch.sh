@@ -16,6 +16,15 @@ ver=1.0
 # -----------------------------------------
 echo start $ver
 echo
+sudo pacman -Syyu --noconfirm
+if [ $? != 0 ]; then
+  echo
+  echo install_arch.sh
+  echo 実行するshを間違っていないか確認してください。
+  echo
+  cat /etc/os-release
+  exit 1
+fi
 # -----------------------------------------
 export distro="arch"
 export cmd="pacman -S --noconfirm"
@@ -42,9 +51,6 @@ export app_ffmpeg="ffmpeg"
 export app_chromium="chromium"
 export app_atomicparsley="atomicparsley"
 #
-sudo pacman -Sy --noconfirm
-sudo pacman -Syu --noconfirm
-
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err
 cat common.err

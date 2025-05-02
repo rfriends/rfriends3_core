@@ -51,6 +51,7 @@ export app_cron="cronie"
 export app_ffmpeg="ffmpeg"
 export app_chromium="chromium"
 export app_atomicparsley="atomicparsley"
+export app_iproute="iproute2"
 #
 sudo apk --update-cache add tzdata
 #sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime

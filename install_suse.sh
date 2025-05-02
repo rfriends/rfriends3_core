@@ -58,6 +58,7 @@ export app_cron="cron"
 export app_ffmpeg="ffmpeg"
 export app_chromium="chromium-browser"
 export app_atomicparsley="rpm"
+export app_iproute="iproute2"
 #
 sudo zypper refresh
 sudo $cmd sysvinit-tools

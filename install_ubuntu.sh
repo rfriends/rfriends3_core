@@ -8,6 +8,15 @@
 ver=1.2
 echo start $ver
 echo
+sudo apt-get update
+if [ $? != 0 ]; then
+  echo
+  echo install_debian.sh
+  echo 実行するshを間違っていないか確認してください。
+  echo
+  cat /etc/os-release
+  exit 1
+fi
 # -----------------------------------------
 export distro="ubuntu"
 export cmd="apt-get install -y"
@@ -35,7 +44,6 @@ export app_ffmpeg="ffmpeg"
 export app_chromium="chromium-browser"
 export app_atomicparsley="atomicparsley"
 #
-sudo apt-get update
 sudo apt-get install chromium -y
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err

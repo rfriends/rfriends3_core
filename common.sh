@@ -165,30 +165,30 @@ ap=0
 if [ $app_atomicparsley = "atomicparsley" ]; then
   ap=1
 elif [ $app_atomicparsley = "rpm" ]; then
-  sudo rpm -i --test $ap7
+  sudo rpm -i --test $ap7 2> /dev/null
   if [ $? = 0 ]; then
     ap=7
   fi
-  sudo rpm -i --test $ap8
+  sudo rpm -i --test $ap8 2> /dev/null
   if [ $? = 0 ]; then
     ap=8 
   fi
-  sudo rpm -i --test $ap9
+  sudo rpm -i --test $ap9 2> /dev/null
   if [ $? = 0 ]; then
     ap=9
   fi
 fi
 
-if [ ap = 1 ]; then
+if [ $ap = 1 ]; then
   echo atomicparsley
   sudo $cmd atomicparsley
-elif [ ap = 7 ]; then
+elif [ $ap = 7 ]; then
   echo $ap7
   sudo rpm -ivh $ap7
-elif [ ap = 8 ]; then
+elif [ $ap = 8 ]; then
   echo $ap8
   sudo rpm -ivh $ap8
-elif [ ap = 9 ]; then
+elif [ $ap = 9 ]; then
   echo $ap9
   sudo rpm -ivh $ap9
 else

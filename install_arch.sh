@@ -50,6 +50,7 @@ export app_cron="cronie"
 export app_ffmpeg="ffmpeg"
 export app_chromium="chromium"
 export app_atomicparsley="atomicparsley"
+export app_iproute="iproute2"
 #
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err

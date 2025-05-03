@@ -90,14 +90,16 @@ if [ $sys -eq 1 ]; then
   fi
   
   svc=/usr/lib/systemd/system/lighttpd.service
-  cat $svc | grep '^ProtectHome=read-only' > /dev/null
-  if [ $? = 0 ]; then
-    sed -e s%^ProtectHome=read-only%ProtectHome=false% $svc > svc.service
-    sudo cp -f svc.service $svc
-    echo
-    echo ProtectHome=read-only -> false
-    echo
-    sudo systemctl daemon-reload
+  if [ -e $svc ]; then
+    cat $svc | grep '^ProtectHome=read-only' > /dev/null
+    if [ $? = 0 ]; then
+      sed -e s%^ProtectHome=read-only%ProtectHome=false% $svc > svc.service
+      sudo cp -f svc.service $svc
+      echo
+      echo ProtectHome=read-only -> false
+      echo
+      sudo systemctl daemon-reload
+    fi
   fi
   
   sudo systemctl enable $lighttpd

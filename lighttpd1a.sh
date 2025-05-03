@@ -28,9 +28,9 @@ sudo cp -f lighttpd.conf6 $conf_dir/lighttpd.conf
 
 # for old version
 if [ -e /usr/share/lighttpd/create-mime.assign.pl ]; then
-  sed -e %create-mime.conf.pl%create-mime.assign.pl% lighttd.conf6 > lighttpd.conf7
+  sed -e s%create-mime.conf.pl%create-mime.assign.pl% lighttpd.conf6 > lighttpd.conf7
   sudo cp -f lighttpd.conf7 $conf_dir/lighttpd.conf
-  echo create-mime.assign.pl (old version)
+  echo 'create-mime.assign.pl (old version)'
 fi
 
 #sudo chown root:root $conf_dir/lighttpd.conf

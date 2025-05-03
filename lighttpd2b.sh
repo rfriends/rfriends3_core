@@ -77,15 +77,18 @@ echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 cd $curdir
 if [ $sys -eq 1 ]; then
   svc=/usr/lib/systemd/system/lighttpd.service
-  cat $svc | grep '^ProtectHome=read-only' > /dev/null
-  if [ $? = 0 ]; then
-    sed -e s%^ProtectHome=read-only%ProtectHome=false% $svc > svc.service
-    sudo cp -f svc.service $svc
-    sudo systemctl daemon-reload
-    echo
-    echo ProtectHome=read-only -> false
-    echo
+  if [ -e $svc ]; then
+    cat $svc | grep '^ProtectHome=read-only' > /dev/null
+    if [ $? = 0 ]; then
+      sed -e s%^ProtectHome=read-only%ProtectHome=false% $svc > svc.service
+      sudo cp -f svc.service $svc
+      sudo systemctl daemon-reload
+      echo
+      echo ProtectHome=read-only -> false
+      echo
+    fi
   fi
+  
   sudo systemctl enable $lighttpd
   if [ $? = 0 ]; then
     for i in {1..5}

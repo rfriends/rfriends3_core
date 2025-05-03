@@ -36,27 +36,27 @@ fi
 #sudo chown root:root $conf_dir/lighttpd.conf
 
 # socket_dir
-sudo mkdir $socket_dir
+sudo mkdir -p $socket_dir
 sudo chown $user:$group $socket_dir
 echo socket_dir : $socket_dir
 
 # cache_dir
-sudo mkdir $cache_dir
-sudo mkdir $cache_dir/uploads
-sudo mkdir $cache_dir/compress
+#sudo mkdir -p $cache_dir
+sudo mkdir -p $cache_dir/uploads
+sudo mkdir -p $cache_dir/compress
 sudo chown $user:$group $cache_dir
 sudo chown $user:$group $cache_dir/uploads
 sudo chown $user:$group $cache_dir/compress
 echo cache_dir : $cache_dir
 
 # log_dir
-sudo mkdir $log_dir
+sudo mkdir -p $log_dir
 sudo chown $user:$group $log_dir
 sudo rm $log_dir/error.log
 echo log_dir : $user $group $log_dir
 
 # pid_dir
-#sudo mkdir $pid_dir
+#sudo mkdir -p $pid_dir
 #sudo chown $user:$group $pid_dir
 #echo pid_dir : $pid_dir
 

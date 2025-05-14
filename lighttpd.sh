@@ -1,6 +1,8 @@
 #!/bin/sh
 # lighttpd on1
 #
+echo "lighttpd on"
+#
 sudo $cmd lighttpd php-cgi
 
 if [ $distro = "suse" ] || [ $distro = "alpine" ]; then

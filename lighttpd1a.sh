@@ -2,6 +2,8 @@
 # lighttpd on1a
 # 2025/04/26
 #
+echo "lighttpd on1a"
+#
 onver=on1a
 
 docroot_dir=$homedir/rfriends3/script/html

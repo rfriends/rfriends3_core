@@ -2,6 +2,8 @@
 # lighttpd on2b
 # 2025/04/25
 #
+echo "lighttpd on2b"
+#
 onver="on2b"
 # -----------------------------------------
 # log_root

@@ -1,3 +1,5 @@
+# lighttpd.conf.skel1a
+#
 server.modules = (
 	"mod_indexfile",
 	"mod_access",

@@ -21,7 +21,8 @@
 # 5.0 2025/04/21 app
 # 5.1 2025/04/26 /usr/lib/tmpfiles.d/
 # 5.2 2025/05/03 atomicparsley
-ver=5.2
+# 5.3 2025/07/18 permitroot
+ver=5.3
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -71,6 +72,9 @@ if [ -z $phpdir ]; then
   export phpdir="/usr/bin"
 fi
 # ----------------------------------------- option
+if [ -z "$permitroot" ]; then
+  export permitroot="off"
+fi
 if [ -z "$optlighttpd" ]; then
   export optlighttpd="off"
 fi
@@ -116,7 +120,7 @@ if [ -z "$app_iproute" ]; then
   export app_iproute="iproute2"
 fi
 # =========================================
-if [ $user = "root" ]; then
+if [ $user = "root" ] && [ $permitroot = "off" ]; then
   echo ユーザがrootではインストールできません。
   exit 1
 fi

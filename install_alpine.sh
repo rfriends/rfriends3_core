@@ -5,8 +5,9 @@
 # =========================================
 # 1.0 2025/04/15 new
 # 1.1 2025/04/21 mod
+# 1.2 2025/07/18 mod
 #
-ver=1.0
+ver=1.3
 echo start $ver
 echo
 sudo apk update
@@ -36,6 +37,7 @@ export user=`whoami`
 #export PREFIX=""
 #export phpdir="/usr/bin"
 
+export permitroot="off"
 export optlighttpd="on2b"
 export optsamba="on"
 export optvimrc="on"

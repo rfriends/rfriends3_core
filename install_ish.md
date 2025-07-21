@@ -75,6 +75,7 @@ sudo grep -x "$user" /etc/at.allow
 if [ $? -eq 1 ]; then
   echo $user | sudo tee -a /etc/at.allow
 fi
+sudo rc-update add atd
 # -----------------------------------------
 rc-status
 # finish

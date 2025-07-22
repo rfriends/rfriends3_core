@@ -9,8 +9,8 @@ ver=1.0
 echo start $ver
 echo
 #sudo apk update
-cd /ish
-if [ $? != 0 ]; then
+
+if [ ! -d /ish ]; then
   echo
   echo install_ish.sh
   echo 実行するshを間違っていないか確認してください。
@@ -25,7 +25,7 @@ if [ $? -eq 1 ]; then
   echo $testing | sudo tee -a /etc/apk/repositories
 fi
 # -----------------------------------------
-cd ~/
+
 export distro="alpine"
 export cmd="apk add"
 export cmdupdate="apk update"
@@ -58,11 +58,11 @@ export app_iproute="iproute2"
 sudo apk --update-cache add tzdata
 #sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-sudo apk add openrc 
-sudo apk add local
-sudo cp -f ish.start /etc/local.d/ish.start
-sudo chmod 700 /etc/local.d/ish.start
-sudo rc-update add local
+#sudo apk add openrc 
+#sudo apk add local
+#sudo cp -f ish.start /etc/local.d/ish.start
+#sudo chmod 700 /etc/local.d/ish.start
+#sudo rc-update add local
 
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err
@@ -73,10 +73,10 @@ sudo grep -x "$user" /etc/at.allow
 if [ $? -eq 1 ]; then
   echo $user | sudo tee -a /etc/at.allow
 fi
-sudo rc-service atd start
-sudo rc-update add atd
+#sudo rc-service atd start
+#sudo rc-update add atd
 # -----------------------------------------
-sudo rc-status
+#sudo rc-status
 # finish
 echo
 echo finished

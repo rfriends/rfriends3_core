@@ -25,6 +25,7 @@ if [ $? -eq 1 ]; then
   echo $testing | sudo tee -a /etc/apk/repositories
 fi
 # -----------------------------------------
+cd ~/
 export distro="alpine"
 export cmd="apk add"
 export cmdupdate="apk update"
@@ -36,10 +37,7 @@ export user=`whoami`
 #export PREFIX=""
 #export phpdir="/usr/bin"
 
-export permitroot="off"
-if []; then
-    export permitroot="on"
-fi
+export permitroot="on"
 export optlighttpd="off"
 export optsamba="off"
 export optvimrc="on"
@@ -60,6 +58,7 @@ export app_iproute="iproute2"
 sudo apk --update-cache add tzdata
 #sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
+sudo apk add tzdata
 sudo apk add openrc 
 sudo apk add local
 sudo cp -f ish.start /etc/local.d/ish.start
@@ -75,9 +74,10 @@ sudo grep -x "$user" /etc/at.allow
 if [ $? -eq 1 ]; then
   echo $user | sudo tee -a /etc/at.allow
 fi
+sudo rc-service atd start
 sudo rc-update add atd
 # -----------------------------------------
-rc-status
+sudo rc-status
 # finish
 echo
 echo finished

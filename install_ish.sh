@@ -3,9 +3,10 @@
 # install rfriends for iSH Shell(iPhone/iPad)
 #
 # =========================================
-# 1.0 2025/047/21 new
+# 1.0 2025/07/21 new
+# 1.1 2025/07/23 new
 #
-ver=1.0
+ver=1.1
 echo start $ver
 echo
 #sudo apk update
@@ -58,11 +59,11 @@ export app_iproute="iproute2"
 sudo apk --update-cache add tzdata
 #sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-#sudo apk add openrc 
+sudo apk add openrc 
 #sudo apk add local
-#sudo cp -f ish.start /etc/local.d/ish.start
-#sudo chmod 700 /etc/local.d/ish.start
-#sudo rc-update add local
+sudo cp -f ish.start /etc/local.d/ish.start
+sudo chmod 700 /etc/local.d/ish.start
+sudo rc-update add local
 
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err
@@ -74,7 +75,7 @@ if [ $? -eq 1 ]; then
   echo $user | sudo tee -a /etc/at.allow
 fi
 #sudo rc-service atd start
-#sudo rc-update add atd
+sudo rc-update add atd
 # -----------------------------------------
 #sudo rc-status
 # finish

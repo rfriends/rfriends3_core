@@ -4,9 +4,10 @@
 #
 # =========================================
 # 1.0 2025/07/21 new
-# 1.1 2025/07/23 new
+# 1.1 2025/07/23 
+# 1.2 2025/07/24 
 #
-ver=1.1
+ver=1.2
 echo start $ver
 echo
 #sudo apk update
@@ -20,11 +21,11 @@ if [ ! -d /ish ]; then
   exit 1
 fi
 # -----------------------------------------
-testing="https://dl-cdn.alpinelinux.org/alpine/edge/testing"
-sudo grep $testing /etc/apk/repositories
-if [ $? -eq 1 ]; then
-  echo $testing | sudo tee -a /etc/apk/repositories
-fi
+#testing="https://dl-cdn.alpinelinux.org/alpine/edge/testing"
+#sudo grep $testing /etc/apk/repositories
+#if [ $? -eq 1 ]; then
+#  echo $testing | sudo tee -a /etc/apk/repositories
+#fi
 # -----------------------------------------
 
 export distro="alpine"
@@ -61,9 +62,9 @@ sudo apk --update-cache add tzdata
 
 sudo apk add openrc 
 #sudo apk add local
-sudo cp -f ish.start /etc/local.d/ish.start
-sudo chmod 700 /etc/local.d/ish.start
-sudo rc-update add local
+#sudo cp -f ish.start /etc/local.d/ish.start
+#sudo chmod 700 /etc/local.d/ish.start
+#sudo rc-update add local
 
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err
@@ -76,6 +77,14 @@ if [ $? -eq 1 ]; then
 fi
 #sudo rc-service atd start
 sudo rc-update add atd
+
+sudo cp -f ish/ishcrond /etc/init.d/ishcrond
+sudo chmod 755 /etc/init.d/ishcrond
+sudo rc-update add ishcrond
+
+sudo cp -f ish/ishbg /etc/init.d/ishbg
+sudo chmod 755 /etc/init.d/ishbg
+sudo rc-update add ishbg
 # -----------------------------------------
 #sudo rc-status
 # finish

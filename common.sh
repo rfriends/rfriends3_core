@@ -22,7 +22,8 @@
 # 5.1 2025/04/26 /usr/lib/tmpfiles.d/
 # 5.2 2025/05/03 atomicparsley
 # 5.3 2025/07/18 permitroot
-ver=5.3
+# 5.4 2025/07/24 php-dom
+ver=5.4
 # -----------------------------------------
 echo
 echo start install_common $ver

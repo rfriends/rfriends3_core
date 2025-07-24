@@ -59,12 +59,7 @@ export app_iproute="iproute2"
 #
 sudo apk --update-cache add tzdata
 #sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-
 sudo apk add openrc 
-#sudo apk add local
-#sudo cp -f ish.start /etc/local.d/ish.start
-#sudo chmod 700 /etc/local.d/ish.start
-#sudo rc-update add local
 
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err
@@ -77,14 +72,14 @@ if [ $? -eq 1 ]; then
 fi
 #sudo rc-service atd start
 sudo rc-update add atd default
+# -----------------------------------------
+sudo rc-update local default
 
-sudo cp -f ish/ishcrond /etc/init.d/ishcrond
-sudo chmod 755 /etc/init.d/ishcrond
-#sudo rc-update add ishcrond default
+sudo cp -f ish/crond.start /etc/local.d/crond.start
+sudo chmod 700 /etc/init.d/crond.start
 
-sudo cp -f ish/ishbg /etc/init.d/ishbg
-sudo chmod 755 /etc/init.d/ishbg
-sudo rc-update add ishbg default
+sudo cp -f ish/location.start /etc/local.d/location.start
+sudo chmod 700 /etc/local.d/location.start
 # -----------------------------------------
 #sudo rc-status
 # finish

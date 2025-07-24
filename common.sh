@@ -154,6 +154,7 @@ sudo $cmd php-intl
 sudo $cmd php-xml
 sudo $cmd php-simplexml
 sudo $cmd php-openssl
+sudo $cmd php-dom
 
 sudo $cmd $app_iproute
 sudo $cmd $app_openssh

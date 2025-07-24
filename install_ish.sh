@@ -59,7 +59,7 @@ export app_iproute="iproute2"
 #
 sudo apk --update-cache add tzdata
 #sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-sudo apk add openrc 
+
 
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err
@@ -70,9 +70,9 @@ sudo grep -x "$user" /etc/at.allow
 if [ $? -eq 1 ]; then
   echo $user | sudo tee -a /etc/at.allow
 fi
-#sudo rc-service atd start
-sudo rc-update add atd default
 # -----------------------------------------
+sudo apk add openrc 
+sudo rc-update add atd default
 sudo rc-update add local default
 
 sudo cp -f ish/crond.start /etc/local.d/crond.start

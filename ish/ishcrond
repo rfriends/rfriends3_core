@@ -1,9 +1,0 @@
-#!/sbin/openrc-run
-
-description="run crond"
-
-command="/usr/sbin/crond"
-command_args=""
-command_background="YES"
-
-pidfile="/run/ishcrond.pid"

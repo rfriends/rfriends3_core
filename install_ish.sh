@@ -76,15 +76,15 @@ if [ $? -eq 1 ]; then
   echo $user | sudo tee -a /etc/at.allow
 fi
 #sudo rc-service atd start
-sudo rc-update add atd
+sudo rc-update add atd default
 
 sudo cp -f ish/ishcrond /etc/init.d/ishcrond
 sudo chmod 755 /etc/init.d/ishcrond
-sudo rc-update add ishcrond
+#sudo rc-update add ishcrond default
 
 sudo cp -f ish/ishbg /etc/init.d/ishbg
 sudo chmod 755 /etc/init.d/ishbg
-sudo rc-update add ishbg
+sudo rc-update add ishbg default
 # -----------------------------------------
 #sudo rc-status
 # finish

@@ -73,10 +73,10 @@ fi
 #sudo rc-service atd start
 sudo rc-update add atd default
 # -----------------------------------------
-sudo rc-update local default
+sudo rc-update add local default
 
 sudo cp -f ish/crond.start /etc/local.d/crond.start
-sudo chmod 700 /etc/init.d/crond.start
+sudo chmod 700 /etc/local.d/crond.start
 
 sudo cp -f ish/location.start /etc/local.d/location.start
 sudo chmod 700 /etc/local.d/location.start

@@ -21,7 +21,8 @@ if [ ! -d /ish ]; then
   exit 1
 fi
 # -----------------------------------------
-testing="@testing "
+#testing="@testing "
+testing=""
 edge="https://dl-cdn.alpinelinux.org/alpine/edge/testing"
 sudo grep $edge /etc/apk/repositories
 if [ $? -eq 1 ]; then

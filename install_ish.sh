@@ -21,11 +21,11 @@ if [ ! -d /ish ]; then
   exit 1
 fi
 # -----------------------------------------
-#testing="https://dl-cdn.alpinelinux.org/alpine/edge/testing"
-#sudo grep $testing /etc/apk/repositories
-#if [ $? -eq 1 ]; then
-#  echo $testing | sudo tee -a /etc/apk/repositories
-#fi
+testing="@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing"
+sudo grep $testing /etc/apk/repositories
+if [ $? -eq 1 ]; then
+  echo $testing | sudo tee -a /etc/apk/repositories
+fi
 # -----------------------------------------
 
 export distro="alpine"

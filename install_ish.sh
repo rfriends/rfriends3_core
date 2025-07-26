@@ -42,7 +42,7 @@ export user=`whoami`
 #export phpdir="/usr/bin"
 
 export permitroot="on"
-export optlighttpd="on2b"
+export optlighttpd="off"
 export optsamba="off"
 export optvimrc="on"
 

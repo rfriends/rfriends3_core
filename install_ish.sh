@@ -82,6 +82,9 @@ sudo chmod 700 /etc/local.d/crond.start
 
 sudo cp -f ish/location.start /etc/local.d/location.start
 sudo chmod 700 /etc/local.d/location.start
+
+sudo cp -f ish/lighttpd.start /etc/local.d/lighttpd.start
+sudo chmod 700 /etc/local.d/lighttpd.start
 # -----------------------------------------
 #sudo rc-status
 # finish

@@ -83,8 +83,12 @@ sudo chmod 700 /etc/local.d/crond.start
 sudo cp -f ish/location.start /etc/local.d/location.start
 sudo chmod 700 /etc/local.d/location.start
 
-sudo cp -f ish/lighttpd.start /etc/local.d/lighttpd.start
-sudo chmod 700 /etc/local.d/lighttpd.start
+if [ $optlighttpd = "off" ]; then
+  sudo rm /etc/local.d/lighttpd.start
+else
+  sudo cp -f ish/lighttpd.start /etc/local.d/lighttpd.start
+  sudo chmod 700 /etc/local.d/lighttpd.start
+fi
 # -----------------------------------------
 #sudo rc-status
 # finish

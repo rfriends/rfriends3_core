@@ -42,7 +42,7 @@ export user=`whoami`
 #export phpdir="/usr/bin"
 
 export permitroot="on"
-export optlighttpd="off"
+export optlighttpd="on2b"
 export optsamba="off"
 export optvimrc="on"
 
@@ -52,8 +52,9 @@ export atd="atd"
 export cron="crond"
 export ipcm="ip a"
 
-export app_openssh="openssh-server"
-export app_cron="cronie"
+#export app_openssh="openssh-server"
+export app_openssh="openssh"
+export app_cron="cron"
 export app_ffmpeg="ffmpeg"
 export app_chromium="chromium"
 export app_atomicparsley="atomicparsley"

@@ -6,8 +6,9 @@
 # 1.0 2025/07/21 new
 # 1.1 2025/07/23 
 # 1.2 2025/07/24 add ishcrond ishbg, remove local
+# 1.3 dev
 #
-ver=1.2
+ver=1.3
 echo start $ver
 echo
 #sudo apk update
@@ -28,6 +29,8 @@ sudo grep $edge /etc/apk/repositories
 if [ $? -eq 1 ]; then
   echo $testing$edge | sudo tee -a /etc/apk/repositories
 fi
+# -----------------------------------------
+export SCRIPT=rfriends3_dev_script.zip
 # -----------------------------------------
 
 export distro="alpine"

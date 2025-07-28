@@ -23,7 +23,8 @@
 # 5.2 2025/05/03 atomicparsley
 # 5.3 2025/07/18 permitroot
 # 5.4 2025/07/24 php-dom
-ver=5.4
+# 5.5 2025/07/28 SCRIPT
+ver=5.5
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -32,7 +33,9 @@ echo
 # -----------------------------------------
 export curdir=$(cd $(dirname $0);pwd)
 #
-export SCRIPT=rfriends3_latest_script.zip
+if [ -z "SCRIPT" ]; then
+  export SCRIPT=rfriends3_latest_script.zip
+fi
 # ----------------------------------------- systemd or init
 sys=`pgrep -o systemd`
 if [ $? -ne 0 ]; then

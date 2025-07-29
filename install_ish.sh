@@ -30,6 +30,9 @@ if [ $? -eq 1 ]; then
   echo $testing$edge | sudo tee -a /etc/apk/repositories
 fi
 # -----------------------------------------
+# 安定板
+#export SCRIPT=rfriends3_latest_script.zip
+# 開発版
 export SCRIPT=rfriends3_dev_script.zip
 # -----------------------------------------
 

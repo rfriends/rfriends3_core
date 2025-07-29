@@ -7,8 +7,9 @@
 # 1.1 2025/07/23 
 # 1.2 2025/07/24 add ishcrond ishbg, remove local
 # 1.3 dev
+# 1.4 
 #
-ver=1.3
+ver=1.4
 echo start $ver
 echo
 #sudo apk update
@@ -80,9 +81,6 @@ if [ $? -eq 1 ]; then
   echo $user | sudo tee -a /etc/at.allow
 fi
 # -----------------------------------------
-sudo rc-update add atd default
-sudo rc-update add local default
-
 sudo cp -f ish/crond.start /etc/local.d/crond.start
 sudo chmod 700 /etc/local.d/crond.start
 
@@ -95,8 +93,11 @@ else
   sudo cp -f ish/lighttpd.start /etc/local.d/lighttpd.start
   sudo chmod 700 /etc/local.d/lighttpd.start
 fi
+
+sudo rc-update add atd default
+sudo rc-update add local default
 # -----------------------------------------
-#sudo rc-status
+sudo rc-status
 # finish
 echo
 echo finished

@@ -35,6 +35,8 @@ fi
 #export SCRIPT=rfriends3_latest_script.zip
 # 開発版
 export SCRIPT=rfriends3_dev_script.zip
+
+export extract="7z -y x "
 # -----------------------------------------
 
 export distro="alpine"

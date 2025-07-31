@@ -36,6 +36,10 @@ export curdir=$(cd $(dirname $0);pwd)
 if [ -z "SCRIPT" ]; then
   export SCRIPT=rfriends3_latest_script.zip
 fi
+
+if [ -z "extract" ]; then
+  export extract="unzip -q "
+fi
 # ----------------------------------------- systemd or init
 sys=`pgrep -o systemd`
 if [ $? -ne 0 ]; then

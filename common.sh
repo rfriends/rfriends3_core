@@ -38,7 +38,7 @@ if [ -z "SCRIPT" ]; then
 fi
 
 if [ -z "extract" ]; then
-  export extract="unzip -q "
+  export extract="unzip -q -o "
 fi
 # ----------------------------------------- systemd or init
 sys=`pgrep -o systemd`

@@ -3,7 +3,8 @@
 #
 cd $homedir
 cp -f $curdir/$SCRIPT .
-unzip -q -o $SCRIPT
+#unzip -q -o $SCRIPT
+$extract  $SCRIPT
 
 mkdir -p tmp
 cat <<EOF > rfriends3/config/usrdir.ini

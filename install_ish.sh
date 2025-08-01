@@ -95,9 +95,6 @@ else
   sudo cp -f ish/lighttpd.start /etc/local.d/lighttpd.start
   sudo chmod 700 /etc/local.d/lighttpd.start
 fi
-
-sudo rc-update add atd default
-sudo rc-update add local default
 # -----------------------------------------
 sudo rc-status
 # -----------------------------------------

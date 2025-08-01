@@ -100,6 +100,11 @@ sudo rc-update add atd default
 sudo rc-update add local default
 # -----------------------------------------
 sudo rc-status
+# -----------------------------------------
+cd ~/
+echo sh rfriends3/rfriends3.sh > cui
+echo sh rfriends3/rfriends3_server.sh > gui
+# -----------------------------------------
 # finish
 echo
 echo finished

@@ -47,6 +47,7 @@ export user=`whoami`
 #export group=`groups | cut -d ' ' -f 1`
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
+export homedir="/root/"
 #export PREFIX=""
 #export phpdir="/usr/bin"
 

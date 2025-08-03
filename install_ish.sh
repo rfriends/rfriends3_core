@@ -7,7 +7,7 @@
 # 1.1 2025/07/23 
 # 1.2 2025/07/24 add ishcrond ishbg, remove local
 # 1.3 dev
-# 1.5 usr,tmp 
+# 1.4
 #
 ver=1.4
 echo start $ver
@@ -78,12 +78,6 @@ sh common.sh 2>common.err | tee common.log
 echo --- commmon.err
 cat common.err
 # -----------------------------------------
-mkdir -p $homedir/usr2/
-cat <<EOF > $homedir/rfriends3/config/usrdir.ini
-usrdir = "$homedir/usr2/"
-tmpdir = "/tmp/"
-EOF
-# -----------------------------------------
 echo /etc/at.allow
 sudo grep -x "$user" /etc/at.allow
 if [ $? -eq 1 ]; then
@@ -104,10 +98,6 @@ else
 fi
 # -----------------------------------------
 sudo rc-status
-# -----------------------------------------
-echo
-echo usrdir
-cat $homedir/rfriends3/config/usrdir.ini
 # -----------------------------------------
 cd ~/
 echo sh rfriends3/rfriends3.sh > cui

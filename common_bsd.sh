@@ -12,6 +12,14 @@ echo start install_common_bsd $ver
 echo `date`
 echo
 # -----------------------------------------
+if [ -z "$SCRIPT" ]; then
+  export SCRIPT=rfriends3_latest_script.zip
+fi
+
+if [ -z "$extract" ]; then
+  export extract="unzip -q -o "
+fi
+# -----------------------------------------
 sys=`pgrep -o systemd`
 if [ $? -ne 0 ]; then
   sys=0

@@ -24,7 +24,7 @@
 # 5.3 2025/07/18 permitroot
 # 5.4 2025/07/24 php-dom
 # 5.5 2025/07/28 SCRIPT
-ver=5.5
+ver=5.6
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -33,11 +33,11 @@ echo
 # -----------------------------------------
 export curdir=$(cd $(dirname $0);pwd)
 #
-if [ -z "SCRIPT" ]; then
+if [ -z "$SCRIPT" ]; then
   export SCRIPT=rfriends3_latest_script.zip
 fi
 
-if [ -z "extract" ]; then
+if [ -z "$extract" ]; then
   export extract="unzip -q -o "
 fi
 # ----------------------------------------- systemd or init

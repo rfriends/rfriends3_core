@@ -27,4 +27,12 @@
         # following line enables the CGI configuration for this host only
         # after it has been globally disabled with "a2disconf".
         #Include conf-available/serve-cgi-bin.conf
+
+<Directory rfriendshomedir/rfriends3/script/html/webdav>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        DAV On
+        #AllowMethods HEAD GET POST CONNECT PUT DELETE OPTIONS PROPFIND PROPPATCH MKCOL COPY MOVE LOCK UNLOCK TRA
+</Directory>
+
 </VirtualHost>

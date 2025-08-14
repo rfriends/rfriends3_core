@@ -24,7 +24,9 @@
 # 5.3 2025/07/18 permitroot
 # 5.4 2025/07/24 php-dom
 # 5.5 2025/07/28 SCRIPT
-ver=5.6
+# 5.6 2025/07/28 SCRIPT
+# 5.7 2025/08/14 apache2
+ver=5.7
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -86,6 +88,9 @@ fi
 if [ -z "$optlighttpd" ]; then
   export optlighttpd="off"
 fi
+if [ -z "$optapache2" ]; then
+  export optapache2="off"
+fi
 if [ -z "$optsamba" ]; then
   export optsamba="off"
 fi
@@ -101,6 +106,9 @@ if [ -z "$cron" ]; then
 fi
 if [ -z "$lighttpd" ]; then
   export lighttpd="lighttpd"
+fi
+if [ -z "$apache2" ]; then
+  export apache2="apache2"
 fi
 if [ -z "$smbd" ]; then
   export smbd="smbd"
@@ -277,6 +285,11 @@ elif [ $optlighttpd = "on2b" ]; then
   export conf_dir="$PREFIX/etc/lighttpd"
   export cache_dir="$PREFIX/var/cache/lighttpd"
   sh lighttpd2b.sh
+fi
+# -----------------------------------------
+echo apache2 $optapache2
+if [ $optapache2 = "on" ]; then
+  sh apache2.sh
 fi
 # =========================================
 echo

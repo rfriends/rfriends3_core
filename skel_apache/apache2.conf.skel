@@ -188,7 +188,18 @@ AddHandler php-script .php .html
 AddType application/x-httpd-php .php .html
 </Directory>
 
+<Directory rfriendshomedir/rfriends3/script/html/webdav>
+    Require all granted
+    Dav On
 
+    #AuthType Basic
+    #AuthName DAV
+    #AuthUserFile user.passwd
+
+    #<LimitExcept GET POST OPTIONS>
+    #    Require user admin
+    #</LimitExcept>
+</Directory>
 
 # AccessFileName: The name of the file to look for in each directory
 # for additional configuration directives.  See also the AllowOverride

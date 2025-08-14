@@ -1,11 +1,10 @@
 #!/bin/bash
 # =========================================
-# install rfriends for ubuntu
+# Install rfriends and Apache2 on Ubuntu
 # =========================================
-# 1.0 2025/01/03 new
-# 1.2 2025/02/26 user,group
+# 1.0 2025/08/15 new
 
-ver=1.2
+ver=1.0
 echo start $ver
 echo
 sudo apt-get update
@@ -29,11 +28,13 @@ export cmdupdate="apt-get update"
 #export PREFIX=""
 #export phpdir="/usr/bin"
 
-export optlighttpd="on1a"
+export optlighttpd="off"
+export optapache2="on"
 export optsamba="on"
 export optvimrc="on"
 
 export lighttpd="lighttpd"
+export apache2="apache2"
 export smbd="smbd"
 export atd="atd"
 export cron="cron"

@@ -254,6 +254,24 @@ if [ $optsamba = "on" ]; then
 fi
 # -----------------------------------------
 echo
+echo stop web server
+echo
+# -----------------------------------------
+if [ $sys -eq 1 ]; then
+  sudo systemctl stop $lighttpd
+  sudo systemctl disable $lighttpd
+
+  sudo systemctl stop $apache2
+  sudo systemctl disable $apache2
+else 
+  sudo service $lighttpd stop
+  sudo service $lighttpd disable
+
+  sudo service $apache2 stop
+  sudo service $apache2 disable
+fi
+# -----------------------------------------
+echo
 echo install lighttpd
 echo
 # -----------------------------------------
@@ -286,6 +304,9 @@ elif [ $optlighttpd = "on2b" ]; then
   export cache_dir="$PREFIX/var/cache/lighttpd"
   sh lighttpd2b.sh
 fi
+# -----------------------------------------
+echo
+echo install apache2
 # -----------------------------------------
 echo apache2 $optapache2
 if [ $optapache2 = "on" ]; then

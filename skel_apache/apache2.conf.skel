@@ -172,7 +172,7 @@ Include ports.conf
         AllowOverride None
         Require all granted
 </Directory>
-<Directory /home/user/rfriends3/script/html/>
+<Directory rfriendshomedir/rfriends3/script/html/>
         Options Indexes FollowSymLinks
         AllowOverride None
         Require all granted
@@ -183,7 +183,7 @@ Include ports.conf
 #       AllowOverride None
 #       Require all granted
 #</Directory>
-<Directory "/home/user/rfriends3/script/html">
+<Directory "rfriendshomedir/rfriends3/script/html">
 AddHandler php-script .php .html
 AddType application/x-httpd-php .php .html
 </Directory>

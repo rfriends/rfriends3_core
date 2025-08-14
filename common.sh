@@ -254,24 +254,6 @@ if [ $optsamba = "on" ]; then
 fi
 # -----------------------------------------
 echo
-echo stop web server
-echo
-# -----------------------------------------
-if [ $sys -eq 1 ]; then
-  sudo systemctl stop $lighttpd
-  sudo systemctl disable $lighttpd
-
-  sudo systemctl stop $apache2
-  sudo systemctl disable $apache2
-else 
-  sudo service $lighttpd stop
-  sudo service $lighttpd disable
-
-  sudo service $apache2 stop
-  sudo service $apache2 disable
-fi
-# -----------------------------------------
-echo
 echo install lighttpd
 echo
 # -----------------------------------------

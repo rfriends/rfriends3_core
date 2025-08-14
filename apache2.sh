@@ -25,7 +25,8 @@ sudo cp -f ports.conf   $conf_dir/ports.conf
 
 sudo cp -f 000-default.conf $conf_dir/sites-enabled/000-default.conf
 
-// webdav
+# webdav
+
 sudo a2enmod dav
 sudo a2enmod dav_fs
 sudo a2enmod allowmethods

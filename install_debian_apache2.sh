@@ -1,6 +1,6 @@
 #!/bin/bash
 # =========================================
-# install rfriends for debian with apache2
+# Install rfriends and Apache2 on debian
 # =========================================
 # 1.0 2025/08/14 new
 

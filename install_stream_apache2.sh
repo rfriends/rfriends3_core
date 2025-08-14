@@ -1,11 +1,10 @@
 #!/bin/bash
 # =========================================
-# install rfriends3 for CentOS stream
+# Install rfriends and Apache2 on CentOS stream
 # =========================================
 # Rfriends (radiko radiru録音ツール)
-# 1.0 2025/04/17
-# 1.1 2025/04/19
-ver=1.1
+# 1.0 2025/08/15
+ver=1.0
 # -----------------------------------------
 echo start $ver
 echo
@@ -62,11 +61,13 @@ export cmd="dnf install -y"
 #export PREFIX=""
 #export phpdir="/usr/bin"
 
-export optlighttpd="on2b"
+export optlighttpd="off"
+export optapache2="on"
 export optsamba="on"
 export optvimrc="on"
 
 export lighttpd="lighttpd"
+export apache2="apache2"
 export smbd="smb"
 export atd="atd"
 export cron="crond"

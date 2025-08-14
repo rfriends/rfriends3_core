@@ -25,6 +25,9 @@ sudo cp -f ports.conf   $conf_dir/ports.conf
 
 sudo cp -f 000-default.conf $conf_dir/sites-enabled/000-default.conf
 
+cd $homedir/rfriends3/script/html
+ln -nfs temp webdav
+
 if [ $sys -eq 1 ]; then
   sudo systemctl enable  $apache2
   sudo systemctl restart $apache2

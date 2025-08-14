@@ -1,8 +1,8 @@
 #!/bin/bash
 # =========================================
-# install rfriends for debian
+# install rfriends for debian with apache2
 # =========================================
-# 1.0 2025/04/28 new
+# 1.0 2025/08/14 new
 
 ver=1.0
 echo start $ver
@@ -28,11 +28,13 @@ export cmdupdate="apt-get update"
 #export PREFIX=""
 #export phpdir="/usr/bin"
 
-export optlighttpd="on1a"
+export optlighttpd="off"
+export optapache2="on"
 export optsamba="on"
 export optvimrc="on"
 
 export lighttpd="lighttpd"
+export apache2="apache2"
 export smbd="smbd"
 export atd="atd"
 export cron="cron"

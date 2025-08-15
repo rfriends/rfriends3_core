@@ -40,7 +40,7 @@ export cmd="pacman -S --noconfirm"
 
 #export optlighttpd="on2b"
 export optlighttpd="off"
-export optlapache2="onht"
+export optapache2="onht"
 export optsamba="on"
 export optvimrc="on"
 

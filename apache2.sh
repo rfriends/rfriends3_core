@@ -39,9 +39,9 @@ if [ $sys -eq 1 ]; then
   sudo systemctl restart $apache2
   sudo systemctl status  $apache2
 else 
-  sudo service $lighttpd restart
-  sudo service $lighttpd enable
-  sudo service $lighttpd status
+  sudo service $apache2 restart
+  sudo service $apache2 enable
+  sudo service $apache2 status
 fi
 sudo touch $conf_dir/$onver
 exit 0

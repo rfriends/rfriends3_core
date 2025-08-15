@@ -1,6 +1,8 @@
 #!/bin/sh
 # samba
 #
+# 1.1 2025/08/16 /usr/local/etc/smb4.conf
+
 sudo $cmd $samba
 
 #sudo mkdir -p /var/log/samba
@@ -9,7 +11,8 @@ sudo $cmd $samba
 cd $curdir/skel
 sed -e s%rfriendshomedir%$homedir%g smb4.conf.skel > smb4.conf0
 sed -e s%rfriendsuser%$user%g smb4.conf0 > smb4.conf
-sudo cp -f smb4.conf $PREFIX/etc/smb4.conf
+#sudo cp -f smb4.conf $PREFIX/etc/smb4.conf
+sudo cp -f smb4.conf $PREFIXi/usr/local/etc/smb4.conf
 #sudo chown root:root $PREFIX/etc/smb4.conf
 rm smb4.conf0
 

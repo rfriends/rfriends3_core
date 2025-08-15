@@ -184,7 +184,7 @@ echo samba $optsamba
 if [ $optsamba = "on" ]; then
   cat /etc/rc.conf | grep samba_server_enable > /dev/null
   if [ $? = 1 ]; then
-    echo 'samba_server_enable = "YES"' | sudo tee -a  /etc/rc.conf
+    echo 'samba_server_enable="YES"' | sudo tee -a  /etc/rc.conf
   fi
   sh samba_bsd.sh
 fi

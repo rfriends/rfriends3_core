@@ -295,6 +295,11 @@ if [ $optapache2 = "on" ]; then
   export conf_dir="$PREFIX/etc/apache2"
   sh apache2.sh
 fi
+echo apache2 $optapache2
+if [ $optapache2 = "onht" ]; then
+  export conf_dir="$PREFIX/etc/httpd/conf"
+  sh httpd.sh
+fi
 # =========================================
 echo
 echo result of install rfriends3

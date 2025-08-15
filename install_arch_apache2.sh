@@ -13,7 +13,8 @@
 # Rfriends (radiko radiru録音ツール)
 # 1.0 2025/01/24 new
 # 1.1 2025/07/16 disable lighttpd
-ver=1.1
+# 1.2 2025/08/15 enable apach2
+ver=1.2
 # -----------------------------------------
 echo start $ver
 echo
@@ -39,10 +40,12 @@ export cmd="pacman -S --noconfirm"
 
 #export optlighttpd="on2b"
 export optlighttpd="off"
+export optlapache2="on"
 export optsamba="on"
 export optvimrc="on"
 
 export lighttpd="lighttpd"
+export apache2="apache2"
 export smbd="smb"
 export atd="atd"
 export cron="cronie"

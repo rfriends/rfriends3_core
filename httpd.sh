@@ -20,8 +20,8 @@ sudo cp -f httpd.conf $conf_dir/httpd.conf
 
 # webdav
 
-cd $homedir/rfriends3/script/html
-ln -nfs temp webdav
+#cd $homedir/rfriends3/script/html
+#ln -nfs temp webdav
 
 if [ $sys -eq 1 ]; then
   sudo systemctl enable  $apache2

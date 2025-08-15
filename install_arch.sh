@@ -17,7 +17,7 @@ ver=1.1
 # -----------------------------------------
 echo start $ver
 echo
-sudo pacman -Syy
+sudo pacman -Syu
 if [ $? != 0 ]; then
   echo
   echo install_arch.sh

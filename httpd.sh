@@ -8,6 +8,10 @@ onver=onht
 
 docroot_dir=$homedir/rfriends3/script/html
 
+sudo $cmd apache
+sudo $cmd php
+sudo $cmd php-apache
+
 cd $curdir/skel_apache
 
 # sed -i は使用しないこと

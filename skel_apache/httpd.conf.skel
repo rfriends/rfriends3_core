@@ -260,9 +260,9 @@ ServerAdmin you@example.com
 # symbolic links and aliases may be used to point to other locations.
 #
 #DocumentRoot "/srv/http"
-DocumentRoot "rfriendshome/rfriends3/script/html"
+DocumentRoot "rfriendshomedir/rfriends3/script/html"
 #<Directory "/srv/http">
-<Directory "rfriendshomer/rfriends3/script/html">
+<Directory "rfriendshomedir/rfriends3/script/html">
     #
     # Possible values for the Options directive are "None", "All",
     # or any combination of:

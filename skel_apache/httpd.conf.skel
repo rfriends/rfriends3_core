@@ -50,7 +50,7 @@ ServerRoot "/etc/httpd"
 #
 #Listen 12.34.56.78:80
 #Listen 80
-Listen 8000
+Listen rfriendsport
 
 #
 # Dynamic Shared Object (DSO) Support
@@ -204,8 +204,8 @@ AddHandler php-script .php .html
 #
 #User http
 #Group http
-User user
-Group user
+User rfriendsuser
+Group rfriendsgroup
 
 </IfModule>
 
@@ -260,9 +260,9 @@ ServerAdmin you@example.com
 # symbolic links and aliases may be used to point to other locations.
 #
 #DocumentRoot "/srv/http"
-DocumentRoot "/home/user/rfriends3/script/html"
+DocumentRoot "rfriendshome/rfriends3/script/html"
 #<Directory "/srv/http">
-<Directory "/home/user/rfriends3/script/html">
+<Directory "rfriendshomer/rfriends3/script/html">
     #
     # Possible values for the Options directive are "None", "All",
     # or any combination of:

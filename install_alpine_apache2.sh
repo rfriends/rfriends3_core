@@ -37,7 +37,7 @@ export user=`whoami`
 
 export permitroot="off"
 export optlighttpd="off"
-export optapache2="onht-2"
+export optapache2="onhtb"
 export apache_conf_dir="/etc/apache2"
 export optsamba="on"
 export optvimrc="on"

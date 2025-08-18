@@ -4,10 +4,9 @@
 #
 # =========================================
 # 1.0 2025/04/15 new
-# 1.1 2025/04/21 mod
-# 1.2 2025/07/18 mod
+# 1.4 2025/08/18 at,cron
 #
-ver=1.3
+ver=1.4
 echo start $ver
 echo
 sudo apk update
@@ -41,6 +40,8 @@ export permitroot="off"
 export optlighttpd="on2b"
 export optsamba="on"
 export optvimrc="on"
+export optat="on"
+export optcron="off"
 
 export lighttpd="lighttpd"
 export smbd="samba"

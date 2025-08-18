@@ -35,7 +35,7 @@ export optvimrc="on"
 
 export lighttpd="lighttpd"
 export apache2="apache2"
-export conf_dir="/etc/apache2"
+export apache_conf_dir="/etc/apache2"
 export smbd="smbd"
 export atd="atd"
 export cron="cron"

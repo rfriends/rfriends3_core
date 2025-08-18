@@ -14,13 +14,13 @@ EOF
 # -----------------------------------------
 # systemd or service
 # -----------------------------------------
-if [ $sys -eq 1 ]; then
-  sudo systemctl enable $atd
-  sudo systemctl enable $cron
-  sudo systemctl start $atd
-  sudo systemctl start $cron
-else 
-  sudo service $atd restart
-  sudo service $cron restart
-fi
+#if [ $sys -eq 1 ]; then
+#  sudo systemctl enable $atd
+#  sudo systemctl enable $cron
+#  sudo systemctl start $atd
+#  sudo systemctl start $cron
+#else 
+#  sudo service $atd restart
+#  sudo service $cron restart
+#fi
 exit 0

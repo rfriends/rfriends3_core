@@ -1,6 +1,8 @@
 #!/bin/sh
 # cron
 #
+sudo $cmd $app_cron
+#
 if [ $sys -eq 1 ]; then
   sudo systemctl enable $cron
   sudo systemctl start  $cron

@@ -314,10 +314,10 @@ if [ $optapache2 = "onht" ]; then
   sh httpd.sh
 fi
 #
-if [ $optapache2 = "onht-2" ]; then
+if [ $optapache2 = "onhtb" ]; then
   echo 2
   echo apache2 $optapache2 $apache_conf_dir
-  sh httpd-2.sh
+  sh httpdb.sh
 fi
 # =========================================
 echo

@@ -69,6 +69,17 @@ if [ $? -eq 1 ]; then
   echo $user | sudo tee -a /etc/at.allow
 fi
 # -----------------------------------------
+echo /etc/local.d
+cat <<EOF > rf3.start
+rc-service lighttpd start
+rc-servide samba start
+rc-service crond start
+rc-service atd start
+EOF
+chmod 755 rf3.start
+sudo cp rf3.start /etc/local.d/.
+sudo rc-update add local
+# -----------------------------------------
 # finish
 echo
 echo finished

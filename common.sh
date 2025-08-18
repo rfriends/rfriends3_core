@@ -303,13 +303,19 @@ fi
 echo
 echo install apache2
 # -----------------------------------------
-echo apache2 $optapache2 $apache_conf_dir
 if [ $optapache2 = "on" ]; then
+  echo apache2 $optapache2 $apache_conf_dir
   sh apache2.sh
 fi
-echo apache2 $optapache2 $apache_conf_dir
+#
 if [ $optapache2 = "onht" ]; then
+  echo apache2 $optapache2 $apache_conf_dir
   sh httpd.sh
+fi
+#
+if [ $optapache2 = "onht-2" ]; then
+  echo apache2 $optapache2 $apache_conf_dir
+  sh httpd-2.sh
 fi
 # =========================================
 echo

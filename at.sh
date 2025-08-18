@@ -1,6 +1,8 @@
 #!/bin/sh
 # at
 #
+sudo $cmd at
+#
 if [ $sys -eq 1 ]; then
   sudo systemctl enable $atd
   sudo systemctl start  $atd

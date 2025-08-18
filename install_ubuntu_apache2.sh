@@ -3,8 +3,8 @@
 # Install rfriends and Apache2 on Ubuntu
 # =========================================
 # 1.0 2025/08/15 new
-
-ver=1.0
+# 1.1 2025/08/18 conf_dir
+ver=1.1
 echo start $ver
 echo
 sudo apt-get update
@@ -35,6 +35,7 @@ export optvimrc="on"
 
 export lighttpd="lighttpd"
 export apache2="apache2"
+export conf_dir="/etc/apache2"
 export smbd="smbd"
 export atd="atd"
 export cron="cron"

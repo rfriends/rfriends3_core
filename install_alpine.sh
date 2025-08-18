@@ -72,7 +72,7 @@ fi
 echo /etc/local.d
 cat <<EOF > rf3.start
 rc-service lighttpd start
-rc-servide samba start
+rc-service samba start
 rc-service crond start
 rc-service atd start
 EOF

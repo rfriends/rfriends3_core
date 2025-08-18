@@ -8,9 +8,8 @@ onver=onht-2
 
 docroot_dir=$homedir/rfriends3/script/html
 
-sudo $cmd apache
-sudo $cmd php
-sudo $cmd php-apache
+sudo $cmd apache2
+sudo $cmd php-apache2
 
 cd $curdir/skel_apache
 

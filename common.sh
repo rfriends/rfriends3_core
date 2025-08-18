@@ -26,7 +26,8 @@
 # 5.5 2025/07/28 SCRIPT
 # 5.6 2025/07/28 SCRIPT
 # 5.7 2025/08/14 apache2
-ver=5.7
+# 5.8 2025/08/18 at,cron
+ver=5.8
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -97,6 +98,12 @@ fi
 if [ -z "$optvimrc" ]; then
   export optvimrc="off"
 fi
+if [ -z "$optat" ]; then
+  export optat="on"
+fi
+if [ -z "$optcron" ]; then
+  export optcron="on"
+fi
 # ----------------------------------------- service
 if [ -z "$atd" ]; then
   export atd="atd"
@@ -158,7 +165,7 @@ echo 共通処理のため、ディストリビューションによりnot found
 echo
 # =========================================
 sudo $cmd unzip nano vim wget curl
-sudo $cmd at
+#sudo $cmd at
 sudo $cmd p7zip
 sudo $cmd tzdata
 
@@ -174,7 +181,7 @@ sudo $cmd php-dom
 
 sudo $cmd $app_iproute
 sudo $cmd $app_openssh
-sudo $cmd $app_cron
+#sudo $cmd $app_cron
 sudo $cmd $app_ffmpeg
 if [ $? != 0 ]; then
   sudo $cmd ffmpeg
@@ -230,10 +237,16 @@ echo
 # =========================================
 echo rfriends3
 sh rfriends3.sh
-#
-sh at.sh
-#
-sh cron.sh
+# -----------------------------------------
+echo at $optat
+if [ $optat = "on" ]; then
+  sh at.sh
+fi
+# -----------------------------------------
+echo cron $optcron
+if [ $optcron = "on" ]; then
+  sh cron.sh
+fi
 # -----------------------------------------
 echo
 echo vimrc

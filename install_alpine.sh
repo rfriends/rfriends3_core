@@ -56,8 +56,6 @@ export app_chromium="chromium"
 export app_atomicparsley="atomicparsley"
 export app_iproute="iproute2"
 #
-mkdir $homedir/.cache
-
 sudo apk --update-cache add tzdata
 #sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 

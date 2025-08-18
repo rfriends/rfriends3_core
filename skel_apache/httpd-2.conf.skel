@@ -38,7 +38,8 @@ ServerTokens OS
 # same ServerRoot for multiple httpd daemons, you will need to change at
 # least PidFile.
 #
-ServerRoot /var/www
+#ServerRoot /var/www
+ServerRoot /etc/apache2
 
 #
 # Mutex: Allows you to set the mutex mechanism and mutex file directory
@@ -167,6 +168,7 @@ LoadModule alias_module modules/mod_alias.so
 #LoadModule rewrite_module modules/mod_rewrite.so
 
 LoadModule negotiation_module modules/mod_negotiation.so
+AddHandler php-script .php .html
 
 <IfModule unixd_module>
 #
@@ -219,7 +221,7 @@ ServerSignature On
 # If your host doesn't have a registered DNS name, enter its IP address here.
 #
 #ServerName www.example.com:80
-
+ServerName localhost
 #
 # Deny access to the entirety of your server's filesystem. You must
 # explicitly permit access to web content directories in other 
@@ -242,8 +244,8 @@ ServerSignature On
 # documents. By default, all requests are taken from this directory, but
 # symbolic links and aliases may be used to point to other locations.
 #
-DocumentRoot "$homedir/rfriends3/script/html"
-<Directory "$homedir/rfriends3/script/html">
+DocumentRoot "rfriendshomedir/rfriends3/script/html"
+<Directory "rfriendshomedir/rfriends3/script/html">
     #
     # Possible values for the Options directive are "None", "All",
     # or any combination of:

@@ -42,7 +42,7 @@ export cmd="pacman -S --noconfirm"
 #export optlighttpd="on2b"
 export optlighttpd="off"
 export optapache2="onht"
-export conf_dir="/etc/httpd/conf"
+export apache_conf_dir="/etc/httpd/conf"
 export optsamba="on"
 export optvimrc="on"
 

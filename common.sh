@@ -303,24 +303,25 @@ fi
 echo
 echo install apache2
 # -----------------------------------------
+echo apache -- 1
 if [ $optapache2 = "on" ]; then
   echo apache2 $optapache2 $apache_conf_dir
   sh apache2.sh
 fi
 #
+echo apache -- 2
 if [ $optapache2 = "onht" ]; then
-  echo 1
   echo apache2 $optapache2 $apache_conf_dir
   sh httpd.sh
 fi
 #
+echo apache -- 3
 if [ $optapache2 = "onhtb" ]; then
-  echo 2
   echo apache2 $optapache2 $apache_conf_dir
   sh httpdb.sh
 fi
 # =========================================
-echo
+echo +++++++++++++++++++++++++++++++++++++
 echo result of install rfriends3
 echo
 sh result.sh

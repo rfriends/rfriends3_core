@@ -1,6 +1,6 @@
 #!/bin/sh
 # httpd for arch
-# 2025/08/15
+# 2025/08/18
 #
 echo "httpd"
 #
@@ -21,7 +21,7 @@ sed -e s%rfriendsuser%$user%g httpd.conf1 > httpd.conf2
 sed -e s%rfriendsgroup%$group%g httpd.conf2 > httpd.conf3
 sed -e s%rfriendsport%$port%g httpd.conf3 > httpd.conf
 
-sudo cp -f httpd.conf $conf_dir/httpd.conf
+sudo cp -f httpd.conf $apache_conf_dir/httpd.conf
 
 # webdav
 
@@ -37,5 +37,5 @@ else
   sudo service $apache2 enable
   sudo service $apache2 status
 fi
-sudo touch $conf_dir/$onver
+sudo touch $apache_conf_dir/$onver
 exit 0

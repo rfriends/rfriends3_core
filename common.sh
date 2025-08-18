@@ -230,13 +230,6 @@ if [ ! -e /usr/bin/AtomicParsley ]; then
   # arch
   sudo ln -s /usr/bin/atomicparsley /usr/bin/AtomicParsley
 fi
-# =========================================
-echo
-echo install rfriends3
-echo
-# =========================================
-echo rfriends3
-sh rfriends3.sh
 # -----------------------------------------
 echo at $optat
 if [ $optat = "on" ]; then
@@ -256,6 +249,13 @@ echo vimrc $optvimrc
 if [ $optvimrc = "on" ]; then
   sh vimrc.sh
 fi
+# =========================================
+echo
+echo install rfriends3
+echo
+# =========================================
+echo rfriends3
+sh rfriends3.sh
 # -----------------------------------------
 echo
 echo install samba

@@ -26,7 +26,7 @@
 # 5.5 2025/07/28 SCRIPT
 # 5.6 2025/07/28 SCRIPT
 # 5.7 2025/08/14 apache2
-# 5.8 2025/08/18 at,cron
+# 5.8 2025/08/18 at,cron,conf_dir
 ver=5.8
 # -----------------------------------------
 echo
@@ -303,14 +303,12 @@ fi
 echo
 echo install apache2
 # -----------------------------------------
-echo apache2 $optapache2
+echo apache2 $optapache2 $apache_conf_dir
 if [ $optapache2 = "on" ]; then
-  export conf_dir="$PREFIX/etc/apache2"
   sh apache2.sh
 fi
-echo apache2 $optapache2
+echo apache2 $optapache2 $apache_conf_dir
 if [ $optapache2 = "onht" ]; then
-  export conf_dir="$PREFIX/etc/httpd/conf"
   sh httpd.sh
 fi
 # =========================================

@@ -59,7 +59,7 @@ ServerRoot /var/www
 # prevent Apache from glomming onto all bound IP addresses.
 #
 #Listen 12.34.56.78:80
-Listen 80
+Listen rfriendsport
 
 #
 # Dynamic Shared Object (DSO) Support
@@ -177,8 +177,8 @@ LoadModule negotiation_module modules/mod_negotiation.so
 # It is usually good practice to create a dedicated user and group for
 # running httpd, as with most system services.
 #
-User apache
-Group apache
+User rfriendsuser
+Group rfriendsgroup
 
 </IfModule>
 
@@ -242,8 +242,8 @@ ServerSignature On
 # documents. By default, all requests are taken from this directory, but
 # symbolic links and aliases may be used to point to other locations.
 #
-DocumentRoot "/var/www/localhost/htdocs"
-<Directory "/var/www/localhost/htdocs">
+DocumentRoot "$homedir/rfriends3/script/html"
+<Directory "$homedir/rfriends3/script/html">
     #
     # Possible values for the Options directive are "None", "All",
     # or any combination of:

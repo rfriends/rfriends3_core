@@ -1,12 +1,11 @@
 #!/bin/bash
 # =========================================
-# install rfriends for alpine
+# install rfriends for alpine apach2
 #
 # =========================================
-# 1.0 2025/04/15 new
-# 1.4 2025/08/18 at,cron
+# 1.0 2025/08/18 new
 #
-ver=1.4
+ver=1.0
 echo start $ver
 echo
 sudo apk update
@@ -37,7 +36,9 @@ export user=`whoami`
 #export phpdir="/usr/bin"
 
 export permitroot="off"
-export optlighttpd="on2b"
+export optlighttpd="off"
+export optapache2="onht"
+export apache_conf_dir="/etc/apache2"
 export optsamba="on"
 export optvimrc="on"
 export optat="on"
@@ -71,7 +72,7 @@ fi
 # -----------------------------------------
 echo /etc/local.d
 cat <<EOF > rf3.start
-rc-service lighttpd start
+rc-service apache2 start
 rc-servide samba start
 rc-service crond start
 rc-service atd start

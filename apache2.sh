@@ -1,6 +1,6 @@
 #!/bin/sh
 # Apache2
-# 2025/08/14
+# 2025/08/18
 #
 echo "apache2"
 #
@@ -19,11 +19,11 @@ sed -e s%rfriendsport%$port%g ports.conf.skel > ports.conf
 sed -e s%rfriendshomedir%$homedir%g 000-default.conf.skel > 000-default.conf1
 sed -e s%rfriendsport%$port%g 000-default.conf1 > 000-default.conf
 
-sudo cp -f apache2.conf $conf_dir/apache2.conf
-sudo cp -f envvars      $conf_dir/envvars
-sudo cp -f ports.conf   $conf_dir/ports.conf
+sudo cp -f apache2.conf $apache_conf_dir/apache2.conf
+sudo cp -f envvars      $apache_conf_dir/envvars
+sudo cp -f ports.conf   $apache_conf_dir/ports.conf
 
-sudo cp -f 000-default.conf $conf_dir/sites-enabled/000-default.conf
+sudo cp -f 000-default.conf $apache_conf_dir/sites-enabled/000-default.conf
 
 # webdav
 
@@ -43,5 +43,5 @@ else
   sudo service $apache2 enable
   sudo service $apache2 status
 fi
-sudo touch $conf_dir/$onver
+sudo touch $apache_conf_dir/$onver
 exit 0

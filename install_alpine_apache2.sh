@@ -45,6 +45,7 @@ export optat="on"
 export optcron="off"
 
 export lighttpd="lighttpd"
+export apache2="apache2"
 export smbd="samba"
 export atd="atd"
 export cron="crond"

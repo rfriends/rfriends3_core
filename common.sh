@@ -309,11 +309,13 @@ if [ $optapache2 = "on" ]; then
 fi
 #
 if [ $optapache2 = "onht" ]; then
+  echo 1
   echo apache2 $optapache2 $apache_conf_dir
   sh httpd.sh
 fi
 #
 if [ $optapache2 = "onht-2" ]; then
+  echo 2
   echo apache2 $optapache2 $apache_conf_dir
   sh httpd-2.sh
 fi

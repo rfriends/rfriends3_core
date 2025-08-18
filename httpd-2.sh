@@ -4,7 +4,7 @@
 #
 echo "httpd"
 #
-onver=onht
+onver=onht-2
 
 docroot_dir=$homedir/rfriends3/script/html
 
@@ -16,7 +16,7 @@ cd $curdir/skel_apache
 
 # sed -i は使用しないこと
 
-sed -e s%rfriendshomedir%$homedir%g httpd.conf.skel > httpd.conf1
+sed -e s%rfriendshomedir%$homedir%g httpd-2.conf.skel > httpd.conf1
 sed -e s%rfriendsuser%$user%g httpd.conf1 > httpd.conf2
 sed -e s%rfriendsgroup%$group%g httpd.conf2 > httpd.conf3
 sed -e s%rfriendsport%$port%g httpd.conf3 > httpd.conf

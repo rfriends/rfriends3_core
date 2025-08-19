@@ -73,8 +73,8 @@ echo /etc/local.d
 cat <<EOF > rf3.start
 rc-service lighttpd start
 rc-service samba start
-rc-service crond start
 rc-service atd start
+crond
 EOF
 chmod 755 rf3.start
 sudo cp rf3.start /etc/local.d/.

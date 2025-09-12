@@ -5,8 +5,9 @@
 # =========================================
 # 1.0 2025/04/15 new
 # 1.4 2025/08/18 at,cron
+# 1.5 2025/09/13 ffplay,alsa
 #
-ver=1.4
+ver=1.5
 echo start $ver
 echo
 sudo apk update
@@ -79,6 +80,11 @@ EOF
 chmod 755 rf3.start
 sudo cp rf3.start /etc/local.d/.
 sudo rc-update add local
+# -----------------------------------------
+sudo apk add ffplay
+sudo apk add alsa-utils alsaconf
+sudo rc-service alsa start
+sudo rc-update add alsa
 # -----------------------------------------
 # finish
 echo

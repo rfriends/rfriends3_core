@@ -27,7 +27,8 @@
 # 5.6 2025/07/28 SCRIPT
 # 5.7 2025/08/14 apache2
 # 5.8 2025/08/18 at,cron,conf_dir
-ver=5.8
+# 5.9 2025/09/27 p7zip,pzzip-full
+ver=5.9
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -167,6 +168,7 @@ echo
 sudo $cmd unzip nano vim wget curl
 #sudo $cmd at
 sudo $cmd p7zip
+sudo $cmd p7zip-full
 sudo $cmd tzdata
 
 sudo $cmd php

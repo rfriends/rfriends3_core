@@ -5,7 +5,8 @@
 # Rfriends (radiko radiru録音ツール)
 # 1.0 2025/04/17
 # 1.1 2025/04/19
-ver=1.1
+# 1.2 2025/10/24
+ver=1.2
 # -----------------------------------------
 echo start $ver
 echo
@@ -79,6 +80,7 @@ export app_atomicparsley="rpm"
 export app_iproute="iproute"
 #
 sudo dnf update
+sudo dnf install p7zip p7zip-plugins
 
 sh common.sh 2>common.err | tee common.log
 echo --- commmon.err

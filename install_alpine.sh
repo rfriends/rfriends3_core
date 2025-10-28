@@ -6,8 +6,9 @@
 # 1.0 2025/04/15 new
 # 1.4 2025/08/18 at,cron
 # 1.5 2025/09/13 ffplay,alsa
+# 1.6 2025/10/29 crond
 #
-ver=1.5
+ver=1.6
 echo start $ver
 echo
 sudo apk update
@@ -75,7 +76,7 @@ cat <<EOF > rf3.start
 rc-service lighttpd start
 rc-service samba start
 rc-service atd start
-crond
+rc-service crond start
 EOF
 chmod 755 rf3.start
 sudo cp rf3.start /etc/local.d/.

@@ -7,6 +7,7 @@
 # 1.4 2025/08/18 at,cron
 # 1.5 2025/09/13 ffplay,alsa
 # 1.6 2025/10/29 crond
+# 1.7 2025/10/30 iwconfig
 #
 ver=1.6
 echo start $ver
@@ -81,6 +82,11 @@ EOF
 chmod 755 rf3.start
 sudo cp rf3.start /etc/local.d/.
 sudo rc-update add local
+# -----------------------------------------
+# iwconfig
+sudo apk add wireless-tools
+sudo apk add iw
+sudo apk add powertop
 # -----------------------------------------
 sudo apk add ffplay
 sudo apk add alsa-utils alsaconf

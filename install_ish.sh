@@ -83,8 +83,8 @@ if [ $? -eq 1 ]; then
   echo $user | sudo tee -a /etc/at.allow
 fi
 # -----------------------------------------
-sudo cp -f ish/crond.start /etc/local.d/crond.start
-sudo chmod 700 /etc/local.d/crond.start
+#sudo cp -f ish/crond.start /etc/local.d/crond.start
+#sudo chmod 700 /etc/local.d/crond.start
 
 sudo cp -f ish/location.start /etc/local.d/location.start
 sudo chmod 700 /etc/local.d/location.start

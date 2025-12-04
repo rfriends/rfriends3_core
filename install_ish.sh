@@ -7,7 +7,7 @@
 # 1.1 2025/07/23 
 # 1.2 2025/07/24 add ishcrond ishbg, remove local
 # 1.3 dev
-# 1.4
+# 1.5 local.d
 #
 ver=1.4
 echo start $ver
@@ -82,9 +82,10 @@ sudo grep -x "$user" /etc/at.allow
 if [ $? -eq 1 ]; then
   echo $user | sudo tee -a /etc/at.allow
 fi
+rc-update add atd
 # -----------------------------------------
-#sudo cp -f ish/crond.start /etc/local.d/crond.start
-#sudo chmod 700 /etc/local.d/crond.start
+sudo cp -f ish/crond.start /etc/local.d/crond.start
+sudo chmod 700 /etc/local.d/crond.start
 
 sudo cp -f ish/location.start /etc/local.d/location.start
 sudo chmod 700 /etc/local.d/location.start
@@ -95,6 +96,7 @@ else
   sudo cp -f ish/lighttpd.start /etc/local.d/lighttpd.start
   sudo chmod 700 /etc/local.d/lighttpd.start
 fi
+rc-update add local default
 # -----------------------------------------
 sudo rc-status
 # -----------------------------------------

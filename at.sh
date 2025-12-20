@@ -1,6 +1,7 @@
 #!/bin/sh
 # at
 #
+echo --- at-start ( $cmd at )
 sudo $cmd at
 #
 if [ $sys -eq 1 ]; then

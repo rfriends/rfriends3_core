@@ -15,7 +15,8 @@
 # 1.1 2025/07/16 disable lighttpd
 # 1.2 2025/08/15 enable apach2
 # 1.3 2025/08/18 conf_dir
-ver=1.3
+# 1.4 2026/02/11 lighttpd
+ver=1.4
 # -----------------------------------------
 echo start $ver
 echo
@@ -39,10 +40,10 @@ export cmd="pacman -S --noconfirm"
 #export PREFIX=""
 #export phpdir="/usr/bin"
 
-#export optlighttpd="on2b"
-export optlighttpd="off"
-export optapache2="onht"
-export apache_conf_dir="/etc/httpd/conf"
+export optlighttpd="on2b"
+export optlighttpd="on"
+#export optapache2="onht"
+#export apache_conf_dir="/etc/httpd/conf"
 export optsamba="on"
 export optvimrc="on"
 

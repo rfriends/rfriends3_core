@@ -16,8 +16,8 @@
 # 1.2 2025/08/15 enable apach2
 # 1.3 2025/08/18 conf_dir
 # 1.5 2026/02/12 lighttpd
-# 1.6 2026/02/16 systemd schedule
-ver=1.6
+# 1.7 2026/02/17 systemd schedule
+ver=1.7
 # -----------------------------------------
 echo start $ver
 echo
@@ -33,6 +33,7 @@ fi
 # -----------------------------------------
 export distro="arch"
 export cmd="pacman -S --noconfirm"
+export job="systemd"
 
 user=`whoami`
 export user=user
@@ -62,25 +63,6 @@ export app_atomicparsley="atomicparsley"
 export app_iproute="iproute2"
 #
 sh common.sh 2>common.err | tee common.log
-#
-cat <<EOF > $homedir/rfriends3/config/systemd.ini
-; ----------------------------
-; ジョブスケジューリング方式
-; systemd.ini
-; 2026/02/16 for arch linux
-; ----------------------------
-; cron_type_lnx
-; = 0 cron  = 1 systemd
-;
-; at_type_lnx
-; = 0 at  = 1 systemd
-; ----------------------------
-[systemd]
-cron_type_lnx = 1
-at_type_lnx = 1
-; ----------------------------
-EOF
-
 # -----------------------------------------
 # firewall
 if [ $optsamba -eq "on" ]; then
@@ -91,8 +73,6 @@ sudo firewall-cmd --reload
 #
 sudo systemctl start sshd
 sudo systemctl enable sshd
-#
-loginctl enable-linger $user
 # -----------------------------------------
 echo --- commmon.err
 cat common.err

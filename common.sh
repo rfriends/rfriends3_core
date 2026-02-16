@@ -50,7 +50,7 @@ if [ -z "$job" ]; then
   export job="atcron"
 fi
 
-if [ $job -ne "systemd" ]; then
+if [ "$job" != "systemd" ]; then
   export job="atcron"
 fi
 # ----------------------------------------- systemd or init

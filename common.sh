@@ -256,11 +256,6 @@ if [ $optcron = "on" ]; then
   sh cron.sh
 fi
 # -----------------------------------------
-echo job $job
-if [ $job = "systemd" ]; then
-  sh systemd.sh
-fi
-# -----------------------------------------
 echo
 echo vimrc
 echo
@@ -276,6 +271,11 @@ echo
 # =========================================
 echo rfriends3
 sh rfriends3.sh
+# -----------------------------------------
+echo job $job
+if [ $job = "systemd" ]; then
+  sh systemd.sh
+fi
 # -----------------------------------------
 echo
 echo install samba

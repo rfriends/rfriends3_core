@@ -64,27 +64,24 @@ export app_iproute="iproute2"
 sh common.sh 2>common.err | tee common.log
 #
 cat <<EOF > $homedir/rfriends3/config/systemd.ini
-; ------------------------------------------------
+; ----------------------------
+; ジョブスケジューリング方式
 ; systemd.ini
-; 2025/01/11 new
-; ------------------------------------------------
-; システム管理方式
-;
+; 2026/02/16 for arch linux
+; ----------------------------
 ; cron_type_lnx
-; = 0 cron
-; = 1 systemd
+; = 0 cron  = 1 systemd
 ;
 ; at_type_lnx
-; = 0 at
-; = 1 systemd
-;
-; ------------------------------------------------
+; = 0 at  = 1 systemd
+; ----------------------------
 [systemd]
 cron_type_lnx = 1
 at_type_lnx = 1
-; ------------------------------------------------
+; ----------------------------
 EOF
 
+# -----------------------------------------
 # firewall
 if [ $optsamba -eq "on" ]; then
     sudo firewall-cmd --permanent --add-service=samba
@@ -92,8 +89,11 @@ fi
 sudo firewall-cmd --permanent --add-port=8000/tcp
 sudo firewall-cmd --reload
 #
-loginctl enable-linger $user
+sudo systemctl start sshd
+sudo systemctl enable sshd
 #
+loginctl enable-linger $user
+# -----------------------------------------
 echo --- commmon.err
 cat common.err
 # -----------------------------------------

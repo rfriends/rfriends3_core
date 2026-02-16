@@ -16,7 +16,8 @@
 # 1.2 2025/08/15 enable apach2
 # 1.3 2025/08/18 conf_dir
 # 1.5 2026/02/12 lighttpd
-ver=1.5
+# 1.6 2026/02/16 systemd schedule
+ver=1.6
 # -----------------------------------------
 echo start $ver
 echo
@@ -33,10 +34,11 @@ fi
 export distro="arch"
 export cmd="pacman -S --noconfirm"
 
-#export user=user
+user=`whoami`
+export user=user
 #export group=user
 #export port=8000
-#export homedir=`sh -c 'cd && pwd'`
+export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""
 #export phpdir="/usr/bin"
 
@@ -61,11 +63,36 @@ export app_iproute="iproute2"
 #
 sh common.sh 2>common.err | tee common.log
 #
-#sudo firewall-cmd --permanent --add-service=samba
-#sudo firewall-cmd --permanent --add-port=8000/tcp
-#sudo firewall-cmd --reload
+cat <<EOF > $homedir/rfriends3/config/systemd.ini
+; ------------------------------------------------
+; systemd.ini
+; 2025/01/11 new
+; ------------------------------------------------
+; システム管理方式
+;
+; cron_type_lnx
+; = 0 cron
+; = 1 systemd
+;
+; at_type_lnx
+; = 0 at
+; = 1 systemd
+;
+; ------------------------------------------------
+[systemd]
+cron_type_lnx = 1
+at_type_lnx = 1
+; ------------------------------------------------
+EOF
+
+# firewall
+if [ $optsamba -eq "on" ]; then
+    sudo firewall-cmd --permanent --add-service=samba
+fi
+sudo firewall-cmd --permanent --add-port=8000/tcp
+sudo firewall-cmd --reload
 #
-#loginctl enable-linger $user
+loginctl enable-linger $user
 #
 echo --- commmon.err
 cat common.err

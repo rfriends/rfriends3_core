@@ -28,8 +28,8 @@
 # 5.7 2025/08/14 apache2
 # 5.8 2025/08/18 at,cron,conf_dir
 # 5.9 2025/09/27 p7zip,pzzip-full
-# 6.0 2026/02/16 systemd
-ver=6.0
+# 6.1 2026/02/17 systemd
+ver=6.1
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -254,6 +254,11 @@ fi
 echo cron $optcron
 if [ $optcron = "on" ]; then
   sh cron.sh
+fi
+# -----------------------------------------
+echo job $job
+if [ $job = "systemd" ]; then
+  sh systemd.sh
 fi
 # -----------------------------------------
 echo

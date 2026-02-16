@@ -60,6 +60,13 @@ export app_atomicparsley="atomicparsley"
 export app_iproute="iproute2"
 #
 sh common.sh 2>common.err | tee common.log
+#
+#sudo firewall-cmd --permanent --add-service=samba
+#sudo firewall-cmd --permanent --add-port=8000/tcp
+#sudo firewall-cmd --reload
+#
+#loginctl enable-linger $user
+#
 echo --- commmon.err
 cat common.err
 # -----------------------------------------

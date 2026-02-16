@@ -28,7 +28,8 @@
 # 5.7 2025/08/14 apache2
 # 5.8 2025/08/18 at,cron,conf_dir
 # 5.9 2025/09/27 p7zip,pzzip-full
-ver=5.9
+# 6.0 2026/02/16 systemd
+ver=6.0
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -44,12 +45,24 @@ fi
 if [ -z "$extract" ]; then
   export extract="unzip -q -o "
 fi
+
+if [ -z "$job" ]; then
+  export job="atcron"
+fi
+
+if [ $job -ne "systemd" ]; then
+  export job="atcron"
+fi
 # ----------------------------------------- systemd or init
 sys=`pgrep -o systemd`
 if [ $? -ne 0 ]; then
   sys=0
 fi
 export sys
+
+if [ $sys -ne 1 ]; then
+  export job="atcron"
+fi
 # ----------------------------------------- package manager
 if [ -z "$distro" ]; then
   #distro="ubuntu"

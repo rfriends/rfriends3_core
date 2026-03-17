@@ -4,8 +4,9 @@
 # =========================================
 # 1.0 2025/03/05 new
 # 1.1 2025/04/18 mod 
+# 1.2 2026/03/18 ssh2 
 #
-ver=1.1
+ver=1.2
 # -----------------------------------------
 echo
 echo start install_common_bsd $ver
@@ -141,6 +142,9 @@ sudo $cmd ${php}-zlib
 sudo $cmd ${php}-curl 
 sudo $cmd ${php}-zip 
 sudo $cmd ${php}-intl
+
+sudo $cmd libssh2-1
+sudo $cmd ${php}-ssh2
 
 #sudo $cmd ${php}-json 
 #sed -e s%^\;extension=mbstring%extension=mbstring% $PREFIX/etc/php.ini-production | sudo tee $PREFIX/etc/php.ini

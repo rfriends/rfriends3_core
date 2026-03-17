@@ -29,7 +29,8 @@
 # 5.8 2025/08/18 at,cron,conf_dir
 # 5.9 2025/09/27 p7zip,pzzip-full
 # 6.1 2026/02/17 systemd
-ver=6.1
+# 6.2 2026/03/18 ssh2
+ver=6.2
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -193,6 +194,9 @@ sudo $cmd php-xml
 sudo $cmd php-simplexml
 sudo $cmd php-openssl
 sudo $cmd php-dom
+
+sudo $cmd libssh2-1
+sudo $cmd php-ssh2
 
 sudo $cmd $app_iproute
 sudo $cmd $app_openssh

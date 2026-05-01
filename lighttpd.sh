@@ -1,5 +1,6 @@
 #!/bin/sh
 # lighttpd on1
+# 2026/05/02
 #
 echo "lighttpd on"
 #
@@ -32,7 +33,7 @@ sudo lighttpd-enable-mod fastcgi-php
 echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 # -----------------------------------------
 if [ $sys -eq 1 ]; then
-  sh lighttps_override.sh
+  sh lighttpd_override.sh
   echo lighttpd_override on
   sudo systemctl daemon-reload
   sudo systemctl enable $lighttpd

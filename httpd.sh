@@ -31,11 +31,9 @@ sudo cp -f httpd.conf $apache_conf_dir/httpd.conf
 if [ $sys -eq 1 ]; then
   sh httpd_override.sh
   echo httpd_override on
-  sudo systemctl daemon-reload
   
-  sudo systemctl enable  $apache2
-  sudo systemctl restart $apache2
-  sudo systemctl status  $apache2
+  sudo systemctl enable  httpd
+  sudo systemctl status  httpd
 else 
   sudo service $apache2 restart
   sudo service $apache2 enable

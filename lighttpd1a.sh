@@ -1,6 +1,6 @@
 #!/bin/sh
 # lighttpd on1a
-# 2025/04/26
+# 2026/05/02
 #
 echo "lighttpd on1a"
 #
@@ -119,6 +119,9 @@ if [ $sys -eq 1 ]; then
   fi
   sudo systemctl status $lighttpd
 else 
+  sh lighttpd_override.sh
+  echo lighttpd_override on
+  sudo systemctl daemon-reload
   sudo service $lighttpd restart
   sudo service $lighttpd enable
   sudo service $lighttpd status

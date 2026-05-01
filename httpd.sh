@@ -1,6 +1,6 @@
 #!/bin/sh
 # httpd for arch
-# 2025/08/18
+# 2026/05/02
 #
 echo "httpd"
 #
@@ -29,6 +29,10 @@ sudo cp -f httpd.conf $apache_conf_dir/httpd.conf
 #ln -nfs temp webdav
 
 if [ $sys -eq 1 ]; then
+  sh httpd_override.sh
+  echo httpd_override on
+  sudo systemctl daemon-reload
+  
   sudo systemctl enable  $apache2
   sudo systemctl restart $apache2
   sudo systemctl status  $apache2

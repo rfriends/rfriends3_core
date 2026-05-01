@@ -90,33 +90,37 @@ if [ $sys -eq 1 ]; then
     echo make $tf
     echo
   fi
-  
-  svc=/usr/lib/systemd/system/lighttpd.service
-  if [ -e $svc ]; then
-    cat $svc | grep '^ProtectHome=read-only' > /dev/null
-    if [ $? = 0 ]; then
-      sed -e s%^ProtectHome=read-only%ProtectHome=false% $svc > svc.service
-      sudo cp -f svc.service $svc
-      echo
-      echo ProtectHome=read-only -> false
-      echo
-      sudo systemctl daemon-reload
-    fi
-  fi
-  
+
+  sh lighttpd_override.sh
+  echo lighttpd_override on
   sudo systemctl enable $lighttpd
-  if [ $? = 0 ]; then
-    for i in {1..5}
-    do
-      #echo wait 2 secs
-      sleep 2
-      sudo systemctl restart $lighttpd
-      sudo systemctl is-active $lighttpd > /dev/null
-      if [ $? = 0 ]; then
-        break;
-      fi
-    done
-  fi
+
+  #svc=/usr/lib/systemd/system/lighttpd.service
+  #if [ -e $svc ]; then
+  #  cat $svc | grep '^ProtectHome=read-only' > /dev/null
+  #  if [ $? = 0 ]; then
+  #    sed -e s%^ProtectHome=read-only%ProtectHome=false% $svc > svc.service
+  #    sudo cp -f svc.service $svc
+  #    echo
+  #    echo ProtectHome=read-only -> false
+  #    echo
+  #    sudo systemctl daemon-reload
+  #  fi
+  #fi
+  #
+  #sudo systemctl enable $lighttpd
+  #if [ $? = 0 ]; then
+  #  for i in {1..5}
+  #  do
+  #    #echo wait 2 secs
+  #    sleep 2
+  #    sudo systemctl restart $lighttpd
+  #    sudo systemctl is-active $lighttpd > /dev/null
+  #    if [ $? = 0 ]; then
+  #      break;
+  #    fi
+  #  done
+  #fi
   sudo systemctl status $lighttpd
 else 
   sh lighttpd_override.sh

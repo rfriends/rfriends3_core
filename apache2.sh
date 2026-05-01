@@ -1,6 +1,6 @@
 #!/bin/sh
 # Apache2
-# 2025/08/18
+# 2026/05/02
 #
 echo "apache2"
 #
@@ -35,6 +35,9 @@ cd $homedir/rfriends3/script/html
 ln -nfs temp webdav
 
 if [ $sys -eq 1 ]; then
+  sh apache2_override.sh
+  echo apache2_override on
+  sudo systemctl daemon-reload
   sudo systemctl enable  $apache2
   sudo systemctl restart $apache2
   sudo systemctl status  $apache2

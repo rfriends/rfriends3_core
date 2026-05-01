@@ -17,7 +17,8 @@
 # 1.3 2025/08/18 conf_dir
 # 1.5 2026/02/12 lighttpd
 # 1.7 2026/02/17 systemd schedule
-ver=1.7
+# 1.8 2026/05/02 ignore systemd schedule
+ver=1.8
 # -----------------------------------------
 echo start $ver
 echo
@@ -33,7 +34,7 @@ fi
 # -----------------------------------------
 export distro="arch"
 export cmd="pacman -S --noconfirm"
-export job="systemd"
+#export job="systemd"
 
 user=`whoami`
 export user=user

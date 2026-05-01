@@ -80,9 +80,7 @@ cd $curdir
 if [ $sys -eq 1 ]; then
   sh lighttpd_override.sh
   echo lighttpd_override on
-  sudo systemctl daemon-reload
   sudo systemctl enable $lighttpd
-  sudo systemctl restart $lighttpd
   
   #svc=/usr/lib/systemd/system/lighttpd.service
   #if [ -e $svc ]; then

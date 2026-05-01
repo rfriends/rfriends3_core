@@ -37,9 +37,8 @@ ln -nfs temp webdav
 if [ $sys -eq 1 ]; then
   sh apache2_override.sh
   echo apache2_override on
-  sudo systemctl daemon-reload
+
   sudo systemctl enable  $apache2
-  sudo systemctl restart $apache2
   sudo systemctl status  $apache2
 else 
   sudo service $apache2 restart

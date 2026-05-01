@@ -22,7 +22,7 @@ echo
 sudo pacman -Syu
 if [ $? != 0 ]; then
   echo
-  echo install_arch.sh
+  echo install_arch_apache2.sh
   echo 実行するshを間違っていないか確認してください。
   echo
   cat /etc/os-release

@@ -35,9 +35,8 @@ echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 if [ $sys -eq 1 ]; then
   sh lighttpd_override.sh
   echo lighttpd_override on
-  sudo systemctl daemon-reload
+
   sudo systemctl enable $lighttpd
-  sudo systemctl restart $lighttpd
   sudo systemctl status $lighttpd
 else 
   sudo service $lighttpd restart

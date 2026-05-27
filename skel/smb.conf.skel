@@ -243,4 +243,5 @@ read only = no
 browsable = yes
 guest ok = yes
 force user = rfriendsuser
+#oplocks = no
 

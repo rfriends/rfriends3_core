@@ -165,6 +165,7 @@
 # public shares, not just authenticated ones
    usershare allow guests = yes
 
+oplocks = no
 #======================= Share Definitions =======================
 
 [homes]
@@ -243,5 +244,4 @@ read only = no
 browsable = yes
 guest ok = yes
 force user = rfriendsuser
-oplocks = no
 

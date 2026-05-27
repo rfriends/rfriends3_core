@@ -12,6 +12,8 @@
         load printers = no
         log file = /var/log/samba4/log.%m
         guest ok = yes
+        oplocks = no
+        smb3 directory leases = no
 [smbdir]
         comment = share folder for rfriends
         path = rfriendshomedir/smbdir

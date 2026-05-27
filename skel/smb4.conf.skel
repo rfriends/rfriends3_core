@@ -12,6 +12,7 @@
         load printers = no
         log file = /var/log/samba4/log.%m
         guest ok = yes
+        oplocks = no
 [smbdir]
         comment = share folder for rfriends
         path = rfriendshomedir/smbdir
@@ -21,5 +22,4 @@
         force user = rfriendsuser
         create mask = 0700
         directory mask = 0700
-        oplocks = no
 

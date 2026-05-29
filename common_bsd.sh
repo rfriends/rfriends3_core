@@ -5,8 +5,9 @@
 # 1.0 2025/03/05 new
 # 1.1 2025/04/18 mod 
 # 1.2 2026/03/18 ssh2 
+# 1.3 2026/05/30 group 
 #
-ver=1.2
+ver=1.3
 # -----------------------------------------
 echo
 echo start install_common_bsd $ver
@@ -49,7 +50,8 @@ if [ -z "$user" ]; then
   export user=`whoami`
 fi
 if [ -z "$group" ]; then
-  export group=`groups | cut -d " " -f 1`
+  #export group=`groups | cut -d " " -f 1`
+  export group=$user
 fi
 #
 if [ -z $homedir ]; then

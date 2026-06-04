@@ -15,7 +15,8 @@
 # 1.1 2025/07/16 disable lighttpd
 # 1.2 2025/08/15 enable apach2
 # 1.3 2025/08/18 conf_dir
-ver=1.3
+$ 1.4 2025/06/05 ufw
+ver=1.4
 # -----------------------------------------
 echo start $ver
 echo
@@ -63,4 +64,17 @@ sh common.sh 2>common.err | tee common.log
 echo --- commmon.err
 cat common.err
 # -----------------------------------------
+# firewall
+sudo ufw allow $app_openssh
+
+if [ $optsamba -eq "on" ]; then
+    sudo ufw allow samba
+fi
+if [ $optapache2 -eq "onht" ]; then
+    sudo ufw allow $port/tcp
+fi
+sudo ufw --reload
+#
+sudo systemctl start $app_openssh
+sudo systemctl enable $app_openssh
 # finish

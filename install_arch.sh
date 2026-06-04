@@ -18,7 +18,8 @@
 # 1.5 2026/02/12 lighttpd
 # 1.7 2026/02/17 systemd schedule
 # 1.8 2026/05/02 ignore systemd schedule
-ver=1.8
+# 1.9 2026/06/05 ufw
+ver=1.9
 # -----------------------------------------
 echo start $ver
 echo
@@ -65,14 +66,18 @@ export app_iproute="iproute2"
 sh common.sh 2>common.err | tee common.log
 # -----------------------------------------
 # firewall
+sudo ufw allow openssh
+
 if [ $optsamba -eq "on" ]; then
-    sudo firewall-cmd --permanent --add-service=samba
+    sudo ufw allow samba
 fi
-sudo firewall-cmd --permanent --add-port=8000/tcp
-sudo firewall-cmd --reload
+if [ $optlighttpd -eq "on2b" ]; then
+    sudo ufw allow $port/tcp
+fi
+sudo ufw --reload
 #
-sudo systemctl start sshd
-sudo systemctl enable sshd
+sudo systemctl start $app_openssh
+sudo systemctl enable $app_openssh
 # -----------------------------------------
 echo --- commmon.err
 cat common.err

@@ -36,7 +36,7 @@ export distro="arch"
 export cmd="pacman -S --noconfirm"
 #export job="systemd"
 
-export user=`whoami`
+#export user=`whoami`
 #export group=$user
 #export port=8000
 export homedir=`sh -c 'cd && pwd'`

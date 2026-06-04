@@ -66,7 +66,7 @@ export app_iproute="iproute2"
 sh common.sh 2>common.err | tee common.log
 # -----------------------------------------
 # firewall
-sudo ufw allow openssh
+sudo ufw allow $app_openssh
 
 if [ $optsamba -eq "on" ]; then
     sudo ufw allow samba

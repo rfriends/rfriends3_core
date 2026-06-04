@@ -32,8 +32,8 @@ fi
 export distro="arch"
 export cmd="pacman -S --noconfirm"
 
-#export user=user
-#export group=user
+#export user=`whoami`
+#export group=$user
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""

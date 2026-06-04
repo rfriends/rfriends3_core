@@ -43,7 +43,7 @@ export distro="alpine"
 export cmd="apk add"
 export cmdupdate="apk update"
 
-export user=`whoami`
+#export user=`whoami`
 #export group=`groups | cut -d ' ' -f 1`
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`

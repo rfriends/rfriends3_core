@@ -38,7 +38,7 @@ export cmd="pacman -S --noconfirm"
 
 user=`whoami`
 export user=user
-#export group=user
+#export group=$user
 #export port=8000
 export homedir=`sh -c 'cd && pwd'`
 #export PREFIX=""

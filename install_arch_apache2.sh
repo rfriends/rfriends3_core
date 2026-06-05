@@ -64,16 +64,10 @@ sh common.sh 2>common.err | tee common.log
 echo --- commmon.err
 cat common.err
 # -----------------------------------------
-# firewall
-sudo ufw allow $app_openssh
-
-if [ $optsamba -eq "on" ]; then
-    sudo ufw allow samba
-fi
-if [ $optapache2 -eq "onht" ]; then
-    sudo ufw allow $port/tcp
-fi
-sudo ufw --reload
+# firewall 無効化（必要に応じて有効にしてください）
+sudo systemctl stop firewalld
+sudo systemctl disable firewalld
+sudo ufw disable
 #
 sudo systemctl start $app_openssh
 sudo systemctl enable $app_openssh

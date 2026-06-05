@@ -4,8 +4,9 @@
 # =========================================
 # 1.0 2025/03/04 new
 # 1.1 2025/04/20 bindir
+# 1.2 2026/06/06 samba422
 
-ver=1.1
+ver=1.2
 echo start $ver
 echo
 sudo pkg update
@@ -36,7 +37,7 @@ export optvimrc="on"
 export php="php84"
 export lighttpd="lighttpd"
 # samba4のみ
-export samba="samba419"
+export samba="samba422"
 export smbd="samba_server"
 export atd="atd"
 export cron="cron"

@@ -65,16 +65,10 @@ export app_iproute="iproute2"
 #
 sh common.sh 2>common.err | tee common.log
 # -----------------------------------------
-# firewall
-sudo ufw allow $app_openssh
-
-if [ $optsamba -eq "on" ]; then
-    sudo ufw allow samba
-fi
-if [ $optlighttpd -eq "on2b" ]; then
-    sudo ufw allow $port/tcp
-fi
-sudo ufw --reload
+# firewall 無効化（必要に応じて有効にしてください）
+sudo systemctl stop firewalld
+sudo systemctl disable firewalld
+sudo ufw disable
 #
 sudo systemctl start $app_openssh
 sudo systemctl enable $app_openssh

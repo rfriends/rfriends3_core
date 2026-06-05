@@ -68,10 +68,11 @@ sh common.sh 2>common.err | tee common.log
 # firewall 無効化（必要に応じて有効にしてください）
 sudo systemctl stop firewalld
 sudo systemctl disable firewalld
+# または
 sudo ufw disable
 #
-sudo systemctl start $app_openssh
-sudo systemctl enable $app_openssh
+sudo systemctl start sshd
+sudo systemctl enable sshd
 # -----------------------------------------
 echo --- commmon.err
 cat common.err

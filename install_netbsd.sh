@@ -31,9 +31,9 @@ export phpdir="/usr/pkg/bin/php"
 
 export optlighttpd="on2b"
 export optsamba="on"
-export optvimrc="on"
+export optvimrc="off"
 
-export php="php84"
+export php="php83"
 export lighttpd="lighttpd"
 export ffmpeg="ffmpeg7"
 export ffplay="ffplay7"

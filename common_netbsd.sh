@@ -25,7 +25,7 @@ if [ $? -ne 0 ]; then
 fi
 export sys
 #
-#export curdir=$(cd $(dirname $0);pwd)
+export curdir=$(cd $(dirname $0);pwd)
 #
 export SCRIPT=rfriends3_latest_script.zip
 # -----------------------------------------

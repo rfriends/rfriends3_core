@@ -1,16 +1,13 @@
 #!/bin/sh
 # =========================================
-# install rfriends for freebsd
+# install rfriends for netbsd
 # =========================================
-# 1.0 2025/03/05 new
-# 1.1 2025/04/18 mod 
-# 1.2 2026/03/18 ssh2 
-# 1.3 2026/05/30 group 
+# 1.0 2026/06/06
 #
-ver=1.3
+ver=1.0
 # -----------------------------------------
 echo
-echo start install_common_bsd $ver
+echo start install_common_netbsd $ver
 echo `date`
 echo
 # -----------------------------------------
@@ -22,24 +19,24 @@ if [ -z "$extract" ]; then
   export extract="unzip -q -o "
 fi
 # -----------------------------------------
-sys=`pgrep -o systemd`
+sys=`pgrep systemd`
 if [ $? -ne 0 ]; then
   sys=0
 fi
 export sys
 #
-export curdir=$(cd $(dirname $0);pwd)
+#export curdir=$(cd $(dirname $0);pwd)
 #
 export SCRIPT=rfriends3_latest_script.zip
 # -----------------------------------------
 if [ -z "$distro" ]; then
-  #distro="freebsd"
+  #distro="netbsd"
   echo ディストリビューションが指定されていません。
   exit 1
 fi
 #
 if [ -z "$cmd" ]; then
-  export cmd="pkg install -y"
+  export cmd="pkgin -y install"
 fi
 #
 if [ -z "$port" ]; then
@@ -51,7 +48,7 @@ if [ -z "$user" ]; then
 fi
 if [ -z "$group" ]; then
   #export group=`groups | cut -d " " -f 1`
-  export group=$user
+  export group=users
 fi
 #
 if [ -z $homedir ]; then
@@ -63,11 +60,17 @@ if [ -z $PREFIX ]; then
 fi
 #
 if [ -z $phpdir ]; then
-  export phpdir="/usr/local/bin"
+  export phpdir="/usr/pkg/bin/php"
 fi
 # -----------------------------------------
+if [ -z "$ffmpeg" ]; then
+  export ffmpeg="ffmpeg7"
+fi
+if [ -z "$ffplay" ]; then
+  export ffplay="ffplay7"
+fi
 if [ -z "$php" ]; then
-  export php="php"
+  export php="php83"
 fi
 if [ -z "$samba" ]; then
   export samba="samba"
@@ -111,8 +114,8 @@ echo
 if [ $sys -eq 1 ]; then
   sudo timedatectl set-timezone Asia/Tokyo
 else 
-  #sudo cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime  
-  sudo tzsetup Asia/Tokyo   
+  sudo cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime  
+  #sudo tzsetup Asia/Tokyo   
 fi
 # =========================================
 echo
@@ -124,18 +127,22 @@ sudo $cmd nano
 sudo $cmd vim 
 sudo $cmd wget
 sudo $cmd curl
-sudo $cmd 7-zip
+#sudo $cmd 7-zip
+sudo $cmd p7zip
 sudo $cmd pidof
-sudo $cmd ffmpeg
+sudo $cmd $ffmpeg
+sudo $cmd $ffplay
 sudo $cmd chromium
 sudo $cmd atomicparsley
 
-sudo $cmd $php
+sudo $cmd ${php}
 
 sudo $cmd ${php}-extensions
-sudo $cmd ${php}-xml 
+#sudo $cmd ${php}-xml 
+sudo $cmd ${php}-dom
 sudo $cmd ${php}-iconv 
-sudo $cmd mod_${php}
+#sudo $cmd mod_${php}
+sudo $cmd ap24-${php}
 
 sudo $cmd ${php}-mbstring 
 sudo $cmd ${php}-gd 
@@ -145,7 +152,8 @@ sudo $cmd ${php}-curl
 sudo $cmd ${php}-zip 
 sudo $cmd ${php}-intl
 
-sudo $cmd libssh2-1
+#sudo $cmd libssh2-1
+sudo $cmd libssh2
 sudo $cmd ${php}-ssh2
 
 #sudo $cmd ${php}-json 
@@ -156,7 +164,8 @@ sudo $cmd ${php}-ssh2
 #sudo $cmd openssh
 #sudo $cmd cronie
 # -----------------------------------------
-sudo ln -s /usr/local/bin/atomicparsley /usr/local/bin/AtomicParsley
+sudo ln -sf /usr/pkg/bin/${php} /usr/pkg/bin/php
+#sudo ln -s /usr/local/bin/atomicparsley /usr/local/bin/AtomicParsley
 # =========================================
 echo
 echo install rfriends3
@@ -165,11 +174,11 @@ echo
 echo rfriends3
 sh rfriends3.sh
 #
-sh at_bsd.sh
+#sh at_bsd.sh
 #
-cat /etc/rc.conf | grep cron_enable > /dev/null
+cat /etc/rc.conf | grep cron > /dev/null
 if [ $? = 1 ]; then
-  echo 'cron_enable = "YES"' | sudo tee -a  /etc/rc.conf
+  echo 'cron=YES' | sudo tee -a  /etc/rc.conf
 fi
 sh cron.sh
 # -----------------------------------------
@@ -188,11 +197,11 @@ echo
 # -----------------------------------------
 echo samba $optsamba
 if [ $optsamba = "on" ]; then
-  cat /etc/rc.conf | grep samba_server_enable > /dev/null
+  cat /etc/rc.conf | grep smbd > /dev/null
   if [ $? = 1 ]; then
-    echo 'samba_server_enable="YES"' | sudo tee -a  /etc/rc.conf
+    echo 'smbd=YES' | sudo tee -a  /etc/rc.conf
   fi
-  sh samba_bsd.sh
+  sh samba_netbsd.sh
 fi
 # -----------------------------------------
 echo

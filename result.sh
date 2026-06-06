@@ -6,7 +6,11 @@
 # =========================================
 cat $homedir/rfriends3/_Rfriends3
 echo
-echo "`cat /etc/os-release | grep PRETTY_NAME`"
+if [ $distro = "netbsd" ]; then
+  uname -a
+else
+  echo "`cat /etc/os-release | grep PRETTY_NAME`"
+fi
 echo "distro : $distro"
 if [ $sys -eq 1 ]; then
   echo "type : systemd" 

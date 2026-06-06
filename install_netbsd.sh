@@ -46,7 +46,7 @@ export ipcmd="ifconfig"
 #
 
 
-sh common_bsd.sh 2>common_netbsd.err | tee common_netbsd.log
+sh common_netbsd.sh 2>common_netbsd.err | tee common_netbsd.log
 echo --- commmon_netbsd.err
 cat common_netbsd.err
 # -----------------------------------------

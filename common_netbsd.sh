@@ -139,7 +139,7 @@ sudo $cmd ${php}
 
 sudo $cmd ${php}-extensions
 #sudo $cmd ${php}-xml 
-sudo $cmd ${php}-dom
+#sudo $cmd ${php}-dom
 sudo $cmd ${php}-iconv 
 #sudo $cmd mod_${php}
 sudo $cmd ap24-${php}
@@ -165,7 +165,7 @@ sudo $cmd ${php}-ssh2
 #sudo $cmd cronie
 # -----------------------------------------
 sudo ln -sf /usr/pkg/bin/${php} /usr/pkg/bin/php
-#sudo ln -s /usr/local/bin/atomicparsley /usr/local/bin/AtomicParsley
+sudo ln -s /usr/pkg/bin/AtomicParsley /usr/pkg/bin/atomicparsley
 # =========================================
 echo
 echo install rfriends3

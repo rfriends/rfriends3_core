@@ -1,34 +1,33 @@
 #!/usr/local/bin/bash
 # =========================================
-# install rfriends for freeBSD
+# install rfriends for NetBSD
 # =========================================
-# 1.0 2025/03/04 new
-# 1.1 2025/04/20 bindir
-# 1.2 2026/06/06 samba422
+# 1.0 2026/06/07 new
 
-ver=1.2
+ver=1.0
 echo start $ver
 echo
-sudo pkg update
+sudo pkgin update
 if [ $? != 0 ]; then
   echo
-  echo install_freebsd.sh
+  echo install_netbsd.sh
   echo 実行するshを間違っていないか確認してください。
   echo
-  cat /etc/os-release
+  #cat /etc/os-release
+  uname -a
   exit 1
 fi
 # -----------------------------------------
-export distro="freebsd"
-export cmd="pkg install -y"
-export cmdupdate="pkg update"
+export distro="netbsd"
+export cmd="pkgin -y install"
+export cmdupdate="pkgin update"
 
 #export user=`whoami`
-#export group=`groups | cut -d ' ' -f 1`
+#export group=users
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 export PREFIX=""
-export phpdir="/usr/local/bin"
+export phpdir="/usr/pkg/bin/php"
 
 export optlighttpd="on2b"
 export optsamba="on"
@@ -36,18 +35,20 @@ export optvimrc="on"
 
 export php="php84"
 export lighttpd="lighttpd"
+export ffmpeg="ffmpeg7"
+export ffplay="ffplay7"
 # samba4のみ
-export samba="samba422"
-export smbd="samba_server"
+export samba="samba"
+export smbd="smbdr"
 export atd="atd"
 export cron="cron"
 export ipcmd="ifconfig"
 #
 
 
-sh common_bsd.sh 2>common_bsd.err | tee common_bsd.log
-echo --- commmon_bsd.err
-cat common_bsd.err
+sh common_bsd.sh 2>common_netbsd.err | tee common_netbsd.log
+echo --- commmon_netbsd.err
+cat common_netbsd.err
 # -----------------------------------------
 # finish
 echo

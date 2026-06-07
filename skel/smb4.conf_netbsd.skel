@@ -9,10 +9,13 @@
         dos charset = CP932
         security = user
         map to guest = Bad User
-        load printers = no
-        log file = /var/log/samba4/log.%m
         guest ok = yes
+
         oplocks = no
+        load printers = no
+        printing = bsd
+        printcap name = /dev/null
+        disable spoolss = yes
 [smbdir]
         comment = share folder for rfriends
         path = rfriendshomedir/smbdir

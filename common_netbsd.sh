@@ -187,10 +187,10 @@ sh rfriends3.sh
 #
 #sh at_bsd.sh
 #
-sudo cat /etc/rc.conf | grep cron > /dev/null
-if [ $? = 1 ]; then
-  echo 'cron=YES' | sudo tee -a  /etc/rc.conf
-fi
+#sudo cat /etc/rc.conf | grep cron > /dev/null
+#if [ $? = 1 ]; then
+#  echo 'cron=YES' | sudo tee -a  /etc/rc.conf
+#fi
 sh cron.sh
 # -----------------------------------------
 echo

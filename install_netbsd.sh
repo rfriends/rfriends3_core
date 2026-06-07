@@ -37,6 +37,7 @@ export php="php83"
 export lighttpd="lighttpd"
 export ffmpeg="ffmpeg7"
 export ffplay="ffplay7"
+export ffprobe="ffprobe7"
 # samba4のみ
 export samba="samba"
 export smbd="smbdr"

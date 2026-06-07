@@ -132,7 +132,7 @@ sudo $cmd wget
 sudo $cmd curl
 #sudo $cmd 7-zip
 sudo $cmd p7zip
-sudo $cmd pidof
+#sudo $cmd pidof
 sudo $cmd $ffmpeg
 sudo $cmd $ffplay
 sudo $cmd chromium
@@ -166,6 +166,11 @@ sudo $cmd ${php}-ssh2
 #sudo $cmd iproute2
 #sudo $cmd openssh
 #sudo $cmd cronie
+
+sudo cp pidof.sh /usr/pkg/bin/pidof
+sudo chmod +x /usr/pkg/bin/pidof
+# pidof test
+pidof sshd
 # -----------------------------------------
 sudo ln -sf /usr/pkg/bin/${php} /usr/pkg/bin/php
 sudo ln -s /usr/pkg/bin/AtomicParsley /usr/pkg/bin/atomicparsley

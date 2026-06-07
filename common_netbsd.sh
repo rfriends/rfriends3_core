@@ -208,11 +208,10 @@ echo
 # -----------------------------------------
 echo samba $optsamba
 if [ $optsamba = "on" ]; then
-  cat /etc/rc.conf | grep smbd > /dev/null
+  sudo cat /etc/rc.conf | grep smbd > /dev/null
   if [ $? = 1 ]; then
     echo 'smbd=YES' | sudo tee -a  /etc/rc.conf
   fi
-  sudo cp /usr/pkg/share/examples/rc.d/samba /etc/rc.d/
   sh samba_netbsd.sh
 fi
 # -----------------------------------------
@@ -222,11 +221,10 @@ echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on2b" ]; then
-  cat /etc/rc.conf | grep lighttpd > /dev/null
+  sudo cat /etc/rc.conf | grep lighttpd > /dev/null
   if [ $? = 1 ]; then
     echo 'lighttpd=YES' | sudo tee -a  /etc/rc.conf
   fi
-  sudo cp /usr/pkg/share/examples/rc.d/lighttpd /etc/rc.d/
   
   sudo $cmd lighttpd
   #sudo $cmd php-cgi

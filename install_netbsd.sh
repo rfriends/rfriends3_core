@@ -7,6 +7,10 @@
 ver=1.0
 echo start $ver
 echo
+  echo
+  echo 現在開発中のため、正常に動作しません。(2026/06/07)
+  echo
+  
 sudo pkgin update
 if [ $? != 0 ]; then
   echo

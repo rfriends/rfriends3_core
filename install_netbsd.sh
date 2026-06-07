@@ -34,7 +34,7 @@ export PREFIX=""
 export phpdir="/usr/pkg/bin/php"
 
 export optlighttpd="on2b"
-export optsamba="on"
+export optsamba="off"
 export optvimrc="on"
 
 export php="php83"

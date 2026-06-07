@@ -36,9 +36,9 @@ if [ $sys -eq 1 ]; then
   sudo systemctl restart $smbd
   sudo systemctl status $smbd
 else 
-  sudo cp /usr/pkg/share/examples/rc.d/samba /etc/rc.d/
-  sudo /etc/rc.d/samba start
-  sudo /etc/rc.d/samba status
+  sudo cp /usr/pkg/share/examples/rc.d/smbd /etc/rc.d/
+  sudo /etc/rc.d/smbd start
+  sudo /etc/rc.d/smbd status
 fi
 
 exit 0

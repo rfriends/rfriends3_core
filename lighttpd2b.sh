@@ -1,6 +1,6 @@
 #!/bin/sh
 # lighttpd on2b
-# 2026/05/02
+# 2026/06/07
 #
 echo "lighttpd on2b"
 #
@@ -64,7 +64,11 @@ sudo cp -f modules.conf.skel2b $conf_dir/modules.conf
 #sudo chown root:root $conf_dir/modules.conf
 #
 # fastcgi
-sed -e s%rfriendsphpdir%$PREFIX$phpdir%g fastcgi.conf.skel2b > fastcgi.conf
+if [ $distro = "netbsd" ]; then
+  sed -e s%rfriendsphpdir%$PREFIX$phpdir%g fastcgi.conf.skel2b > fastcgi.conf
+else
+  sed -e s%rfriendsphpdir%$PREFIX$phpdir%g fastcgi.conf.skel2b > fastcgi.conf
+fi
 sudo cp -f fastcgi.conf $conf_dir/conf.d/fastcgi.conf
 #sudo chown root:root $conf_dir/conf.d/fastcgi.conf
 #

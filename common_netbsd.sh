@@ -221,9 +221,9 @@ echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on2b" ]; then
-  cat /etc/rc.conf | grep lighttpd_enable > /dev/null
+  cat /etc/rc.conf | grep lighttpd > /dev/null
   if [ $? = 1 ]; then
-    echo 'lighttpd_enable = "YES"' | sudo tee -a  /etc/rc.conf
+    echo 'lighttpd=YES' | sudo tee -a  /etc/rc.conf
   fi
   sudo $cmd lighttpd
   #sudo $cmd php-cgi

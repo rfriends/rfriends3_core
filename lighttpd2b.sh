@@ -120,8 +120,8 @@ else
     sudo service $lighttpd restart
     sudo service $lighttpd status
   else
-    sudo /etc/rc.d/lighttpd start
-    sudo /etc/rc.d/lighttpd status
+    sudo /etc/rc.d/$lighttpd start
+    sudo /etc/rc.d/$lighttpd status
   fi
 fi
 

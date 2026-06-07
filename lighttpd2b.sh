@@ -115,9 +115,14 @@ if [ $sys -eq 1 ]; then
   
   sudo systemctl status $lighttpd
 else 
-  sudo service $lighttpd enable
-  sudo service $lighttpd restart
-  sudo service $lighttpd status
+  if [ $distro != "netbsd" ]; then
+    sudo service $lighttpd enable
+    sudo service $lighttpd restart
+    sudo service $lighttpd status
+  else
+    sudo /etc/rc.d/lighttpd start
+    sudo /etc/rc.d/lighttpd status
+  fi
 fi
 
 sudo touch $conf_dir/$onver

@@ -16,8 +16,8 @@ sudo cp -f smb4.conf $PREFIXi/usr/local/etc/smb4.conf
 #sudo chown root:root $PREFIX/etc/smb4.conf
 rm smb4.conf0
 
-mkdir -p /var/db/samba4/private
-mkdir -p /var/log/samba4
+sudo mkdir -p /var/db/samba4/private
+sudo mkdir -p /var/log/samba4
 
 sudo chmod 755 /var/run/samba4
 sudo chmod 700 /var/db/samba4/private

@@ -65,7 +65,7 @@ sudo cp -f modules.conf.skel2b $conf_dir/modules.conf
 #
 # fastcgi
 if [ $distro = "netbsd" ]; then
-  sed -e s%rfriendsphpdir/php-cgi%$PREFIX/usr/pkg/libexec/cgi-bin/$php%g fastcgi.conf.skel2b > fastcgi.conf
+  sed -e s%rfriendsphpdir/php-cgi%$fastcgi_dir%g fastcgi.conf.skel2b > fastcgi.conf
 else
   sed -e s%rfriendsphpdir%$PREFIX$phpdir%g fastcgi.conf.skel2b > fastcgi.conf
 fi

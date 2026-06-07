@@ -231,7 +231,7 @@ if [ $optlighttpd = "on2b" ]; then
   #sudo $cmd fcgi
   #sudo $cmd lighttpd-fastcgi
 
-  export usrlocal="$PREFIX/usr/local"
+  export usrlocal="$PREFIX/usr/pkg"
   export log_root="$PREFIX/var/log/lighttpd"
   export state_dir="$PREFIX/var/run"
   export home_dir="$PREFIX/var/run/lighttpd"

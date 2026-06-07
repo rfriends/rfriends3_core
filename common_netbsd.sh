@@ -212,6 +212,7 @@ if [ $optsamba = "on" ]; then
   if [ $? = 1 ]; then
     echo 'smbd=YES' | sudo tee -a  /etc/rc.conf
   fi
+  sudo cp /usr/pkg/share/examples/rc.d/samba /etc/rc.d/
   sh samba_netbsd.sh
 fi
 # -----------------------------------------
@@ -225,6 +226,8 @@ if [ $optlighttpd = "on2b" ]; then
   if [ $? = 1 ]; then
     echo 'lighttpd=YES' | sudo tee -a  /etc/rc.conf
   fi
+  sudo cp /usr/pkg/share/examples/rc.d/lighttpd /etc/rc.d/
+  
   sudo $cmd lighttpd
   #sudo $cmd php-cgi
   #sudo $cmd fcgi

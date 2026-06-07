@@ -236,6 +236,7 @@ if [ $optlighttpd = "on2b" ]; then
   export home_dir="$PREFIX/var/run/lighttpd"
   export conf_dir="$PREFIX$usrlocal/etc/lighttpd"
   export cache_dir="$PREFIX/var/cache/lighttpd"
+  export fastcgi_dir="$PREFIX/usr/pkg/libexec/cgi-bin/$php"
   sh lighttpd2b.sh
 fi
 # =========================================

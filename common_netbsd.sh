@@ -69,6 +69,9 @@ fi
 if [ -z "$ffplay" ]; then
   export ffplay="ffplay7"
 fi
+if [ -z "$ffprobe" ]; then
+  export ffplay="ffprobe7"
+fi
 if [ -z "$php" ]; then
   export php="php83"
 fi
@@ -166,6 +169,9 @@ sudo $cmd ${php}-ssh2
 # -----------------------------------------
 sudo ln -sf /usr/pkg/bin/${php} /usr/pkg/bin/php
 sudo ln -s /usr/pkg/bin/AtomicParsley /usr/pkg/bin/atomicparsley
+sudo ln -s /usr/pkg/bin/$ffmpeg  /usr/pkg/bin/ffmpeg
+sudo ln -s /usr/pkg/bin/$ffplay  /usr/pkg/bin/ffplay
+sudo ln -s /usr/pkg/bin/$ffprobe /usr/pkg/bin/ffprobe
 # =========================================
 echo
 echo install rfriends3

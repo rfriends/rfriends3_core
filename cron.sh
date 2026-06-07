@@ -16,8 +16,8 @@ if [ $sys -eq 1 ]; then
   sudo systemctl status $cron
 else 
   if [ $distro != "netbsd" ]; then
-    sudo /etc/rc.d/cron restart
-    sudo /etc/rc.d/cron status
+    sudo service cron restart
+    sudo service cron status
   else
     sudo /etc/rc.d/cron start
     sudo /etc/rc.d/cron status

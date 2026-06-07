@@ -5,23 +5,11 @@
 
 sudo $cmd $samba
 
-#sudo mkdir -p /var/log/samba
-#sudo chown root:adm /var/log/samba
-
 cd $curdir/skel
 sed -e s%rfriendshomedir%$homedir%g smb4.conf.skel > smb4.conf0
 sed -e s%rfriendsuser%$user%g smb4.conf0 > smb4.conf
-#sudo cp -f smb4.conf $PREFIX/etc/smb4.conf
-sudo cp -f smb4.conf $PREFIXi/usr/local/etc/smb4.conf
-#sudo chown root:root $PREFIX/etc/smb4.conf
+sudo cp -f smb4.conf $PREFIXi/usr/pkg/etc/samba/smb.conf
 rm smb4.conf0
-
-sudo mkdir -p /var/db/samba4/private
-sudo mkdir -p /var/log/samba4
-
-sudo chmod 755 /var/run/samba4
-sudo chmod 700 /var/db/samba4/private
-sudo mkdir /var/run/samba4/fd
 
 mkdir -p $homedir/smbdir/usr2/
 

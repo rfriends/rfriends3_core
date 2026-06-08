@@ -132,9 +132,9 @@ echo
 echo install tools
 echo
 # =========================================
-$sucmd $cmd unzip--no_x11
+$sucmd $cmd unzip--
 $sucmd $cmd nano
-$sucmd $cmd vim-- 
+$sucmd $cmd vim--no_x11 
 $sucmd $cmd wget
 $sucmd $cmd curl
 #$sucmd $cmd 7-zip

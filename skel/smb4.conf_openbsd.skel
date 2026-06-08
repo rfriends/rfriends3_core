@@ -12,6 +12,7 @@
         guest ok = yes
 
         oplocks = no
+        level2 oplocks = no
         load printers = no
         printing = bsd
         printcap name = /dev/null

@@ -12,7 +12,7 @@ echo `date`
 echo
 # -----------------------------------------
 if [ -z "$SCRIPT" ]; then
-  SCRIPT=rfriends3_latest_script.zip
+  export SCRIPT=rfriends3_latest_script.zip
 fi
 
 if [ -z "$extract" ]; then
@@ -27,7 +27,6 @@ export sys
 #
 export curdir=$(cd $(dirname $0);pwd)
 #
-export $SCRIPT
 # -----------------------------------------
 if [ -z "$distro" ]; then
   #distro="openbsd"

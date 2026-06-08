@@ -154,7 +154,7 @@ $sucmd $cmd php-zip%${phpv}
 $sucmd $cmd php-intl%${phpv}
 
 $sucmd $cmd libssh2
-$sucmd $cmd php${php}-ssh2
+$sucmd $cmd pecl${php}-ssh2
 
 $sucmd ln -sf /etc/php-${phpv}.sample/gd.ini /etc/php-${phpv}/gd.ini
 $sucmd ln -sf /etc/php-${phpv}.sample/curl.ini /etc/php-${phpv}/curl.ini

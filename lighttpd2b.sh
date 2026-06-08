@@ -115,14 +115,18 @@ if [ $sys -eq 1 ]; then
   
   sudo systemctl status $lighttpd
 else 
-  if [ $distro != "netbsd" ]; then
-    sudo service $lighttpd enable
-    sudo service $lighttpd restart
-    sudo service $lighttpd status
-  else
+  if [ $distro = "netbsd" ]; then
     sudo cp /usr/pkg/share/examples/rc.d/lighttpd /etc/rc.d/
     sudo /etc/rc.d/lighttpd start
     sudo /etc/rc.d/lighttpd status
+ elif [ $distro = "openbsd" ]; then
+    sudo cp /usr/local/share/examples/rc.d/lighttpd /etc/rc.d/
+    sudo /etc/rc.d/lighttpd start
+    sudo /etc/rc.d/lighttpd status
+ else
+    sudo service $lighttpd enable
+    sudo service $lighttpd restart
+    sudo service $lighttpd status
   fi
 fi
 

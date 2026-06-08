@@ -27,7 +27,6 @@ server.port = rfriendsport
 #server.chroot = "/var/www"
 
 # ドキュメントルート
-# /var/www/home/wevuser/htdocs/ を参照します
 server.document-root = "rfriendshomedir/rfriends3/script/html"
 
 # デフォルトのインデックスファイル

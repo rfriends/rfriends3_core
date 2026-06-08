@@ -9,7 +9,7 @@ echo
 if [ $distro = "netbsd" ]; then
   uname -a
 elif [ $distro = "openbsd" ]; then
-  yname -a
+  uname -a
 else
   echo "`cat /etc/os-release | grep PRETTY_NAME`"
 fi

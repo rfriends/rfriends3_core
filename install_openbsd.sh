@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/bin/sh
 # =========================================
 # install rfriends for OpenBSD
 # =========================================
@@ -55,6 +55,7 @@ export atd="atd"
 export cron="cron"
 export ipcmd="ifconfig"
 #
+touch common_openbsd.err
 sh common_openbsd.sh 2>common_openbsd.err | tee common_openbsd.log
 echo --- commmon_openbsd.err
 cat common_openbsd.err

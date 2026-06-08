@@ -8,6 +8,8 @@ cat $homedir/rfriends3/_Rfriends3
 echo
 if [ $distro = "netbsd" ]; then
   uname -a
+elif [ $distro = "openbsd" ]; then
+  yname -a
 else
   echo "`cat /etc/os-release | grep PRETTY_NAME`"
 fi

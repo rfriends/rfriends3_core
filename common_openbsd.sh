@@ -219,7 +219,7 @@ if [ $optlighttpd = "on2b" ]; then
     echo 'lighttpd=YES' | $sucmd tee -a  /etc/rc.conf
   fi
   
-  $sucmd $cmd lighttpd
+  $sucmd $cmd lighttpd--
   #$sucmd $cmd php-cgi
   #$sucmd $cmd fcgi
   #$sucmd $cmd lighttpd-fastcgi

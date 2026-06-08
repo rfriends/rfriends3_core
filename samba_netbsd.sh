@@ -24,9 +24,19 @@ if [ $sys -eq 1 ]; then
   sudo systemctl restart $smbd
   sudo systemctl status $smbd
 else 
-  sudo cp /usr/pkg/share/examples/rc.d/smbd /etc/rc.d/
-  sudo /etc/rc.d/smbd start
-  sudo /etc/rc.d/smbd status
+  if [ $distro = "netbsd" ]; then
+    sudo cp /usr/pkg/share/examples/rc.d/smbd /etc/rc.d/
+    sudo /etc/rc.d/smbd start
+    sudo /etc/rc.d/smbd status
+ elif [ $distro = "openbsd" ]; then
+    sudo cp /usr/local/share/examples/rc.d/smbd /etc/rc.d/
+    sudo /etc/rc.d/smbd start
+    sudo /etc/rc.d/smbd status
+ else
+    sudo service $smbd enable
+    sudo service $smbd restart
+    sudo service $smbd status
+  fi
 fi
 
 exit 0

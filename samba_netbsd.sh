@@ -8,7 +8,13 @@ sudo $cmd $samba
 cd $curdir/skel
 sed -e s%rfriendshomedir%$homedir%g smb4.conf.skel > smb4.conf0
 sed -e s%rfriendsuser%$user%g smb4.conf0 > smb4.conf
-sudo cp -f smb4.conf $PREFIXi/usr/pkg/etc/samba/smb.conf
+
+if [ $distro = "netbsd" ]; then
+  sudo cp -f smb4.conf $PREFIX/usr/pkg/etc/samba/smb.conf
+fi
+if [ $distro = "openbsd" ]; then
+  sudo cp -f smb4.conf $PREFIX/usr/local/etc/samba/smb.conf
+fi
 rm smb4.conf0
 
 mkdir -p $homedir/smbdir/usr2/

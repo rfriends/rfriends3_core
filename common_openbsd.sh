@@ -132,9 +132,9 @@ echo
 echo install tools
 echo
 # =========================================
-$sucmd $cmd unzip
+$sucmd $cmd unzip--
 $sucmd $cmd nano
-$sucmd $cmd vim 
+$sucmd $cmd vim-- 
 $sucmd $cmd wget
 $sucmd $cmd curl
 #$sucmd $cmd 7-zip
@@ -157,11 +157,11 @@ $sucmd $cmd php-intl%${phpv}
 $sucmd $cmd libssh2
 $sucmd $cmd php${php}-ssh2
 
-ln -sf /etc/php-${phpv}.sample/gd.ini /etc/php-${phpv}/gd.ini
-ln -sf /etc/php-${phpv}.sample/curl.ini /etc/php-${phpv}/curl.ini
-ln -sf /etc/php-${phpv}.sample/zip.ini /etc/php-${phpv}/zip.ini
-ln -sf /etc/php-${phpv}.sample/intl.ini /etc/php-${phpv}/intl.ini
-ln -sf /etc/php-${phpv}.sample/ssh2.ini /etc/php-${phpv}/ssh2.ini 
+$sucmd ln -sf /etc/php-${phpv}.sample/gd.ini /etc/php-${phpv}/gd.ini
+$sucmd ln -sf /etc/php-${phpv}.sample/curl.ini /etc/php-${phpv}/curl.ini
+$sucmd ln -sf /etc/php-${phpv}.sample/zip.ini /etc/php-${phpv}/zip.ini
+$sucmd ln -sf /etc/php-${phpv}.sample/intl.ini /etc/php-${phpv}/intl.ini
+$sucmd ln -sf /etc/php-${phpv}.sample/ssh2.ini /etc/php-${phpv}/ssh2.ini 
 # -----------------------------------------
 #$sucmd $cmd tzdata
 #$sucmd $cmd iproute2

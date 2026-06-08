@@ -6,7 +6,7 @@
 sudo $cmd $samba
 
 cd $curdir/skel
-sed -e s%rfriendshomedir%$homedir%g smb4.conf.skel > smb4.conf0
+sed -e s%rfriendshomedir%$homedir%g smb4.conf_netbsd.skel > smb4.conf0
 sed -e s%rfriendsuser%$user%g smb4.conf0 > smb4.conf
 
 if [ $distro = "netbsd" ]; then

@@ -11,7 +11,7 @@ echo
   echo 現在開発中のため、正常に動作しません。2026/06/08
   echo
   
-sudo pkgin update
+doas pkg_add -u
 if [ $? != 0 ]; then
   echo
   echo install_openbsd.sh
@@ -22,13 +22,13 @@ if [ $? != 0 ]; then
   exit 1
 fi
 # -----------------------------------------
-doas pkg_add sudo
+echo 1 | doas pkg_add sudo
 doas mkdir -p /etc/sudoers.d
 echo "%wheel ALL=(ALL) SETENV: ALL" | doas tee /etc/sudoers.d/wheel > /dev/null
 doas chmod 0440 /etc/sudoers.d/wheel
 # -----------------------------------------
 export distro="openbsd"
-export cmd="pkg_add"
+export cmd="echo 1 | pkg_add"
 export cmdupdate="pkg_add -u"
 
 #export user=`whoami`

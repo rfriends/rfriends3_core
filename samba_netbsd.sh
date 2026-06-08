@@ -37,7 +37,7 @@ else
  elif [ $distro = "openbsd" ]; then
     sudo cp /usr/local/share/examples/rc.d/smbd /etc/rc.d/
     sudo /etc/rc.d/smbd start
-    sudo /etc/rc.d/smbd status
+    sudo /etc/rc.d/smbd check
  else
     sudo service $smbd enable
     sudo service $smbd restart

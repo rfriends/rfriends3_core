@@ -28,7 +28,7 @@ echo "%wheel ALL=(ALL) SETENV: ALL" | doas tee /etc/sudoers.d/wheel > /dev/null
 doas chmod 0440 /etc/sudoers.d/wheel
 # -----------------------------------------
 export distro="openbsd"
-export cmd="echo 1 | pkg_add"
+export cmd="pkg_add"
 export cmdupdate="pkg_add -u"
 
 #export user=`whoami`

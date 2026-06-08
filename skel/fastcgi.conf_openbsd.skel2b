@@ -13,8 +13,7 @@ fastcgi.server += ( ".php" =>
 		"bin-environment" => ( 
 			"PHP_FCGI_CHILDREN" => "4",
 			"PHP_FCGI_MAX_REQUESTS" => "10000",
-            "PATH" => "/usr/bin:/bin:/usr/pkg/bin:/usr/local/bin",
-            "COLUMNS" => "500"
+            "TZ" => "Asia/Tokyo" 
 		),
 		"bin-copy-environment" => (
 			"PATH", "SHELL", "USER"

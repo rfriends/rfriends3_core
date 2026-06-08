@@ -13,7 +13,7 @@ if [ $distro = "netbsd" ]; then
   sudo cp -f smb4.conf $PREFIX/usr/pkg/etc/samba/smb.conf
 fi
 if [ $distro = "openbsd" ]; then
-  sudo cp -f smb4.conf $PREFIX/usr/local/etc/samba/smb.conf
+  sudo cp -f smb4.conf $PREFIX/etc/samba/smb.conf
 fi
 rm smb4.conf0
 

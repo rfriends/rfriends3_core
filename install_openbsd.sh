@@ -56,7 +56,7 @@ export cron="cron"
 export ipcmd="ifconfig"
 #
 sh common_openbsd.sh 2>common_openbsd.err | tee common_openbsd.log
-echo --- commmon_netbsd.err
+echo --- commmon_openbsd.err
 cat common_openbsd.err
 # -----------------------------------------
 # finish

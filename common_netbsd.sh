@@ -2,17 +2,17 @@
 # =========================================
 # install rfriends for netbsd
 # =========================================
-# 1.0 2026/06/08
+# 1.0 2026/06/06
 #
 ver=1.0
 # -----------------------------------------
 echo
-echo start install_common_openbsd $ver
+echo start install_common_netbsd $ver
 echo `date`
 echo
 # -----------------------------------------
 if [ -z "$SCRIPT" ]; then
-  SCRIPT=rfriends3_latest_script.zip
+  export SCRIPT=rfriends3_latest_script.zip
 fi
 
 if [ -z "$extract" ]; then
@@ -27,19 +27,16 @@ export sys
 #
 export curdir=$(cd $(dirname $0);pwd)
 #
-export $SCRIPT
+export SCRIPT=rfriends3_latest_script.zip
 # -----------------------------------------
 if [ -z "$distro" ]; then
-  #distro="openbsd"
+  #distro="netbsd"
   echo ディストリビューションが指定されていません。
   exit 1
 fi
 #
 if [ -z "$cmd" ]; then
-  export cmd="pkg_add"
-fi
-if [ -z "$sucmd" ]; then
-  export sucmd="doas"
+  export cmd="pkgin -y install"
 fi
 #
 if [ -z "$port" ]; then
@@ -51,7 +48,7 @@ if [ -z "$user" ]; then
 fi
 if [ -z "$group" ]; then
   #export group=`groups | cut -d " " -f 1`
-  export group=$user
+  export group=users
 fi
 #
 if [ -z $homedir ]; then
@@ -63,23 +60,20 @@ if [ -z $PREFIX ]; then
 fi
 #
 if [ -z $phpdir ]; then
-  export phpdir="/usr/local/bin/php"
+  export phpdir="/usr/pkg/bin/php"
 fi
 # -----------------------------------------
 if [ -z "$ffmpeg" ]; then
-  export ffmpeg="ffmpeg"
+  export ffmpeg="ffmpeg7"
 fi
 if [ -z "$ffplay" ]; then
-  export ffplay="ffplay"
+  export ffplay="ffplay7"
 fi
 if [ -z "$ffprobe" ]; then
-  export ffplay="ffprobe"
-fi
-if [ -z "$phpv" ]; then
-  export phpv="8.3"
+  export ffplay="ffprobe7"
 fi
 if [ -z "$php" ]; then
-  export php="83"
+  export php="php83"
 fi
 if [ -z "$samba" ]; then
   export samba="samba"
@@ -121,59 +115,68 @@ echo set timezone to tokyo
 echo
 # =========================================
 if [ $sys -eq 1 ]; then
-  $sucmd timedatectl set-timezone Asia/Tokyo
+  sudo timedatectl set-timezone Asia/Tokyo
 else 
-  #$sucmd cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime  
-  #$sucmd tzsetup Asia/Tokyo
-  $sucmd ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+  sudo cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime  
+  #sudo tzsetup Asia/Tokyo   
 fi
 # =========================================
 echo
 echo install tools
 echo
 # =========================================
-$sucmd $cmd unzip
-$sucmd $cmd nano
-$sucmd $cmd vim 
-$sucmd $cmd wget
-$sucmd $cmd curl
-#$sucmd $cmd 7-zip
-$sucmd $cmd p7zip
-#$sucmd $cmd pidof
-$sucmd $cmd $ffmpeg
-#$sucmd $cmd $ffplay
-$sucmd $cmd chromium
-$sucmd $cmd atomicparsley
+sudo $cmd unzip
+sudo $cmd nano
+sudo $cmd vim 
+sudo $cmd wget
+sudo $cmd curl
+#sudo $cmd 7-zip
+sudo $cmd p7zip
+#sudo $cmd pidof
+sudo $cmd $ffmpeg
+sudo $cmd $ffplay
+sudo $cmd chromium
+sudo $cmd atomicparsley
 
-$sucmd ln -s /usr/local/bin/AtomicParsley /usr/local/bin/atomicparsley
+sudo $cmd ${php}
+
+sudo $cmd ${php}-extensions
+#sudo $cmd ${php}-xml 
+#sudo $cmd ${php}-dom
+sudo $cmd ${php}-iconv 
+#sudo $cmd mod_${php}
+sudo $cmd ap24-${php}
+
+sudo $cmd ${php}-mbstring 
+sudo $cmd ${php}-gd 
+sudo $cmd ${php}-gettext 
+sudo $cmd ${php}-zlib 
+sudo $cmd ${php}-curl 
+sudo $cmd ${php}-zip 
+sudo $cmd ${php}-intl
+
+#sudo $cmd libssh2-1
+sudo $cmd libssh2
+sudo $cmd ${php}-ssh2
+
+#sudo $cmd ${php}-json 
+#sed -e s%^\;extension=mbstring%extension=mbstring% $PREFIX/etc/php.ini-production | sudo tee $PREFIX/etc/php.ini
 # -----------------------------------------
-$sucmd $cmd php%${phpv}
+#sudo $cmd tzdata
+#sudo $cmd iproute2
+#sudo $cmd openssh
+#sudo $cmd cronie
 
-$sucmd $cmd php-gd%${phpv} 
-$sucmd $cmd php-curl%${phpv} 
-$sucmd $cmd php-zip%${phpv} 
-$sucmd $cmd php-intl%${phpv}
-
-$sucmd $cmd libssh2
-$sucmd $cmd php${php}-ssh2
-
-ln -sf /etc/php-${phpv}.sample/gd.ini /etc/php-${phpv}/gd.ini
-ln -sf /etc/php-${phpv}.sample/curl.ini /etc/php-${phpv}/curl.ini
-ln -sf /etc/php-${phpv}.sample/zip.ini /etc/php-${phpv}/zip.ini
-ln -sf /etc/php-${phpv}.sample/intl.ini /etc/php-${phpv}/intl.ini
-ln -sf /etc/php-${phpv}.sample/ssh2.ini /etc/php-${phpv}/ssh2.ini 
-# -----------------------------------------
-#$sucmd $cmd tzdata
-#$sucmd $cmd iproute2
-#$sucmd $cmd openssh
-#$sucmd $cmd cronie
-
-$sucmd cp pidof.sh /usr/local/bin/pidof
-$sucmd chmod +x /usr/local/bin/pidof
+sudo cp pidof.sh /usr/pkg/bin/pidof
+sudo chmod +x /usr/pkg/bin/pidof
 # pidof test
 pidof sshd
 # -----------------------------------------
-
+sudo ln -sf /usr/pkg/bin/${php} /usr/pkg/bin/php
+sudo ln -s /usr/pkg/bin/AtomicParsley /usr/pkg/bin/atomicparsley
+sudo ln -s /usr/pkg/bin/$ffmpeg  /usr/pkg/bin/ffmpeg
+sudo ln -s /usr/pkg/bin/$ffplay  /usr/pkg/bin/ffplay
+sudo ln -s /usr/pkg/bin/$ffprobe /usr/pkg/bin/ffprobe
 # =========================================
 echo
 echo install rfriends3
@@ -184,9 +187,9 @@ sh rfriends3.sh
 #
 #sh at_bsd.sh
 #
-#$sucmd cat /etc/rc.conf | grep cron > /dev/null
+#sudo cat /etc/rc.conf | grep cron > /dev/null
 #if [ $? = 1 ]; then
-#  echo 'cron=YES' | $sucmd tee -a  /etc/rc.conf
+#  echo 'cron=YES' | sudo tee -a  /etc/rc.conf
 #fi
 sh cron.sh
 # -----------------------------------------
@@ -205,9 +208,9 @@ echo
 # -----------------------------------------
 echo samba $optsamba
 if [ $optsamba = "on" ]; then
-  $sucmd cat /etc/rc.conf | grep smbd > /dev/null
+  sudo cat /etc/rc.conf | grep smbd > /dev/null
   if [ $? = 1 ]; then
-    echo 'smbd=YES' | $sucmd tee -a  /etc/rc.conf
+    echo 'smbd=YES' | sudo tee -a  /etc/rc.conf
   fi
   sh samba_netbsd.sh
 fi
@@ -218,23 +221,23 @@ echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on2b" ]; then
-  $sucmd cat /etc/rc.conf | grep lighttpd > /dev/null
+  sudo cat /etc/rc.conf | grep lighttpd > /dev/null
   if [ $? = 1 ]; then
-    echo 'lighttpd=YES' | $sucmd tee -a  /etc/rc.conf
+    echo 'lighttpd=YES' | sudo tee -a  /etc/rc.conf
   fi
   
-  $sucmd $cmd lighttpd
-  #$sucmd $cmd php-cgi
-  #$sucmd $cmd fcgi
-  #$sucmd $cmd lighttpd-fastcgi
+  sudo $cmd lighttpd
+  #sudo $cmd php-cgi
+  #sudo $cmd fcgi
+  #sudo $cmd lighttpd-fastcgi
 
-  export usrlocal="$PREFIX/usr/local"
+  export usrlocal="$PREFIX/usr/pkg"
   export log_root="$PREFIX/var/log/lighttpd"
   export state_dir="$PREFIX/var/run"
   export home_dir="$PREFIX/var/run/lighttpd"
   export conf_dir="$PREFIX$usrlocal/etc/lighttpd"
   export cache_dir="$PREFIX/var/cache/lighttpd"
-  export fastcgi_dir="$PREFIX/usr/local/libexec/cgi-bin/$php"
+  export fastcgi_dir="$PREFIX/usr/pkg/libexec/cgi-bin/$php"
   sh lighttpd2b.sh
 fi
 # =========================================

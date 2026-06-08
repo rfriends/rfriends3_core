@@ -38,7 +38,7 @@ if [ -z "$cmd" ]; then
   export cmd="pkg_add"
 fi
 if [ -z "$sucmd" ]; then
-  export sucmd="doas"
+  export sucmd="sudo"
 fi
 #
 if [ -z "$port" ]; then
@@ -171,8 +171,6 @@ $sucmd cp pidof.sh /usr/local/bin/pidof
 $sucmd chmod +x /usr/local/bin/pidof
 # pidof test
 pidof sshd
-# -----------------------------------------
-
 # =========================================
 echo
 echo install rfriends3
@@ -181,13 +179,12 @@ echo
 echo rfriends3
 sh rfriends3.sh
 #
-#sh at_bsd.sh
-#
-#$sucmd cat /etc/rc.conf | grep cron > /dev/null
-#if [ $? = 1 ]; then
-#  echo 'cron=YES' | $sucmd tee -a  /etc/rc.conf
-#fi
-sh cron.sh
+echo "$user" | sudo tee -a /var/cron/at.allow
+sudo chown root:crontab /var/cron/at.allow
+sudo chmod 640 /var/cron/at.allow
+
+sudo rcctl enable cron
+sudo rcctl start cron
 # -----------------------------------------
 echo
 echo vimrc

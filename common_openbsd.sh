@@ -205,7 +205,7 @@ if [ $optsamba = "on" ]; then
   if [ $? = 1 ]; then
     echo 'smbd=YES' | $sucmd tee -a  /etc/rc.conf
   fi
-  sh samba_openbsd.sh
+  sh samba_netbsd.sh
 fi
 # -----------------------------------------
 echo

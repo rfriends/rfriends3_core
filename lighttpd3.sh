@@ -47,7 +47,7 @@ echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 cd $curdir
 if [ $sys -eq 1 ]; then
   #sh lighttpd_override.sh
-  #echo lighttpd_override on
+  echo lighttpd_override on
   #sudo systemctl enable $lighttpd
   
   #sudo systemctl status $lighttpd

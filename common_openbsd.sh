@@ -162,7 +162,9 @@ $sucmd ln -sf /etc/php-${phpv}.sample/zip.ini /etc/php-${phpv}/zip.ini
 $sucmd ln -sf /etc/php-${phpv}.sample/intl.ini /etc/php-${phpv}/intl.ini
 $sucmd ln -sf /etc/php-${phpv}.sample/ssh2.ini /etc/php-${phpv}/ssh2.ini 
 
-$sucmd sed -i.bak 's/^allow_url_fopen = Off/allow_url_fopen = On/' "/etc/php-${phpv}.ini"
+phpini="/etc/php-${phpv}.ini"
+sed -e 's/^allow_url_fopen = Off/allow_url_fopen = On/' $phpini > php.ini
+$sucmd cp -f php.ini $phpini
 # -----------------------------------------
 #$sucmd $cmd tzdata
 #$sucmd $cmd iproute2

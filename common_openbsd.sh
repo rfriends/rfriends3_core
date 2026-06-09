@@ -162,7 +162,13 @@ $sucmd ln -sf /etc/php-${phpv}.sample/zip.ini /etc/php-${phpv}/zip.ini
 $sucmd ln -sf /etc/php-${phpv}.sample/intl.ini /etc/php-${phpv}/intl.ini
 $sucmd ln -sf /etc/php-${phpv}.sample/ssh2.ini /etc/php-${phpv}/ssh2.ini 
 
+SAMPLE_FILE="/etc/php-${phpv}.sample"
 INI_FILE="/etc/php-${phpv}.ini"
+
+if [ ! -f "$INI_FILE" ] && [ -f "$SAMPLE_FILE" ]; then
+    cp "$SAMPLE_FILE" "$INI_FILE"
+fi
+
 if [ -f "$INI_FILE" ]; then
     sed -i '' 's/^allow_url_fopen = Off/allow_url_fopen = On/' "$INI_FILE"
 fi

@@ -223,7 +223,7 @@ echo lighttpd $optlighttpd
 if [ $optlighttpd = "on3" ]; then  
   $sucmd $cmd lighttpd--
 
-  export conf_dir="$PREFIX$/etc/lighttpd"
+  export conf_dir="$PREFIX$/etc"
   sh lighttpd3.sh
 fi
 # =========================================

@@ -52,8 +52,8 @@ if [ $sys -eq 1 ]; then
   
   #sudo systemctl status $lighttpd
 else 
-  sudo rcctl enable php${php}-fpm
-  sudo rcctl start  php${php}-fpm
+  sudo rcctl enable php${php}_fpm
+  sudo rcctl start  php${php}_fpm
   
   sudo rcctl enable lighttpd
   sudo rcctl start lighttpd

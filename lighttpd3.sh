@@ -1,80 +1,44 @@
 #!/bin/sh
-# lighttpd on2b
-# 2026/06/07
+# lighttpd on3
+# 2026/06/09
 #
-echo "lighttpd on2b"
+echo "lighttpd on3"
 #
-onver="on2b"
+onver="on3"
 # -----------------------------------------
-# log_root
-sudo mkdir -p $log_root
-sudo chown $user:$group $log_root
-echo log_root : $user $group $log_root
+# directory
+sudo mkdir -p /var/www/run
+sudo mkdir -p /var/log/lighttpd
 
-# state_dir
-sudo mkdir -p $state_dir
-sudo chown $user:$group $state_dir
-echo state_dir : $user $group $state_dir
+# owner
+sudo chown -R $user:$group /var/www/run
+sudo chown -R $user:$group /var/log/lighttpd
 
-# home_dir
-sudo mkdir -p $home_dir
-sudo mkdir -p $home_dir/uploads/
-sudo mkdir -p $home_dir/sockets/
-
-sudo chown $user:$group $home_dir
-sudo chown $user:$group $home_dir/uploads/
-sudo chown $user:$group $home_dir/sockets/
-echo home_dir : $user $group $home_dir
-
-# conf_dir
-sudo mkdir -p $conf_dir
-sudo chown $user:$group $conf_dir
-sudo mkdir -p $conf_dir/conf.d
-sudo chown $user:$group $conf_dir/conf.d
-echo conf_dir : $user $group $conf_dir
-
-# cache_dir
-sudo mkdir -p $cache_dir
-sudo chown $user:$group $cache_dir
-echo cache_dir : $user $group $cache_dir
+# chmod
+doas chmod 755 /var/www
+doas chmod 755 /var/www/run
+doas chmod 755 /var/log/lighttpd
 # -----------------------------------------
-cd $curdir
-sudo cp -f conf.d/* $conf_dir/conf.d/
-
 cd $curdir/skel
 
-# sed -i は使用しないこと
+# sed -i は使用しないこと(bsd対策)
 
-sed -e s%rfriendsserver_root%rfriendshomedir/rfriends3%g lighttpd.conf.skel2b > lighttpd.confa
+sed -e s%rfriendsserver_root%rfriendshomedir/rfriends3%g lighttpd.conf.skel3 > lighttpd.confa
 sed -e s%rfriendshomedir%$homedir%g lighttpd.confa > lighttpd.confb
 sed -e s%rfriendsuser%$user%g   lighttpd.confb > lighttpd.confc
 sed -e s%rfriendsgroup%$group%g lighttpd.confc > lighttpd.confd
 sed -e s%rfriendsport%$port%g   lighttpd.confd > lighttpd.confe
+sed -e s%rfriendshome_dir%$home_dir%g   lighttpd.confe > lighttpd.conff
 
-sed -e s%rfriendslog_root%$log_root%g   lighttpd.confe > lighttpd.conf1
-sed -e s%rfriendsstate_dir%$state_dir%g lighttpd.conf1 > lighttpd.conf2
-sed -e s%rfriendshome_dir%$home_dir%g   lighttpd.conf2 > lighttpd.conf3
-sed -e s%rfriendsconf_dir%$conf_dir%g   lighttpd.conf3 > lighttpd.conf4
-sed -e s%rfriendscache_dir%$cache_dir%g lighttpd.conf4 > lighttpd.conf5
+sudo cp -f lighttpd.conff $conf_dir/lighttpd.conf
 
-sudo cp -f lighttpd.conf5 $conf_dir/lighttpd.conf
-#
-# modules
-sudo cp -f modules.conf.skel2b $conf_dir/modules.conf
-#sudo chown root:root $conf_dir/modules.conf
-#
-# fastcgi
-if [ $distro = "netbsd" ]; then
-  sed -e s%rfriendsfastcgidir%$fastcgi_dir%g fastcgi.conf_netbsd.skel2b > fastcgi.conf
-else
-  sed -e s%rfriendsphpdir%$PREFIX$phpdir%g fastcgi.conf.skel2b > fastcgi.conf
-fi
-sudo cp -f fastcgi.conf $conf_dir/conf.d/fastcgi.conf
-#sudo chown root:root $conf_dir/conf.d/fastcgi.conf
-#
+# fpm
+sed -e s%rfriendsuser%$user%g   php-fpm.conf.skel3 > php-fpm.confa
+sed -e s%rfriendsgroup%$group%g php-fpm.confa > php-fpm.conf
+
+sudo cp -f sudo cp -f php-fpm.conf $conf_dir/php-fpm.conf
+
 # webdav
-sudo cp -f webdav.conf.skel2b $conf_dir/conf.d/webdav.conf
-#sudo chown root:root $conf_dir/conf.d/webdav.conf
 cd $homedir/rfriends3/script/html
 ln -nfs temp webdav
 
@@ -82,52 +46,17 @@ echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 # -----------------------------------------
 cd $curdir
 if [ $sys -eq 1 ]; then
-  sh lighttpd_override.sh
-  echo lighttpd_override on
-  sudo systemctl enable $lighttpd
-  
-  #svc=/usr/lib/systemd/system/lighttpd.service
-  #if [ -e $svc ]; then
-  #  cat $svc | grep '^ProtectHome=read-only' > /dev/null
-  #  if [ $? = 0 ]; then
-  #    sed -e s%^ProtectHome=read-only%ProtectHome=false% $svc > svc.service
-  #    sudo cp -f svc.service $svc
-  #    sudo systemctl daemon-reload
-  #    echo
-  #    echo ProtectHome=read-only -> false
-  #    echo
-  #  fi
-  #fi
-  
+  #sh lighttpd_override.sh
+  #echo lighttpd_override on
   #sudo systemctl enable $lighttpd
-  #if [ $? = 0 ]; then
-  #  for i in {1..5}
-  #  do
-  #    #echo wait 2 secs
-  #    sleep 2
-  #    sudo systemctl restart $lighttpd
-  #    sudo systemctl is-active $lighttpd > /dev/null
-  #    if [ $? = 0 ]; then
-  #      break;
-  #    fi
-  #  done
-  #fi
   
-  sudo systemctl status $lighttpd
+  #sudo systemctl status $lighttpd
 else 
-  if [ $distro = "netbsd" ]; then
-    sudo cp /usr/pkg/share/examples/rc.d/lighttpd /etc/rc.d/
-    sudo /etc/rc.d/lighttpd start
-    sudo /etc/rc.d/lighttpd status
- elif [ $distro = "openbsd" ]; then
-    sudo cp /usr/local/share/examples/rc.d/lighttpd /etc/rc.d/
-    sudo /etc/rc.d/lighttpd start
-    sudo /etc/rc.d/lighttpd status
- else
-    sudo service $lighttpd enable
-    sudo service $lighttpd restart
-    sudo service $lighttpd status
-  fi
+  sudo rcctl enable php-fpm
+  sudo rcctl start php-fpm
+  
+  sudo rcctl enable lighttpd
+  sudo rcctl start lighttpd
 fi
 
 sudo touch $conf_dir/$onver

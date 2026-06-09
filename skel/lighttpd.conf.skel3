@@ -27,7 +27,7 @@ server.port = rfriendsport
 #server.chroot = "/var/www"
 
 # ドキュメントルート
-server.document-root = "rfriendshomedir/rfriends3/script/html"
+server.document-root = "rfriendshomedir/rfriends3/script/html/"
 
 # デフォルトのインデックスファイル
 index-file.names = ( "index.php", "index.html" )

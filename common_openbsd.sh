@@ -223,13 +223,7 @@ echo lighttpd $optlighttpd
 if [ $optlighttpd = "on3" ]; then  
   $sucmd $cmd lighttpd--
 
-  #export usrlocal="$PREFIX/usr/local"
-  #export log_root="$PREFIX/var/log/lighttpd"
-  #export state_dir="$PREFIX/var/run"
-  #export home_dir="$PREFIX/var/run/lighttpd"
-  #export conf_dir="$PREFIX$usrlocal/etc/lighttpd"
-  #export cache_dir="$PREFIX/var/cache/lighttpd"
-  #export fastcgi_dir="$PREFIX/usr/local/libexec/cgi-bin/$php"
+  export conf_dir="$PREFIX$/etc/lighttpd"
   sh lighttpd3.sh
 fi
 # =========================================

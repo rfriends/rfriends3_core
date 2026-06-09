@@ -36,7 +36,7 @@ export cmdupdate="pkg_add -u"
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 export PREFIX=""
-export phpdir="/usr/localbin/php"
+export phpdir="/usr/local/bin/php"
 
 export optlighttpd="on3"
 export optsamba="on"

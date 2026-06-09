@@ -212,10 +212,6 @@ echo
 # -----------------------------------------
 echo samba $optsamba
 if [ $optsamba = "on" ]; then
-  $sucmd cat /etc/rc.conf | grep smbd > /dev/null
-  if [ $? = 1 ]; then
-    echo 'smbd=YES' | $sucmd tee -a  /etc/rc.conf
-  fi
   sh samba_openbsd.sh
 fi
 # -----------------------------------------
@@ -224,25 +220,17 @@ echo install lighttpd
 echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
-if [ $optlighttpd = "on2b" ]; then
-  $sucmd cat /etc/rc.conf | grep lighttpd > /dev/null
-  if [ $? = 1 ]; then
-    echo 'lighttpd=YES' | $sucmd tee -a  /etc/rc.conf
-  fi
-  
+if [ $optlighttpd = "on3" ]; then  
   $sucmd $cmd lighttpd--
-  #$sucmd $cmd php-cgi
-  #$sucmd $cmd fcgi
-  #$sucmd $cmd lighttpd-fastcgi
 
-  export usrlocal="$PREFIX/usr/local"
-  export log_root="$PREFIX/var/log/lighttpd"
-  export state_dir="$PREFIX/var/run"
-  export home_dir="$PREFIX/var/run/lighttpd"
-  export conf_dir="$PREFIX$usrlocal/etc/lighttpd"
-  export cache_dir="$PREFIX/var/cache/lighttpd"
-  export fastcgi_dir="$PREFIX/usr/local/libexec/cgi-bin/$php"
-  sh lighttpd2b.sh
+  #export usrlocal="$PREFIX/usr/local"
+  #export log_root="$PREFIX/var/log/lighttpd"
+  #export state_dir="$PREFIX/var/run"
+  #export home_dir="$PREFIX/var/run/lighttpd"
+  #export conf_dir="$PREFIX$usrlocal/etc/lighttpd"
+  #export cache_dir="$PREFIX/var/cache/lighttpd"
+  #export fastcgi_dir="$PREFIX/usr/local/libexec/cgi-bin/$php"
+  sh lighttpd3.sh
 fi
 # =========================================
 echo

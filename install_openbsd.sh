@@ -38,10 +38,8 @@ export cmdupdate="pkg_add -u"
 export PREFIX=""
 export phpdir="/usr/localbin/php"
 
-#export optlighttpd="on2b"
-#export optsamba="on"
-export optlighttpd="off"
-export optsamba="off"
+export optlighttpd="on3"
+export optsamba="on"
 export optvimrc="on"
 
 export php="83"

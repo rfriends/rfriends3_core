@@ -36,7 +36,7 @@ sudo cp -f lighttpd.conff $conf_dir/lighttpd.conf
 sed -e s%rfriendsuser%$user%g   php-fpm.conf.skel3 > php-fpm.confa
 sed -e s%rfriendsgroup%$group%g php-fpm.confa > php-fpm.conf
 
-sudo cp -f sudo cp -f php-fpm.conf $conf_dir/php-fpm.conf
+sudo cp -f php-fpm.conf $conf_dir/php-fpm.conf
 
 # webdav
 cd $homedir/rfriends3/script/html

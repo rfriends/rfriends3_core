@@ -124,7 +124,7 @@ echo
 sudo sbopkg -i AtomicParsley
 sudo sbopkg -i p7zip
 
-# Chromiumのインストール（Alien Pasturesの既成バイナリを使用）
+# Chromiumのインストール（Alien Pastures）
 URL="https://slackware.nl"
 DIR="/people/alien/slackbuilds/chromium/pkg64/15.0/"
 PKG="chromium-149.0.7827.53-x86_64-1alien.txz"

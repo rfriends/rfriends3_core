@@ -7,12 +7,10 @@ echo "lighttpd_slackware on4"
 onver="on4"
 # -----------------------------------------
 if ! ls /var/log/packages/lighttpd-* >/dev/null 2>&1; then
-    sudo /usr/sbin/sbopkg -i lighttpd
+  sudo /usr/sbin/groupadd -g 208 lighttpd
+  sudo /usr/sbin/useradd -u 208 -g lighttpd -d /var/www lighttpd
+  sudo PATH="/usr/sbin:/usr/bin:/sbin:/bin" sbopkg -B -i lighttpd
 fi
-# -----------------------------------------
-sudo /usr/sbin/groupadd -g 208 lighttpd
-sudo /usr/sbin/useradd -u 208 -g lighttpd -d /var/www lighttpd
-sudo PATH="/usr/sbin:/usr/bin:/sbin:/bin" sbopkg -B -i lighttpd
 # -----------------------------------------
 sudo chown -R $user:$group /var/log/lighttpd
 sudo chown -R $user:$group /var/run/lighttpd
@@ -42,6 +40,14 @@ ln -nfs temp webdav
 echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 # -----------------------------------------
 cd $curdir
+
+rclocal='/etc/rc.local'
+if ! grep -q 'rc.lighttpd' "$rclocal"; then
+cat << 'EOF' >> "$rclocal"
+if [ -x /etc/rc.d/rc.lighttpd ]; then
+  /etc/rc.d/rc.lighttpd start
+fi
+EOF
 
 sudo chmod +x /etc/rc.d/rc.lighttpd
 sudo /etc/rc.d/rc.lighttpd start

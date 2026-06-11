@@ -22,15 +22,16 @@ sudo chmod 750 /var/cache/lighttpd
 # -----------------------------------------
 cd $curdir/skel
 
-sed -e s%rfriendsserver_root%rfriendshomedir/rfriends3%g lighttpd.conf.skel4 > lighttpd.conf
-sed -i s%rfriendshomedir%$homedir%g lighttpd.conf
-sed -i s%rfriendsuser%$user%g   lighttpd.conf
-sed -i s%rfriendsgroup%$group%g lighttpd.conf
-sed -i s%rfriendsport%$port%g   lighttpd.conf
-sed -i s%rfriendspid%$pidfile%g     lighttpd.conf
-sed -i s%rfriendshome_dir%$home_dir%g   lighttpd.conf
+lconf=lighttpd.conf
+sed -e s%rfriendsserver_root%rfriendshomedir/rfriends3%g lighttpd.conf.skel4 > $lconf
+sed -i s%rfriendshomedir%$homedir%g $lconf
+sed -i s%rfriendsuser%$user%g   $lconf
+sed -i s%rfriendsgroup%$group%g $lconf
+sed -i s%rfriendsport%$port%g   $lconf
+sed -i s%rfriendspid%$pidfile%g $lconf
+sed -i s%rfriendshome_dir%$home_dir%g $lconf
 
-sudo cp -f lighttpd.conf $conf_dir/lighttpd.conf
+sudo cp -f $lconf $conf_dir/$lconf
 
 # webdav
 cd $homedir/rfriends3/script/html
@@ -49,8 +50,9 @@ fi
 EOF
 fi
 
-if ! grep -q "^PIDFILE=/var/run/lighttpd.pid$" /etc/rc.d/rc.lighttpd; then
-  sudo sed -i 's|^PIDFILE=.*|PIDFILE=/var/run/lighttpd.pid|' /etc/rc.d/rc.lighttpd
+rclighttpd='/etc/rc.d/rc.lighttpd'
+if ! grep -q "^PIDFILE=$pidfile$" $rclighttpd; then
+  sudo sed -i 's|^PIDFILE=.*|PIDFILE=$pidfile' $rclighttpd
 fi
 
 sudo chmod +x /etc/rc.d/rc.lighttpd

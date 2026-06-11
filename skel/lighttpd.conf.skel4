@@ -1,0 +1,86 @@
+#
+# rfriendsuser
+# rfriendsgroup
+# rfriendsport
+# rfriendshomedir
+# ====================================================================
+# 1. モジュールの読み込み
+# ====================================================================
+server.modules = (
+    "mod_access",
+    "mod_alias",
+    "mod_dirlisting",   # ディレクトリ一覧表示用
+    "mod_fastcgi",      # PHP(FastCGI)連携用
+    "mod_webdav"        # WebDAV用
+)
+
+# ====================================================================
+# 2. 基本サーバー設定 (ユーザー・ポート・ディレクトリ)
+# ====================================================================
+# 実行ユーザーとグループ
+server.username  = "rfriendsuser"
+server.groupname = "rfriendsgroup"
+
+server.port = rfriendsport
+
+# chroot環境（OpenBSDのデフォルト）
+#server.chroot = "/var/www"
+
+# ドキュメントルート
+server.document-root = "rfriendshomedir/rfriends3/script/html/"
+
+# デフォルトのインデックスファイル
+index-file.names = ( "index.php", "index.html" )
+
+# ====================================================================
+# 3. ディレクトリ一覧表示 (dir-listing) の有効化
+# ====================================================================
+dir-listing.activate = "enable"
+dir-listing.encoding = "utf-8"
+
+# ====================================================================
+# 4. PHP & FastCGI 設定 (.html内でのPHP実行を含む)
+# ====================================================================
+# 拡張子とMIMEタイプのマッピング
+mimetype.assign = (
+    ".html" => "text/html",
+    ".htm"  => "text/html",
+    ".php"  => "text/html", # PHPも最終的にHTMLとして出力するため
+    ".css"  => "text/css",
+    ".js"   => "application/javascript",
+    ".png"  => "image/png",
+    ".jpg"  => "image/jpeg"
+)
+
+# FastCGI経由でOpenBSDの「php-fpm」に処理を渡す設定
+fastcgi.server = (
+    # .php ファイルの処理
+    ".php" => ((
+        "socket" => "/var/www/run/php-fpm.sock", # OpenBSD標準のソケット位置(chroot内)
+        "broken-scriptfilename" => "enable"
+    )),
+    # .html ファイルの中にあるPHPコードを実行させる設定
+    ".html" => ((
+        "socket" => "/var/www/run/php-fpm.sock",
+        "broken-scriptfilename" => "enable"
+    ))
+)
+
+# ====================================================================
+# 5. WebDAV 設定
+# ====================================================================
+# ドキュメントルート全体、または特定の階層をWebDAVとして公開
+$HTTP["url"] =~ "^/" {
+    webdav.activate = "enable"
+    webdav.is-readonly = "disable" # 書き込み・削除を許可する設定
+    
+    # 必要に応じてWebDAV用のロックデータベースを有効化
+    #（事前に /var/www/var/log/lighttpd/ ディレクトリの作成と権限が必要です）
+    # webdav.sqlite-db-name = "/var/log/lighttpd/webdav.db"
+}
+
+# ====================================================================
+# 6. ログ・その他セキュリティ設定
+# ====================================================================
+server.errorlog = "/var/log/lighttpd/error.log"
+url.access-deny = ( "~", ".inc" )

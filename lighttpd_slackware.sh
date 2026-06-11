@@ -27,7 +27,7 @@ sed -i s%rfriendshomedir%$homedir%g lighttpd.conf
 sed -i s%rfriendsuser%$user%g   lighttpd.conf
 sed -i s%rfriendsgroup%$group%g lighttpd.conf
 sed -i s%rfriendsport%$port%g   lighttpd.conf
-sed -i s%rfriendspid%$pid%g     lighttpd.conf
+sed -i s%rfriendspid%$pidfile%g     lighttpd.conf
 sed -i s%rfriendshome_dir%$home_dir%g   lighttpd.conf
 
 sudo cp -f lighttpd.conf $conf_dir/lighttpd.conf

@@ -48,6 +48,7 @@ if [ -x /etc/rc.d/rc.lighttpd ]; then
   /etc/rc.d/rc.lighttpd start
 fi
 EOF
+fi
 
 sudo chmod +x /etc/rc.d/rc.lighttpd
 sudo /etc/rc.d/rc.lighttpd stop

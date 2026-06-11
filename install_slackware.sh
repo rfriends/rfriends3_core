@@ -11,8 +11,7 @@ echo
   echo 現在開発中のため、正常に動作しません。2026/06/11
   echo
   
-sudo slakpkg update
-if [ $? != 0 ]; then
+if [ ! -f /etc/slackware-version ]; then
   echo
   echo install_slackware.sh
   echo 実行するshを間違っていないか確認してください。

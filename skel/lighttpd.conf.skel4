@@ -12,7 +12,7 @@ server.modules = (
     "mod_webdav"
 )
 
-server.document-root = "rfriendshomedir/rfriends3/script/html/"
+server.document-root = "rfriendsserver_root/script/html/"
 server.username      = "rfriendsuser"
 server.groupname     = "rfriendsgroup"
 server.port          = rfriendsport

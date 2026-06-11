@@ -132,7 +132,7 @@ fi
 # Chromium
 # 廃止
 
-$sucmd ln -s /usr/local/bin/AtomicParsley /usr/local/bin/atomicparsley
+sudo ln -s /usr/bin/AtomicParsley /usr/bin/atomicparsley
 # -----------------------------------------
 /usr/sbin/slackpkg search libssh2 | grep -q '\[ uninstalled \]' && sudo /usr/sbin/slackpkg install libssh2
 sudo pecl channel-update pecl.php.net

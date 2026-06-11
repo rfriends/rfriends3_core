@@ -51,9 +51,7 @@ EOF
 fi
 
 rclighttpd='/etc/rc.d/rc.lighttpd'
-if ! grep -q "^PIDFILE=$pidfile$" $rclighttpd; then
-  sudo sed -i 's|^PIDFILE=.*|PIDFILE=$pidfile' $rclighttpd
-fi
+sudo sed -i "s#^PIDFILE=.*#PIDFILE=${pidfile}#" "$rclighttpd"
 
 sudo chmod +x /etc/rc.d/rc.lighttpd
 sudo /etc/rc.d/rc.lighttpd stop

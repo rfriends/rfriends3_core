@@ -19,12 +19,8 @@ if [ -z "$extract" ]; then
   export extract="unzip -q -o "
 fi
 # -----------------------------------------
-sys=`pgrep systemd`
-if [ $? -ne 0 ]; then
-  sys=0
-fi
-export sys
-#
+export sys=0
+
 export curdir=$(cd $(dirname $0);pwd)
 #
 # -----------------------------------------
@@ -119,13 +115,7 @@ echo
 echo set timezone to tokyo
 echo
 # =========================================
-if [ $sys -eq 1 ]; then
-  $sucmd timedatectl set-timezone Asia/Tokyo
-else 
-  #$sucmd cp -f /usr/share/zoneinfo/Asia/Tokyo /etc/localtime  
-  #$sucmd tzsetup Asia/Tokyo
-  $sucmd ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-fi
+$sucmd ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 # =========================================
 echo
 echo install tools

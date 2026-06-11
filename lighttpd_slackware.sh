@@ -49,6 +49,10 @@ fi
 EOF
 fi
 
+if ! grep -q "^PIDFILE=/var/run/lighttpd.pid$" /etc/rc.d/rc.lighttpd; then
+  sudo sed -i 's|^PIDFILE=.*|PIDFILE=/var/run/lighttpd.pid|' /etc/rc.d/rc.lighttpd
+fi
+
 sudo chmod +x /etc/rc.d/rc.lighttpd
 sudo /etc/rc.d/rc.lighttpd stop
 sudo /etc/rc.d/rc.lighttpd start

@@ -130,17 +130,7 @@ if ! ls /var/log/packages/p7zip-* >/dev/null 2>&1; then
 fi
 
 # Chromium
-URL="https://slackware.nl"
-DIR="/people/alien/slackbuilds/chromium/pkg64/15.0/"
-
-# サーバーのディレクトリ一覧から最新の.txzファイル名を自動抽出
-PKG=$(curl -s "${URL}${DIR}" | grep -o 'chromium-[0-9 presentation]*\.txz' | head -n 1)
-
-if ! ls /var/log/packages/chromium-[0-9]* >/dev/null 2>&1; then
-    wget "${URL}${DIR}${PKG}"
-    sudo /sbin/installpkg "${PKG}"
-    rm -f "${PKG}"
-fi
+# 廃止
 
 $sucmd ln -s /usr/local/bin/AtomicParsley /usr/local/bin/atomicparsley
 # -----------------------------------------

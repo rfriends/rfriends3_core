@@ -2,7 +2,7 @@
 # lighttpd on4
 # 2026/06/11
 #
-echo "lighttpd on4"
+echo "lighttpd_slackware on4"
 #
 onver="on4"
 # -----------------------------------------

@@ -1,29 +1,24 @@
 #!/bin/sh
-# lighttpd on3
-# 2026/06/09
+# lighttpd on4
+# 2026/06/11
 #
-echo "lighttpd on3"
+echo "lighttpd on4"
 #
-onver="on3"
+onver="on4"
 # -----------------------------------------
-# directory
-sudo mkdir -p /var/www/run
-sudo mkdir -p /var/log/lighttpd
+sudo chown -R $user/$group /var/log/lighttpd
+sudo chown -R $user/$group /var/run/lighttpd
+sudo chown -R $user/$group /var/cache/lighttpd
 
-# owner
-sudo chown -R $user:$group /var/www/run
-sudo chown -R $user:$group /var/log/lighttpd
-
-# chmod
-doas chmod 755 /var/www
-doas chmod 755 /var/www/run
-doas chmod 755 /var/log/lighttpd
+sudo chmod 750 /var/log/lighttpd
+sudo chmod 755 /var/run/lighttpd
+sudo chmod 750 /var/cache/lighttpd
 # -----------------------------------------
 cd $curdir/skel
 
 # sed -i は使用しないこと(bsd対策)
 
-sed -e s%rfriendsserver_root%rfriendshomedir/rfriends3%g lighttpd.conf.skel3 > lighttpd.confa
+sed -e s%rfriendsserver_root%rfriendshomedir/rfriends3%g lighttpd.conf.skel4 > lighttpd.confa
 sed -e s%rfriendshomedir%$homedir%g lighttpd.confa > lighttpd.confb
 sed -e s%rfriendsuser%$user%g   lighttpd.confb > lighttpd.confc
 sed -e s%rfriendsgroup%$group%g lighttpd.confc > lighttpd.confd
@@ -32,12 +27,6 @@ sed -e s%rfriendshome_dir%$home_dir%g   lighttpd.confe > lighttpd.conff
 
 sudo cp -f lighttpd.conff $conf_dir/lighttpd.conf
 
-# fpm
-sed -e s%rfriendsuser%$user%g   php-fpm.conf.skel3 > php-fpm.confa
-sed -e s%rfriendsgroup%$group%g php-fpm.confa > php-fpm.conf
-
-sudo cp -f php-fpm.conf $conf_dir/php-fpm.conf
-
 # webdav
 cd $homedir/rfriends3/script/html
 ln -nfs temp webdav
@@ -45,6 +34,10 @@ ln -nfs temp webdav
 echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 # -----------------------------------------
 cd $curdir
+
+sudo chmod +x /etc/rc.d/rc.lighttpd
+sudo /etc/rc.d/rc.lighttpd start
+
 if [ $sys -eq 1 ]; then
   #sh lighttpd_override.sh
   echo lighttpd_override on

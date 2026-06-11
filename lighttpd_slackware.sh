@@ -41,7 +41,7 @@ echo lighttpd > $homedir/rfriends3/rfriends3_boot.txt
 # -----------------------------------------
 cd $curdir
 
-rclocal='/etc/rc.local'
+rclocal='/etc/rc.d/rc.local'
 if ! grep -q 'rc.lighttpd' "$rclocal"; then
 sudo tee -a "$rclocal" <<EOF >/dev/null
 if [ -x /etc/rc.d/rc.lighttpd ]; then

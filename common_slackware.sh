@@ -175,7 +175,7 @@ echo
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on4" ]; then  
   export conf_dir="/etc/lighttpd"
-  sh lighttpd4.sh
+  sh lighttpd_slackware.sh
 fi
 # =========================================
 echo

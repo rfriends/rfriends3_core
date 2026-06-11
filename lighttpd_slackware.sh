@@ -43,7 +43,7 @@ cd $curdir
 
 rclocal='/etc/rc.local'
 if ! grep -q 'rc.lighttpd' "$rclocal"; then
-cat << 'EOF' >> "$rclocal"
+sudo tee "$rclocal" <<EOF >/dev/null
 if [ -x /etc/rc.d/rc.lighttpd ]; then
   /etc/rc.d/rc.lighttpd start
 fi

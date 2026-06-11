@@ -38,19 +38,5 @@ cd $curdir
 sudo chmod +x /etc/rc.d/rc.lighttpd
 sudo /etc/rc.d/rc.lighttpd start
 
-if [ $sys -eq 1 ]; then
-  #sh lighttpd_override.sh
-  echo lighttpd_override on
-  #sudo systemctl enable $lighttpd
-  
-  #sudo systemctl status $lighttpd
-else 
-  sudo rcctl enable php${php}_fpm
-  sudo rcctl start  php${php}_fpm
-  
-  sudo rcctl enable lighttpd
-  sudo rcctl start lighttpd
-fi
-
 sudo touch $conf_dir/$onver
 exit 0

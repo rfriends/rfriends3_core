@@ -1,13 +1,13 @@
 #!/bin/sh
 # =========================================
-# install rfriends for openbsd
+# install rfriends for slackwarea
 # =========================================
-# 1.0 2026/06/08
+# 1.0 2026/06/11
 #
 ver=1.0
 # -----------------------------------------
 echo
-echo start install_common_openbsd $ver
+echo start install_common_slackware $ver
 echo `date`
 echo
 # -----------------------------------------
@@ -29,13 +29,13 @@ export curdir=$(cd $(dirname $0);pwd)
 #
 # -----------------------------------------
 if [ -z "$distro" ]; then
-  #distro="openbsd"
+  #distro="slackware"
   echo ディストリビューションが指定されていません。
   exit 1
 fi
 #
 if [ -z "$cmd" ]; then
-  export cmd="pkg_add"
+  export cmd=""
 fi
 if [ -z "$sucmd" ]; then
   export sucmd="sudo"
@@ -62,7 +62,7 @@ if [ -z $PREFIX ]; then
 fi
 #
 if [ -z $phpdir ]; then
-  export phpdir="/usr/local/bin/php"
+  export phpdir="/usr/bin/php"
 fi
 # -----------------------------------------
 if [ -z "$ffmpeg" ]; then
@@ -107,7 +107,7 @@ if [ -z "$smbd" ]; then
   export smbd="smbd"
 fi
 if [ -z "$ipcmd" ]; then
-  export ipcmd="ifconfig"
+  export ipcmd="/sbin/ifconfig"
 fi
 # =========================================
 if [ $user = "root" ]; then
@@ -131,50 +131,26 @@ echo
 echo install tools
 echo
 # =========================================
-$sucmd $cmd unzip--
-$sucmd $cmd nano
-$sucmd $cmd vim--no_x11 
-$sucmd $cmd wget
-$sucmd $cmd curl
-#$sucmd $cmd 7-zip
-$sucmd $cmd p7zip
-#$sucmd $cmd pidof
-$sucmd $cmd $ffmpeg
-#$sucmd $cmd $ffplay
-$sucmd $cmd chromium
-$sucmd $cmd atomicparsley
+sudo sbopkg -i AtomicParsley
+sudo sbopkg -i p7zip
+
+# Chromiumのインストール（Alien Pasturesの既成バイナリを使用）
+URL="https://slackware.nl"
+DIR="/people/alien/slackbuilds/chromium/pkg64/15.0/"
+PKG="chromium-149.0.7827.53-x86_64-1alien.txz"
+
+if ! ls /var/log/packages/chromium-[0-9]* 2>/dev/null; then
+    wget "${URL}${DIR}${PKG}"
+    sudo installpkg "${PKG}"
+    rm -f "${PKG}"
+fi
 
 $sucmd ln -s /usr/local/bin/AtomicParsley /usr/local/bin/atomicparsley
 # -----------------------------------------
-$sucmd $cmd php%${phpv}
-
-$sucmd $cmd php-gd%${phpv} 
-$sucmd $cmd php-curl%${phpv} 
-$sucmd $cmd php-zip%${phpv} 
-$sucmd $cmd php-intl%${phpv}
-
-$sucmd $cmd libssh2
-$sucmd $cmd pecl${php}-ssh2
-
-$sucmd ln -sf /etc/php-${phpv}.sample/gd.ini /etc/php-${phpv}/gd.ini
-$sucmd ln -sf /etc/php-${phpv}.sample/curl.ini /etc/php-${phpv}/curl.ini
-$sucmd ln -sf /etc/php-${phpv}.sample/zip.ini /etc/php-${phpv}/zip.ini
-$sucmd ln -sf /etc/php-${phpv}.sample/intl.ini /etc/php-${phpv}/intl.ini
-$sucmd ln -sf /etc/php-${phpv}.sample/ssh2.ini /etc/php-${phpv}/ssh2.ini 
-
-phpini="/etc/php-${phpv}.ini"
-sed -e 's/^allow_url_fopen = Off/allow_url_fopen = On/' $phpini > php.ini
-$sucmd cp -f php.ini $phpini
-# -----------------------------------------
-#$sucmd $cmd tzdata
-#$sucmd $cmd iproute2
-#$sucmd $cmd openssh
-#$sucmd $cmd cronie
-
-$sucmd cp pidof.sh /usr/local/bin/pidof
-$sucmd chmod +x /usr/local/bin/pidof
-# pidof test
-pidof sshd
+/usr/sbin/slackpkg search libssh2 | grep -q '\[ uninstalled \]' && sudo /usr/sbin/slackpkg install libssh2
+sudo pecl channel-update pecl.php.net
+printf "\n" | sudo pecl install ssh2-1.3.1
+grep -q "^extension=ssh2.so" /etc/php.ini || echo "extension=ssh2.so" | sudo tee -a /etc/php.ini
 # =========================================
 echo
 echo install rfriends3
@@ -186,9 +162,6 @@ sh rfriends3.sh
 echo "$user" | sudo tee -a /var/cron/at.allow
 sudo chown root:crontab /var/cron/at.allow
 sudo chmod 640 /var/cron/at.allow
-
-sudo rcctl enable cron
-sudo rcctl start cron
 # -----------------------------------------
 echo
 echo vimrc
@@ -213,10 +186,10 @@ echo install lighttpd
 echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
-if [ $optlighttpd = "on3" ]; then  
+if [ $optlighttpd = "on4" ]; then  
   $sucmd $cmd lighttpd--
 
-  export conf_dir="/etc"
+  export conf_dir="/etc/lighttpd"
   sh lighttpd3.sh
 fi
 # =========================================

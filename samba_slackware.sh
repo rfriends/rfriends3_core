@@ -24,6 +24,7 @@ EOF
 
 # -----------------------------------------
 sudo chmod +x /etc/rc.d/rc.samba
+sudo /etc/rc.d/rc.samba stop
 sudo /etc/rc.d/rc.samba start
 
 exit 0

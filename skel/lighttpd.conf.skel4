@@ -16,6 +16,7 @@ server.document-root = "rfriendsserver_root/script/html/"
 server.username      = "rfriendsuser"
 server.groupname     = "rfriendsgroup"
 server.port          = rfriendsport
+server.pid-file      = "rfriendspid"
 
 server.errorlog      = "/var/log/lighttpd/error.log"
 accesslog.filename   = "/var/log/lighttpd/access.log"

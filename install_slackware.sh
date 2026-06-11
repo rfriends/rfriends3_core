@@ -47,10 +47,8 @@ export group=users
 export PREFIX=""
 export phpdir="/usr/bin/php"
 
-#export optlighttpd="on4"
-#export optsamba="on"
-export optlighttpd="off"
-export optsamba="off"
+export optlighttpd="on4"
+export optsamba="on"
 export optvimrc="on"
 
 export php=""

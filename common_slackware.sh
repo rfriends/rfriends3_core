@@ -121,17 +121,24 @@ echo
 echo install tools
 echo
 # =========================================
-sudo sbopkg -i AtomicParsley
-sudo sbopkg -i p7zip
+if ! ls /var/log/packages/AtomicParsley-* >/dev/null 2>&1; then
+    sudo /usr/sbin/sbopkg -i atomicparsley
+fi
 
-# Chromiumのインストール（Alien Pastures）
+if ! ls /var/log/packages/p7zip-* >/dev/null 2>&1; then
+    sudo /usr/sbin/sbopkg -i p7zip
+fi
+
+# Chromium
 URL="https://slackware.nl"
 DIR="/people/alien/slackbuilds/chromium/pkg64/15.0/"
-PKG="chromium-149.0.7827.53-x86_64-1alien.txz"
 
-if ! ls /var/log/packages/chromium-[0-9]* 2>/dev/null; then
+# サーバーのディレクトリ一覧から最新の.txzファイル名を自動抽出
+PKG=$(curl -s "${URL}${DIR}" | grep -o 'chromium-[0-9 presentation]*\.txz' | head -n 1)
+
+if ! ls /var/log/packages/chromium-[0-9]* >/dev/null 2>&1; then
     wget "${URL}${DIR}${PKG}"
-    sudo installpkg "${PKG}"
+    sudo /sbin/installpkg "${PKG}"
     rm -f "${PKG}"
 fi
 
@@ -149,9 +156,9 @@ echo
 echo rfriends3
 sh rfriends3.sh
 #
-echo "$user" | sudo tee -a /var/cron/at.allow
-sudo chown root:crontab /var/cron/at.allow
-sudo chmod 640 /var/cron/at.allow
+#echo "$user" | sudo tee -a /etc/at.allow
+#sudo chown root:crontab /etc/at.allow
+#sudo chmod 640 /etc/at.allow
 # -----------------------------------------
 echo
 echo vimrc

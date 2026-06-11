@@ -22,16 +22,15 @@ sudo chmod 750 /var/cache/lighttpd
 # -----------------------------------------
 cd $curdir/skel
 
-# sed -i は使用しないこと(bsd対策)
+sed -e s%rfriendsserver_root%rfriendshomedir/rfriends3%g lighttpd.conf.skel4 > lighttpd.conf
+sed -i s%rfriendshomedir%$homedir%g lighttpd.conf
+sed -i s%rfriendsuser%$user%g   lighttpd.conf
+sed -i s%rfriendsgroup%$group%g lighttpd.conf
+sed -i s%rfriendsport%$port%g   lighttpd.conf
+sed -i s%rfriendspid%$pid%g     lighttpd.conf
+sed -i s%rfriendshome_dir%$home_dir%g   lighttpd.conf
 
-sed -e s%rfriendsserver_root%rfriendshomedir/rfriends3%g lighttpd.conf.skel4 > lighttpd.confa
-sed -e s%rfriendshomedir%$homedir%g lighttpd.confa > lighttpd.confb
-sed -e s%rfriendsuser%$user%g   lighttpd.confb > lighttpd.confc
-sed -e s%rfriendsgroup%$group%g lighttpd.confc > lighttpd.confd
-sed -e s%rfriendsport%$port%g   lighttpd.confd > lighttpd.confe
-sed -e s%rfriendshome_dir%$home_dir%g   lighttpd.confe > lighttpd.conff
-
-sudo cp -f lighttpd.conff $conf_dir/lighttpd.conf
+sudo cp -f lighttpd.conf $conf_dir/lighttpd.conf
 
 # webdav
 cd $homedir/rfriends3/script/html

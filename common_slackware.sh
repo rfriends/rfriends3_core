@@ -94,7 +94,7 @@ if [ -z "$atd" ]; then
   export atd="atd"
 fi
 if [ -z "$cron" ]; then
-  export cron="cron"
+  export cron="crond"
 fi
 if [ -z "$lighttpd" ]; then
   export lighttpd="lighttpd"
@@ -161,6 +161,9 @@ echo vimrc $optvimrc
 if [ $optvimrc = "on" ]; then
   sh vimrc.sh
 fi
+# -----------------------------------------
+sudo /etc/rc.d/rc.$cron stop
+sudo /etc/rc.d/rc.$cron start
 # -----------------------------------------
 echo
 echo install samba

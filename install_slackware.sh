@@ -11,7 +11,7 @@ echo
   echo 現在開発中のため、正常に動作しません。2026/06/11
   echo
   
-doas pkg_add -u
+sudo slakpkg update
 if [ $? != 0 ]; then
   echo
   echo install_slackware.sh

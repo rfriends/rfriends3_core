@@ -168,7 +168,7 @@ echo
 # -----------------------------------------
 echo samba $optsamba
 if [ $optsamba = "on" ]; then
-  sh samba_openbsd.sh
+  sh samba_slackware.sh
 fi
 # -----------------------------------------
 echo

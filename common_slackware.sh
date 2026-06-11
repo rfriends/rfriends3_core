@@ -165,7 +165,6 @@ echo
 # -----------------------------------------
 echo samba $optsamba
 if [ $optsamba = "on" ]; then
-  sudo sbopkg install samba
   sh samba_slackware.sh
 fi
 # -----------------------------------------
@@ -175,8 +174,6 @@ echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on4" ]; then  
-  sudo sbopkg install lighttpd
-
   export conf_dir="/etc/lighttpd"
   sh lighttpd4.sh
 fi

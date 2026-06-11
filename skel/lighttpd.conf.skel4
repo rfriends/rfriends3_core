@@ -1,86 +1,80 @@
+# for slackware 2026/06/11
 #
 # rfriendsuser
 # rfriendsgroup
 # rfriendsport
 # rfriendshomedir
-# ====================================================================
-# 1. モジュールの読み込み
-# ====================================================================
+#
 server.modules = (
     "mod_access",
-    "mod_alias",
-    "mod_dirlisting",   # ディレクトリ一覧表示用
-    "mod_fastcgi",      # PHP(FastCGI)連携用
-    "mod_webdav"        # WebDAV用
+    "mod_accesslog",
+    "mod_fastcgi",
+    "mod_webdav"
 )
 
-# ====================================================================
-# 2. 基本サーバー設定 (ユーザー・ポート・ディレクトリ)
-# ====================================================================
-# 実行ユーザーとグループ
-server.username  = "rfriendsuser"
-server.groupname = "rfriendsgroup"
-
-server.port = rfriendsport
-
-# chroot環境（OpenBSDのデフォルト）
-#server.chroot = "/var/www"
-
-# ドキュメントルート
+# (2) 基本の環境定義（ルートディレクトリ、実行ユーザー、グループ、ポート番号）
 server.document-root = "rfriendshomedir/rfriends3/script/html/"
+server.username      = "rfriendsuser"
+server.groupname     = "rfriendsgroup"
+server.port          = rfriendsport
 
-# デフォルトのインデックスファイル
-index-file.names = ( "index.php", "index.html" )
+# (3) ログファイルの出力場所
+server.errorlog      = "/var/log/lighttpd/error.log"
+accesslog.filename   = "/var/log/lighttpd/access.log"
 
-# ====================================================================
-# 3. ディレクトリ一覧表示 (dir-listing) の有効化
-# ====================================================================
-dir-listing.activate = "enable"
-dir-listing.encoding = "utf-8"
+# (4) インデックスファイルの種類
+index-file.names     = ( "index.php", "index.html" )
 
-# ====================================================================
-# 4. PHP & FastCGI 設定 (.html内でのPHP実行を含む)
-# ====================================================================
-# 拡張子とMIMEタイプのマッピング
+# (5) 外部の壊れやすい include はすべて止め、最低限必要な MIME タイプを直に定義
+include "/etc/mime.types"
+
+# 必要最低限かつ十分な MIME タイプの直接定義
 mimetype.assign = (
+    # テキスト・プログラム（ブラウザで表示・実行）
     ".html" => "text/html",
     ".htm"  => "text/html",
-    ".php"  => "text/html", # PHPも最終的にHTMLとして出力するため
+    ".txt"  => "text/plain",
     ".css"  => "text/css",
     ".js"   => "application/javascript",
+    ".php"  => "application/x-httpd-php",
+
+    # 画像（ブラウザに直接表示）
+    ".jpg"  => "image/jpeg",
+    ".jpeg" => "image/jpeg",
     ".png"  => "image/png",
-    ".jpg"  => "image/jpeg"
+    ".gif"  => "image/gif",
+    ".svg"  => "image/svg+xml",
+    ".ico"  => "image/x-icon",
+
+    # ドキュメント（ブラウザで開くか対応アプリで表示）
+    ".pdf"  => "application/pdf"
 )
 
-# FastCGI経由でOpenBSDの「php-fpm」に処理を渡す設定
+
+# (6) ディレクトリリスニング（ファイル一覧表示）の有効化
+dir-listing.activate = "enable"
+
+# (7) FastCGI (PHPおよびHTML内のPHPを有効化)
+# 他ディストリと同等の挙動にするため、ソケットファイルではなく「ネットワークポート方式」を採用します
 fastcgi.server = (
-    # .php ファイルの処理
     ".php" => ((
-        "socket" => "/var/www/run/php-fpm.sock", # OpenBSD標準のソケット位置(chroot内)
-        "broken-scriptfilename" => "enable"
+        "host" => "127.0.0.1",
+        "port" => 9000,
+        "bin-path" => "/usr/bin/php-cgi",
+        "max-procs" => 1
     )),
-    # .html ファイルの中にあるPHPコードを実行させる設定
     ".html" => ((
-        "socket" => "/var/www/run/php-fpm.sock",
-        "broken-scriptfilename" => "enable"
+        "host" => "127.0.0.1",
+        "port" => 9001,
+        "bin-path" => "/usr/bin/php-cgi",
+        "max-procs" => 1
     ))
 )
 
-# ====================================================================
-# 5. WebDAV 設定
-# ====================================================================
-# ドキュメントルート全体、または特定の階層をWebDAVとして公開
-$HTTP["url"] =~ "^/" {
+# (8) WebDAVの有効化設定
+# http://localhost:8000/webdav でディレクトリへの読み書きを許可します
+$HTTP["url"] =~ "^/webdav($|/)" {
     webdav.activate = "enable"
-    webdav.is-readonly = "disable" # 書き込み・削除を許可する設定
-    
-    # 必要に応じてWebDAV用のロックデータベースを有効化
-    #（事前に /var/www/var/log/lighttpd/ ディレクトリの作成と権限が必要です）
-    # webdav.sqlite-db-name = "/var/log/lighttpd/webdav.db"
+    webdav.is-readonly = "disable"
 }
 
-# ====================================================================
-# 6. ログ・その他セキュリティ設定
-# ====================================================================
-server.errorlog = "/var/log/lighttpd/error.log"
-url.access-deny = ( "~", ".inc" )

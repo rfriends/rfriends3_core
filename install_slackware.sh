@@ -1,49 +1,47 @@
 #!/bin/sh
 # =========================================
-# install rfriends for OpenBSD
+# install rfriends for slackware
 # =========================================
-# 1.0 2026/06/08 new
+# 1.0 2026/06/11 new
 
 ver=1.0
 echo start $ver
 echo
   echo
-  echo 現在開発中のため、正常に動作しません。2026/06/08
+  echo 現在開発中のため、正常に動作しません。2026/06/11
   echo
   
 doas pkg_add -u
 if [ $? != 0 ]; then
   echo
-  echo install_openbsd.sh
+  echo install_slackware.sh
   echo 実行するshを間違っていないか確認してください。
   echo
-  #cat /etc/os-release
-  uname -a
+  cat /etc/os-release
   exit 1
 fi
 # -----------------------------------------
-echo 1 | doas pkg_add sudo
-doas mkdir -p /etc/sudoers.d
-echo "%wheel ALL=(ALL) SETENV: ALL" | doas tee /etc/sudoers.d/wheel > /dev/null
-doas chmod 0440 /etc/sudoers.d/wheel
+sudo mkdir -p /etc/sudoers.d
+echo "%wheel ALL=(ALL) SETENV: ALL" | sudo tee /etc/sudoers.d/wheel > /dev/null
+sudo chmod 0440 /etc/sudoers.d/wheel
 # -----------------------------------------
-export distro="openbsd"
-export cmd="pkg_add"
-export cmdupdate="pkg_add -u"
+export distro="slackware"
+export cmd=""
+export cmdupdate="slackpkg update"
 
 #export user=`whoami`
 #export group=$user
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 export PREFIX=""
-export phpdir="/usr/local/bin/php"
+export phpdir="/usr/bin/php"
 
-export optlighttpd="on3"
+export optlighttpd="on4"
 export optsamba="on"
 export optvimrc="on"
 
-export php="83"
-export phpv="8.3"
+export php=""
+export phpv=""
 export lighttpd="lighttpd"
 export ffmpeg="ffmpeg"
 export ffplay="ffplay"
@@ -53,12 +51,12 @@ export samba="samba"
 export smbd="smbdr"
 export atd="atd"
 export cron="cron"
-export ipcmd="ifconfig"
+export ipcmd="/sbin/ifconfig"
 #
-touch common_openbsd.err
-sh common_openbsd.sh 2>common_openbsd.err | tee common_openbsd.log
-echo --- commmon_openbsd.err
-cat common_openbsd.err
+touch common_slackware.err
+sh common_slackware.sh 2>common_slackware.err | tee common_slackware.log
+echo --- commmon_slackware.err
+cat common_slackware.err
 # -----------------------------------------
 # finish
 echo

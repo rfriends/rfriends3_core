@@ -177,10 +177,10 @@ echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on4" ]; then  
-  $sucmd $cmd lighttpd--
+  sudo sbopkg install lighttpd
 
   export conf_dir="/etc/lighttpd"
-  sh lighttpd3.sh
+  sh lighttpd4.sh
 fi
 # =========================================
 echo

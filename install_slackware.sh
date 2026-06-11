@@ -40,8 +40,8 @@ export distro="slackware"
 export cmd=""
 export cmdupdate="slackpkg update"
 
-#export user=`whoami`
-#export group=$user
+export user=`whoami`
+export group=users
 #export port=8000
 #export homedir=`sh -c 'cd && pwd'`
 export PREFIX=""

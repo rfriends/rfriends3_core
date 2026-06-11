@@ -1,7 +1,13 @@
 #!/bin/sh
-# samba
+# samba for slackware
 #
 # 1.0 2026/06/12 /etc/smb4.conf
+
+# -----------------------------------------
+if ! ls /var/log/packages/samba-* >/dev/null 2>&1; then
+    sudo /usr/sbin/sbopkg -i samba
+fi
+# -----------------------------------------
 
 cd $curdir/skel
 sed -e s%rfriendshomedir%$homedir%g smb4.conf_slackware.skel > smb4.conf0
@@ -18,13 +24,6 @@ EOF
 
 # -----------------------------------------
 sudo chmod +x /etc/rc.d/rc.samba
-if [ $sys -eq 1 ]; then
-  sudo systemctl enable $smbd
-  sudo systemctl restart $smbd
-  sudo systemctl status $smbd
-else 
-  sudo rcctl start smbd
-  sudo rcctl check smbd
-fi
+sudo /etc/rc.d/rc.samba start
 
 exit 0

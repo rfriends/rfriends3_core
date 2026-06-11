@@ -29,13 +29,14 @@ echo -n "[slackpkg] "
 if ! command -v slackpkg >/dev/null 2>&1; then
   echo "NOT installed."
   exit 1
-f1
+fi
 # -----------------------------------------
 # sbopkg
 echo -n "[sbopkg] "
 if ! command -v sbopkg >/dev/null 2>&1; then
   echo "NOT installed."
   exit 1
+fi
 # -----------------------------------------
 export distro="slackware"
 export cmd=""

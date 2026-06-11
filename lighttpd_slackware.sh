@@ -50,6 +50,7 @@ fi
 EOF
 
 sudo chmod +x /etc/rc.d/rc.lighttpd
+sudo /etc/rc.d/rc.lighttpd stop
 sudo /etc/rc.d/rc.lighttpd start
 
 sudo touch $conf_dir/$onver

@@ -165,6 +165,7 @@ echo
 # -----------------------------------------
 echo samba $optsamba
 if [ $optsamba = "on" ]; then
+  sudo sbopkg install samba
   sh samba_slackware.sh
 fi
 # -----------------------------------------

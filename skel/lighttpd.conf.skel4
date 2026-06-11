@@ -12,23 +12,18 @@ server.modules = (
     "mod_webdav"
 )
 
-# (2) 基本の環境定義（ルートディレクトリ、実行ユーザー、グループ、ポート番号）
 server.document-root = "rfriendshomedir/rfriends3/script/html/"
 server.username      = "rfriendsuser"
 server.groupname     = "rfriendsgroup"
 server.port          = rfriendsport
 
-# (3) ログファイルの出力場所
 server.errorlog      = "/var/log/lighttpd/error.log"
 accesslog.filename   = "/var/log/lighttpd/access.log"
 
-# (4) インデックスファイルの種類
 index-file.names     = ( "index.php", "index.html" )
 
-# (5) 外部の壊れやすい include はすべて止め、最低限必要な MIME タイプを直に定義
-include "/etc/mime.types"
+#include "/etc/mime.types"
 
-# 必要最低限かつ十分な MIME タイプの直接定義
 mimetype.assign = (
     # テキスト・プログラム（ブラウザで表示・実行）
     ".html" => "text/html",
@@ -50,12 +45,8 @@ mimetype.assign = (
     ".pdf"  => "application/pdf"
 )
 
-
-# (6) ディレクトリリスニング（ファイル一覧表示）の有効化
 dir-listing.activate = "enable"
 
-# (7) FastCGI (PHPおよびHTML内のPHPを有効化)
-# 他ディストリと同等の挙動にするため、ソケットファイルではなく「ネットワークポート方式」を採用します
 fastcgi.server = (
     ".php" => ((
         "host" => "127.0.0.1",
@@ -71,7 +62,6 @@ fastcgi.server = (
     ))
 )
 
-# (8) WebDAVの有効化設定
 # http://localhost:8000/webdav でディレクトリへの読み書きを許可します
 $HTTP["url"] =~ "^/webdav($|/)" {
     webdav.activate = "enable"

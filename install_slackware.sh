@@ -24,17 +24,15 @@ sudo mkdir -p /etc/sudoers.d
 echo "%wheel ALL=(ALL) SETENV: ALL" | sudo tee /etc/sudoers.d/wheel > /dev/null
 sudo chmod 0440 /etc/sudoers.d/wheel
 # -----------------------------------------
-# slackpkg
-echo -n "[slackpkg] "
-if ! command -v slackpkg >/dev/null 2>&1; then
-  echo "NOT installed."
+sudo /usr/sbin/slackpkg > /dev/null 2>&1
+if [ $? != 0 ]; then
+  echo "slackpkg NOT installed."
   exit 1
 fi
 # -----------------------------------------
-# sbopkg
-echo -n "[sbopkg] "
-if ! command -v sbopkg >/dev/null 2>&1; then
-  echo "NOT installed."
+sudo /usr/sbin/sbopkg -v > /dev/null 2>&1
+if [ $? != 0 ]; then
+  echo "sbopkg NOT installed."
   exit 1
 fi
 # -----------------------------------------

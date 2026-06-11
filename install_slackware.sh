@@ -49,8 +49,10 @@ export cmdupdate="slackpkg update"
 export PREFIX=""
 export phpdir="/usr/bin/php"
 
-export optlighttpd="on4"
-export optsamba="on"
+#export optlighttpd="on4"
+#export optsamba="on"
+export optlighttpd="off"
+export optsamba="off"
 export optvimrc="on"
 
 export php=""

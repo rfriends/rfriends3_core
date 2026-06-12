@@ -183,6 +183,7 @@ echo
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on4" ]; then  
   export pidfile="/var/run/lighttpd.pid"
+  sudo mkdir -p $pidfile
   export conf_dir="/etc/lighttpd"
   sh lighttpd_slackware.sh
 fi

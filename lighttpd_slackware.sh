@@ -14,11 +14,11 @@ if ! ls /var/log/packages/lighttpd-*; then
 fi
 # -----------------------------------------
 sudo chown -R $user:$group /var/log/lighttpd
-sudo chown -R $user:$group /var/run/lighttpd
+#sudo chown -R $user:$group /var/run/lighttpd
 sudo chown -R $user:$group /var/cache/lighttpd
 
 sudo chmod 750 /var/log/lighttpd
-sudo chmod 755 /var/run/lighttpd
+#sudo chmod 755 /var/run/lighttpd
 sudo chmod 750 /var/cache/lighttpd
 # -----------------------------------------
 cd $curdir/skel

@@ -64,10 +64,14 @@ export atd="atd"
 export cron="crond"
 export ipcmd="/sbin/ifconfig"
 #
-touch common_slackware.err
-sh common_slackware.sh 2>common_slackware.err | tee common_slackware.log
+
+#sh common_slackware.sh 2>common_slackware.err | tee common_slackware.log
+
+cmd=command_slackware
+touch $cmd.err
+(sh $cmd.sh 2>&1 1>&3 | tee $cmd.err 1>&2) 3>&1 | tee $cmd.log
 echo --- commmon_slackware.err
-cat common_slackware.err
+cat $cmd.err
 # -----------------------------------------
 # finish
 echo

@@ -40,7 +40,7 @@ sudo sbopkg -r
 
 OUTPUT=$(sudo slackpkg update 2>&1)
 if echo "$OUTPUT" | grep -iq "GPG signature.*failed"; then
-    echo " [警告] GPGエラーを検出しました。鍵の更新が必要です。"
+    echo " GPGエラーを検出しました。鍵の更新が必要です。"
     echo " sudo slackpkg update gpg を実行してください。"
     exit 1
 fi

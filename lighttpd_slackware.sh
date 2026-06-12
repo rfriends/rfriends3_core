@@ -6,7 +6,8 @@ echo "lighttpd_slackware on4"
 #
 onver="on4"
 # -----------------------------------------
-if ! ls /var/log/packages/lighttpd-* >/dev/null 2>&1; then
+#if ! ls /var/log/packages/lighttpd-* >/dev/null 2>&1; then
+if ! ls /var/log/packages/lighttpd-*; then
   sudo /usr/sbin/groupadd -g 208 lighttpd
   sudo /usr/sbin/useradd -u 208 -g lighttpd -d /var/www lighttpd
   sudo PATH="/usr/sbin:/usr/bin:/sbin:/bin" sbopkg -B -i lighttpd

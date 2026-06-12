@@ -61,7 +61,7 @@ export ffprobe="ffprobe"
 export samba="samba"
 export smbd="smbdr"
 export atd="atd"
-export cron="cron"
+export cron="crond"
 export ipcmd="/sbin/ifconfig"
 #
 touch common_slackware.err

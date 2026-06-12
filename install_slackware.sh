@@ -36,7 +36,7 @@ if [ $? != 0 ]; then
   exit 1
 fi
 # -----------------------------------------
-sudo sbopkg -r
+sudo sbopkg--yes
 
 OUTPUT=$(sudo slackpkg update 2>&1)
 if echo "$OUTPUT" | grep -iq "GPG signature.*failed"; then

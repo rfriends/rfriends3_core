@@ -37,6 +37,7 @@ if [ $? != 0 ]; then
 fi
 # -----------------------------------------
 sudo PAGER=cat sbopkg -r
+echo " 'q' リターンキーを押してください。"
 
 OUTPUT=$(sudo slackpkg update 2>&1)
 if echo "$OUTPUT" | grep -iq "GPG signature.*failed"; then

@@ -115,17 +115,19 @@ echo
 echo set timezone to tokyo
 echo
 # =========================================
-$sucmd ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 # =========================================
 echo
 echo install tools
 echo
 # =========================================
-if ! ls /var/log/packages/AtomicParsley-* >/dev/null 2>&1; then
+#if ! ls /var/log/packages/AtomicParsley-* >/dev/null 2>&1; then
+if ! ls /var/log/packages/AtomicParsley-*; then
     sudo /usr/sbin/sbopkg -i atomicparsley
 fi
 
-if ! ls /var/log/packages/p7zip-* >/dev/null 2>&1; then
+#if ! ls /var/log/packages/p7zip-* >/dev/null 2>&1; then
+if ! ls /var/log/packages/p7zip-*; then
     sudo /usr/sbin/sbopkg -i p7zip
 fi
 
@@ -139,7 +141,7 @@ fi
 # -----------------------------------------
 /usr/sbin/slackpkg search libssh2 | grep -q '\[ uninstalled \]' && sudo /usr/sbin/slackpkg install libssh2
 sudo pecl channel-update pecl.php.net
-printf "\n" | sudo pecl install ssh2-1.3.1
+sudo pecl install ssh2-1.3.1
 grep -q "^extension=ssh2.so" /etc/php.ini || echo "extension=ssh2.so" | sudo tee -a /etc/php.ini
 # =========================================
 echo
@@ -180,7 +182,7 @@ echo
 # -----------------------------------------
 echo lighttpd $optlighttpd
 if [ $optlighttpd = "on4" ]; then  
-  export pidfile="var/run/lighttpd.pid"
+  export pidfile="/var/run/lighttpd.pid"
   export conf_dir="/etc/lighttpd"
   sh lighttpd_slackware.sh
 fi

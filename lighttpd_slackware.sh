@@ -10,7 +10,8 @@ onver="on4"
 if ! sudo ls /var/log/packages/lighttpd-*; then
   sudo /usr/sbin/groupadd -g 208 lighttpd
   sudo /usr/sbin/useradd -u 208 -g lighttpd -d /var/www lighttpd
-  sudo PATH="/usr/sbin:/usr/bin:/sbin:/bin" sbopkg -B -i lighttpd
+  #sudo PATH="/usr/sbin:/usr/bin:/sbin:/bin" sbopkg -B -i lighttpd
+  sudo /usr/sbin/sbopkg -B -i lighttpd
 fi
 # -----------------------------------------
 sudo chown -R $user:$group /var/log/lighttpd

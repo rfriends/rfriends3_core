@@ -122,12 +122,12 @@ echo install tools
 echo
 # =========================================
 #if ! ls /var/log/packages/AtomicParsley-* >/dev/null 2>&1; then
-if ! ls /var/log/packages/AtomicParsley-*; then
+if ! sudo ls /var/log/packages/AtomicParsley-*; then
     sudo /usr/sbin/sbopkg -i atomicparsley
 fi
 
 #if ! ls /var/log/packages/p7zip-* >/dev/null 2>&1; then
-if ! ls /var/log/packages/p7zip-*; then
+if ! sudo ls /var/log/packages/p7zip-*; then
     sudo /usr/sbin/sbopkg -i p7zip
 fi
 

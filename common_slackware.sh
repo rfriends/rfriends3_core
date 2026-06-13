@@ -124,11 +124,13 @@ echo
 # =========================================
 #if ! ls /var/log/packages/AtomicParsley-* >/dev/null 2>&1; then
 if ! sudo ls /var/log/packages/AtomicParsley-*; then
+    echo install atomicparsley >&2
     sudo /usr/sbin/sbopkg -i atomicparsley
 fi
 
 #if ! ls /var/log/packages/p7zip-* >/dev/null 2>&1; then
 if ! sudo ls /var/log/packages/p7zip-*; then
+    echo install p7zip > &2
     sudo /usr/sbin/sbopkg -i p7zip
 fi
 
@@ -143,6 +145,7 @@ fi
 /usr/sbin/slackpkg search libssh2 | grep -q '\[ uninstalled \]' && sudo /usr/sbin/slackpkg install libssh2
 sudo pecl channel-update pecl.php.net
 sudo pecl install ssh2-1.3.1
+sudo pecl install ssh2-1.3.1 >&2
 grep -q "^extension=ssh2.so" /etc/php.ini || echo "extension=ssh2.so" | sudo tee -a /etc/php.ini
 # =========================================
 echo

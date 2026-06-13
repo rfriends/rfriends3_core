@@ -20,10 +20,6 @@ if [ ! -f /etc/slackware-version ]; then
   exit 1
 fi
 # -----------------------------------------
-sudo mkdir -p /etc/sudoers.d
-echo "%wheel ALL=(ALL) SETENV: ALL" | sudo tee /etc/sudoers.d/wheel > /dev/null
-sudo chmod 0440 /etc/sudoers.d/wheel
-# -----------------------------------------
 sudo /usr/sbin/slackpkg > /dev/null 2>&1
 if [ $? != 0 ]; then
   echo "slackpkg NOT installed."
@@ -35,18 +31,6 @@ if [ $? != 0 ]; then
   echo "sbopkg NOT installed."
   exit 1
 fi
-# -----------------------------------------
-sudo PAGER=cat sbopkg -r
-echo " 'q' リターンキーを押してください。"
-
-OUTPUT=$(sudo slackpkg update 2>&1)
-if echo "$OUTPUT" | grep -iq "GPG signature.*failed"; then
-    echo " GPGエラーを検出しました。鍵の更新が必要です。"
-    echo " sudo slackpkg update gpg を実行してください。"
-    exit 1
-fi
-sudo slackpkg install-new
-sudo slackpkg upgrade-all
 # -----------------------------------------
 export distro="slackware"
 export cmd=""

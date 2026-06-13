@@ -130,7 +130,7 @@ fi
 
 #if ! ls /var/log/packages/p7zip-* >/dev/null 2>&1; then
 if ! sudo ls /var/log/packages/p7zip-*; then
-    echo 'install p7zip' > &2
+    echo 'install p7zip' >&2
     sudo /usr/sbin/sbopkg -i p7zip
 fi
 

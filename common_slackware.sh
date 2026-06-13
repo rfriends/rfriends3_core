@@ -122,15 +122,15 @@ echo install tools
 echo 'install tools' >&2
 echo
 # =========================================
-#if ! ls /var/log/packages/AtomicParsley-* >/dev/null 2>&1; then
-if ! sudo ls /var/log/packages/AtomicParsley-*; then
-    echo 'install atomicparsley' >&2
+if ! sudo ls /var/log/packages/AtomicParsley-* >/dev/null 2>&1; then
+#if ! sudo ls /var/log/packages/AtomicParsley-*; then
+    echo '--- install atomicparsley' >&2
     sudo /usr/sbin/sbopkg -i atomicparsley
 fi
 
-#if ! ls /var/log/packages/p7zip-* >/dev/null 2>&1; then
-if ! sudo ls /var/log/packages/p7zip-*; then
-    echo 'install p7zip' >&2
+if ! sudo ls /var/log/packages/p7zip-* >/dev/null 2>&1; then
+#if ! sudo ls /var/log/packages/p7zip-*; then
+    echo '--- install p7zip' >&2
     sudo /usr/sbin/sbopkg -i p7zip
 fi
 
@@ -145,7 +145,6 @@ fi
 /usr/sbin/slackpkg search libssh2 | grep -q '\[ uninstalled \]' && sudo /usr/sbin/slackpkg install libssh2
 sudo pecl channel-update pecl.php.net
 sudo pecl install ssh2-1.3.1
-sudo pecl install ssh2-1.3.1 >&2
 grep -q "^extension=ssh2.so" /etc/php.ini || echo "extension=ssh2.so" | sudo tee -a /etc/php.ini
 # =========================================
 echo
@@ -165,8 +164,8 @@ echo vimrc
 echo
 # -----------------------------------------
 echo vimrc $optvimrc
-echo 'vimrc $optvimrc' >&2
 if [ $optvimrc = "on" ]; then
+  echo '--- install vimrc' >&2
   sh vimrc.sh
 fi
 # -----------------------------------------
@@ -175,21 +174,19 @@ sudo /etc/rc.d/rc.$cron start
 # -----------------------------------------
 echo
 echo install samba
-echo 'install samba' >&2
 echo
 # -----------------------------------------
-echo samba $optsamba
 if [ $optsamba = "on" ]; then
+  echo '--- install samba' >&2
   sh samba_slackware.sh
 fi
 # -----------------------------------------
 echo
 echo install lighttpd
-echo 'install lighttpd' >&2
 echo
 # -----------------------------------------
-echo lighttpd $optlighttpd
 if [ $optlighttpd = "on4" ]; then  
+  echo '--- install lighttpd' >&2
   export pidfile="/run/lighttpd.pid"
   export conf_dir="/etc/lighttpd"
   sh lighttpd_slackware.sh

@@ -119,6 +119,7 @@ sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 # =========================================
 echo
 echo install tools
+echo install tools >&2
 echo
 # =========================================
 #if ! ls /var/log/packages/AtomicParsley-* >/dev/null 2>&1; then
@@ -146,6 +147,7 @@ grep -q "^extension=ssh2.so" /etc/php.ini || echo "extension=ssh2.so" | sudo tee
 # =========================================
 echo
 echo install rfriends3
+echo install rfriends3 >&2
 echo
 # =========================================
 echo rfriends3
@@ -160,6 +162,7 @@ echo vimrc
 echo
 # -----------------------------------------
 echo vimrc $optvimrc
+echo vimrc $optvimrc >&2
 if [ $optvimrc = "on" ]; then
   sh vimrc.sh
 fi
@@ -169,6 +172,7 @@ sudo /etc/rc.d/rc.$cron start
 # -----------------------------------------
 echo
 echo install samba
+echo install samba >&2
 echo
 # -----------------------------------------
 echo samba $optsamba
@@ -178,6 +182,7 @@ fi
 # -----------------------------------------
 echo
 echo install lighttpd
+echo install lighttpd >&2
 echo
 # -----------------------------------------
 echo lighttpd $optlighttpd

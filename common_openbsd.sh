@@ -3,8 +3,9 @@
 # install rfriends for openbsd
 # =========================================
 # 1.0 2026/06/08
+# 1.1 2026/06/23 add streamlink
 #
-ver=1.0
+ver=1.1
 # -----------------------------------------
 echo
 echo start install_common_openbsd $ver
@@ -155,6 +156,8 @@ $sucmd $cmd php-intl%${phpv}
 
 $sucmd $cmd libssh2
 $sucmd $cmd pecl${php}-ssh2
+$sucmd $cmd streamlink
+
 
 $sucmd ln -sf /etc/php-${phpv}.sample/gd.ini /etc/php-${phpv}/gd.ini
 $sucmd ln -sf /etc/php-${phpv}.sample/curl.ini /etc/php-${phpv}/curl.ini

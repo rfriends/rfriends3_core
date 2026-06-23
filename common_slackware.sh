@@ -3,8 +3,9 @@
 # install rfriends for slackwarea
 # =========================================
 # 1.0 2026/06/11
+# 1.1 2026/06/23 add streamlink
 #
-ver=1.0
+ver=1.1
 # -----------------------------------------
 echo
 echo start install_common_slackware $ver
@@ -134,6 +135,8 @@ if ! sudo ls /var/log/packages/p7zip-* >/dev/null 2>&1; then
     sudo /usr/sbin/sbopkg -i p7zip
 fi
 
+sudo /usr/sbin/sbopkg -i streamlink
+ 
 # Chromium
 # 廃止
 

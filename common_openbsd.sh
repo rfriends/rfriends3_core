@@ -4,8 +4,9 @@
 # =========================================
 # 1.0 2026/06/08
 # 1.1 2026/06/23 add streamlink
+# 1.2 2026/06/26 add mpv
 #
-ver=1.1
+ver=1.2
 # -----------------------------------------
 echo
 echo start install_common_openbsd $ver
@@ -157,6 +158,7 @@ $sucmd $cmd php-intl%${phpv}
 $sucmd $cmd libssh2
 $sucmd $cmd pecl${php}-ssh2
 $sucmd $cmd streamlink
+$sucmd $cmd mpv
 
 
 $sucmd ln -sf /etc/php-${phpv}.sample/gd.ini /etc/php-${phpv}/gd.ini

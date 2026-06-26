@@ -4,8 +4,9 @@
 # =========================================
 # 1.0 2026/06/06
 # 1.1 2026/06/23 add streamlink
+# 1.2 2026/06/26 add mpv
 #
-ver=1.1
+ver=1.2
 # -----------------------------------------
 echo
 echo start install_common_netbsd $ver
@@ -160,6 +161,7 @@ sudo $cmd ${php}-intl
 sudo $cmd libssh2
 sudo $cmd ${php}-ssh2
 sudo $cmd streamlink
+sudo $cmd mpv
 
 #sudo $cmd ${php}-json 
 #sed -e s%^\;extension=mbstring%extension=mbstring% $PREFIX/etc/php.ini-production | sudo tee $PREFIX/etc/php.ini

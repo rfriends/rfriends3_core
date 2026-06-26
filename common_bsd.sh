@@ -7,8 +7,9 @@
 # 1.2 2026/03/18 ssh2 
 # 1.3 2026/05/30 group 
 # 1.4 2026/06/23 add streamlink
+# 1.5 2026/06/26 add mpv
 #
-ver=1.4
+ver=1.5
 # -----------------------------------------
 echo
 echo start install_common_bsd $ver
@@ -157,6 +158,7 @@ sudo $cmd ${php}-ssh2
 #sudo $cmd openssh
 #sudo $cmd cronie
 sudo $cmd streamlink
+sudo $cmd mpv
 # -----------------------------------------
 sudo ln -s /usr/local/bin/atomicparsley /usr/local/bin/AtomicParsley
 # =========================================

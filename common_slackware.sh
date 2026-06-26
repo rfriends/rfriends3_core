@@ -4,8 +4,9 @@
 # =========================================
 # 1.0 2026/06/11
 # 1.1 2026/06/23 add streamlink
+# 1.2 2026/06/26 add mpv
 #
-ver=1.1
+ver=1.2
 # -----------------------------------------
 echo
 echo start install_common_slackware $ver
@@ -136,6 +137,7 @@ if ! sudo ls /var/log/packages/p7zip-* >/dev/null 2>&1; then
 fi
 
 sudo /usr/sbin/sbopkg -i streamlink
+sudo /usr/sbin/sbopkg -i mpv
  
 # Chromium
 # 廃止

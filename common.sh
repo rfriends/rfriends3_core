@@ -31,7 +31,8 @@
 # 6.1 2026/02/17 systemd
 # 6.2 2026/03/18 ssh2
 # 6.3 2026/06/23 add streamlink
-ver=6.3
+# 6.4 2026/06/26 add mpv
+ver=6.4
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -208,6 +209,7 @@ if [ $? != 0 ]; then
 fi
 sudo $cmd $app_chromium
 sudo $cmd streamlink
+sudo $cmd mpv
 # ----------------------------------------- atomicparsley
 ap7=AtomicParsley-0.9.5-13.fc30.x86_64.rpm
 ap8=AtomicParsley-0.9.5-16.fc33.x86_64.rpm

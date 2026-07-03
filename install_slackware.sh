@@ -8,8 +8,9 @@ ver=1.0
 echo start $ver
 echo
   echo
-  echo 現在開発中のため、正常に動作しません。2026/06/11
+  echo 現在開発中のため、動作しません。2026/06/11
   echo
+  exit 1;
   
 if [ ! -f /etc/slackware-version ]; then
   echo

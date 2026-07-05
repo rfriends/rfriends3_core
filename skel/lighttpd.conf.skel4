@@ -1,4 +1,4 @@
-# for slackware 2026/06/11
+# for slackware 2026/07/05
 #
 server.modules = (
     "mod_access",
@@ -63,4 +63,4 @@ $HTTP["url"] =~ "^/webdav($|/)" {
     webdav.activate = "enable"
     webdav.is-readonly = "disable"
 }
-
+server.stream-response-body = 1

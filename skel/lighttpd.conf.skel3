@@ -1,4 +1,4 @@
-#
+# 2026/07/05
 # rfriendsuser
 # rfriendsgroup
 # rfriendsport
@@ -84,4 +84,5 @@ $HTTP["url"] =~ "^/" {
 # ====================================================================
 server.errorlog = "/var/log/lighttpd/error.log"
 url.access-deny = ( "~", ".inc" )
+server.stream-response-body = 1
 

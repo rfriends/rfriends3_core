@@ -113,6 +113,7 @@ if [ $sys -eq 1 ]; then
   #  done
   #fi
   
+  sudo systemctl restart $lighttpd
   sudo systemctl status $lighttpd
 else 
   if [ $distro = "netbsd" ]; then

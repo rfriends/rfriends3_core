@@ -32,7 +32,8 @@
 # 6.2 2026/03/18 ssh2
 # 6.3 2026/06/23 add streamlink
 # 6.4 2026/06/26 add mpv
-ver=6.4
+# 6.5 2026/0t/24 add alsa-utils
+ver=6.5
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -210,6 +211,7 @@ fi
 sudo $cmd $app_chromium
 sudo $cmd streamlink
 sudo $cmd mpv
+sudo $cmd alsa-utils
 # ----------------------------------------- atomicparsley
 ap7=AtomicParsley-0.9.5-13.fc30.x86_64.rpm
 ap8=AtomicParsley-0.9.5-16.fc33.x86_64.rpm

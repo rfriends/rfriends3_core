@@ -8,8 +8,9 @@
 # 1.2 2025/07/24 add ishcrond ishbg, remove local
 # 1.3 dev
 # 1.5 local.d
+# 1.6 gui $1
 #
-ver=1.4
+ver=1.6
 echo start $ver
 echo
 #sudo apk update
@@ -102,7 +103,7 @@ sudo rc-status
 # -----------------------------------------
 cd ~/
 echo sh rfriends3/rfriends3.sh > cui
-echo sh rfriends3/rfriends3_server.sh > gui
+echo sh rfriends3/rfriends3_server.sh $1 > gui
 # -----------------------------------------
 # finish
 echo

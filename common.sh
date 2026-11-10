@@ -354,10 +354,10 @@ fi
 #
 # -----------------------------------------
 # for snap
-if [ -d "/usr/local/share" ]; then
-    sudo mkdir -p /usr/local/share/doc
-    sudo chmod 755 /usr/local/share/doc
-fi
+#if [ -d "/usr/local/share" ]; then
+#    sudo mkdir -p /usr/local/share/doc
+#    sudo chmod 755 /usr/local/share/doc
+#fi
 # =========================================
 echo +++++++++++++++++++++++++++++++++++++
 echo result of install rfriends3

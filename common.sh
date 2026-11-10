@@ -33,7 +33,8 @@
 # 6.3 2026/06/23 add streamlink
 # 6.4 2026/06/26 add mpv
 # 6.5 2026/0t/24 add alsa-utils
-ver=6.5
+# 6.6 snap
+ver=6.6
 # -----------------------------------------
 echo
 echo start install_common $ver
@@ -349,6 +350,13 @@ echo apache -- 3
 if [ $optapache2 = "onhtb" ]; then
   echo apache2 $optapache2 $apache_conf_dir
   sh httpdb.sh
+fi
+#
+# -----------------------------------------
+# for snap
+if [ -d "/usr/local/share" ]; then
+    sudo mkdir -p /usr/local/share/doc
+    sudo chmod 755 /usr/local/share/doc
 fi
 # =========================================
 echo +++++++++++++++++++++++++++++++++++++
